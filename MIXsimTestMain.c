@@ -10,26 +10,7 @@
 #include <stdlib.h>
 #include <check.h>
 
-#include "helloworld.h"
-
 #include "MIXwordTest.h"
-
-START_TEST (test_framework_exists)
-{
-	fail_unless(strcmp(getHelloMessage(), "Hello World!\n") == 0, "Test failed!");
-}
-END_TEST
-
-Suite *hello_suite (void)
-{
-	Suite *s = suite_create("hello");
-	
-	TCase *tc_core = tcase_create("Core");
-	tcase_add_test (tc_core, test_framework_exists);
-	suite_add_tcase(s, tc_core);
-	
-	return s;
-}
 
 int main(int argc, char *argv[])
 {

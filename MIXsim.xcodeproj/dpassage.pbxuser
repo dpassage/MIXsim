@@ -196,6 +196,12 @@
 		vrLoc = 0;
 	};
 	6B5B73B6119E2EFE0045C0B7 /* helloworld.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = helloworld.h;
+		path = /Users/dpassage/dev/MIXsim/helloworld.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {916, 444}}";
 			sepNavSelRange = "{142, 0}";
@@ -204,8 +210,14 @@
 		};
 	};
 	6B5B73B7119E2EFE0045C0B7 /* helloworld.c */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.c;
+		name = helloworld.c;
+		path = /Users/dpassage/dev/MIXsim/helloworld.c;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {519, 237}}";
+			sepNavIntBoundsRect = "{{0, 0}, {916, 444}}";
 			sepNavSelRange = "{111, 0}";
 			sepNavVisRange = "{0, 196}";
 			sepNavWindowFrame = "{{311, 96}, {750, 558}}";
@@ -378,9 +390,9 @@
 	};
 	6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 572}}";
-			sepNavSelRange = "{624, 0}";
-			sepNavVisRange = "{142, 678}";
+			sepNavIntBoundsRect = "{{0, 0}, {916, 444}}";
+			sepNavSelRange = "{186, 0}";
+			sepNavVisRange = "{0, 465}";
 			sepNavWindowFrame = "{{715, 147}, {750, 558}}";
 		};
 	};
@@ -419,7 +431,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 13";
 		rLen = 0;
-		rLoc = 819;
+		rLoc = 464;
 		rType = 0;
 		vrLen = 192;
 		vrLoc = 0;
@@ -439,7 +451,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 16";
 		rLen = 0;
-		rLoc = 542;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 266;
 		vrLoc = 24;
@@ -459,7 +471,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 16";
 		rLen = 0;
-		rLoc = 542;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 266;
 		vrLoc = 24;
@@ -479,7 +491,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 542;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 264;
 		vrLoc = 35;
@@ -499,7 +511,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 542;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 264;
 		vrLoc = 35;
@@ -519,8 +531,8 @@
 		comments = "Implicit declaration of function 'helloworld'";
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		fallbackIsa = XCBuildMessageTextBookmark;
-		rLen = 1;
-		rLoc = 18;
+		rLen = 0;
+		rLoc = 13;
 		rType = 1;
 	};
 	6B5B7461119E6D310045C0B7 /* PBXTextBookmark */ = {
@@ -528,7 +540,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 250;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 297;
 		vrLoc = 24;
@@ -538,7 +550,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 250;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 302;
 		vrLoc = 24;
@@ -558,7 +570,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 287;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 347;
 		vrLoc = 144;
@@ -568,7 +580,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 304;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 350;
 		vrLoc = 244;
@@ -588,7 +600,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 250;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 304;
 		vrLoc = 24;
@@ -597,7 +609,7 @@
 		isa = PBXTextBookmark;
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 1";
-		rLen = 820;
+		rLen = 465;
 		rLoc = 0;
 		rType = 0;
 		vrLen = 350;
@@ -648,7 +660,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 21";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 381;
 		vrLoc = 144;
@@ -740,9 +752,9 @@
 	};
 	6B5B749B119E77590045C0B7 /* MIXwordTest.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {439, 377}}";
-			sepNavSelRange = "{140, 0}";
-			sepNavVisRange = "{0, 233}";
+			sepNavIntBoundsRect = "{{0, 0}, {916, 444}}";
+			sepNavSelRange = "{214, 18}";
+			sepNavVisRange = "{0, 497}";
 			sepNavWindowFrame = "{{33, 212}, {750, 558}}";
 		};
 	};
@@ -751,7 +763,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 19";
 		rLen = 0;
-		rLoc = 250;
+		rLoc = 187;
 		rType = 0;
 		vrLen = 226;
 		vrLoc = 24;
