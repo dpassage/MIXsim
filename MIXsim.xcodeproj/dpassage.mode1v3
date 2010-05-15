@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -264,11 +266,15 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>08FB7794FE84155DC02AAC07</string>
+								<string>6B5B74CA119F105D0045C0B7</string>
 								<string>6B5B7417119E32D00045C0B7</string>
 								<string>6B5B740F119E327D0045C0B7</string>
 								<string>08FB7795FE84155DC02AAC07</string>
 								<string>C6A0FF2B0290797F04C91782</string>
 								<string>1C37FBAC04509CD000000102</string>
+								<string>6B5B743B119E63CB0045C0B7</string>
+								<string>6B5B74E3119F23220045C0B7</string>
+								<string>6B5B74E6119F23470045C0B7</string>
 								<string>6B5B743D119E63CB0045C0B7</string>
 								<string>6B5B743E119E63CB0045C0B7</string>
 								<string>6B5B7483119E703B0045C0B7</string>
@@ -277,9 +283,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>9</integer>
-									<integer>5</integer>
-									<integer>0</integer>
+									<integer>31</integer>
+									<integer>21</integer>
+									<integer>20</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -302,7 +308,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>71 67 1185 711 0 0 1280 778 </string>
+						<string>104 67 1185 711 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -313,14 +319,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>mix_word.c</string>
+								<string>testparser.input</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,23 +332,25 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>mix_word.c</string>
+										<string>testparser.input</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6B5B74C7119E7ADA0045C0B7</string>
+										<string>6B5B74FD119F25030045C0B7</string>
 										<key>history</key>
 										<array>
 											<string>6B5B73F6119E31E00045C0B7</string>
 											<string>6B5B7494119E724E0045C0B7</string>
-											<string>6B5B7495119E724E0045C0B7</string>
-											<string>6B5B7496119E724E0045C0B7</string>
 											<string>6B5B74C1119E7ADA0045C0B7</string>
 											<string>6B5B74C2119E7ADA0045C0B7</string>
 											<string>6B5B74C3119E7ADA0045C0B7</string>
 											<string>6B5B74C4119E7ADA0045C0B7</string>
 											<string>6B5B74C5119E7ADA0045C0B7</string>
-											<string>6B5B74C6119E7ADA0045C0B7</string>
+											<string>6B5B74F8119F25030045C0B7</string>
+											<string>6B5B74F9119F25030045C0B7</string>
+											<string>6B5B74FA119F25030045C0B7</string>
+											<string>6B5B74FB119F25030045C0B7</string>
+											<string>6B5B74FC119F25030045C0B7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -358,7 +364,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {977, 476}}</string>
 								<key>RubberWindowFrame</key>
-								<string>71 67 1185 711 0 0 1280 778 </string>
+								<string>104 67 1185 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -378,7 +384,7 @@
 								<key>Frame</key>
 								<string>{{0, 481}, {977, 189}}</string>
 								<key>RubberWindowFrame</key>
-								<string>71 67 1185 711 0 0 1280 778 </string>
+								<string>104 67 1185 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -544,13 +550,13 @@
 	<array>
 		<string>6B5B7405119E31E00045C0B7</string>
 		<string>6B5B7406119E31E00045C0B7</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>6B8C7347119D1D1E00475539</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/dpassage/dev/MIXsim/MIXsim.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>71 67 1185 711 0 0 1280 778 </string>
+	<string>104 67 1185 711 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -642,7 +648,7 @@
 			<key>WindowToolGUID</key>
 			<string>6B8C7347119D1D1E00475539</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -931,7 +937,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
