@@ -267,6 +267,7 @@
 								<string>6B5B7417119E32D00045C0B7</string>
 								<string>6B5B740F119E327D0045C0B7</string>
 								<string>08FB7795FE84155DC02AAC07</string>
+								<string>C6A0FF2B0290797F04C91782</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>6B5B743D119E63CB0045C0B7</string>
 								<string>6B5B743E119E63CB0045C0B7</string>
@@ -276,11 +277,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>9</integer>
+									<integer>5</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {186, 445}}</string>
+							<string>{{0, 0}, {186, 652}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -292,14 +295,14 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {203, 463}}</string>
+						<string>{{0, 0}, {203, 670}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>443 253 788 504 0 0 1280 778 </string>
+						<string>71 67 1185 711 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -310,12 +313,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MIXsimTestMain.c</string>
+								<string>mix_word.c</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -323,18 +328,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MIXsimTestMain.c</string>
+										<string>mix_word.c</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6B5B7498119E724E0045C0B7</string>
+										<string>6B5B74C7119E7ADA0045C0B7</string>
 										<key>history</key>
 										<array>
 											<string>6B5B73F6119E31E00045C0B7</string>
 											<string>6B5B7494119E724E0045C0B7</string>
 											<string>6B5B7495119E724E0045C0B7</string>
 											<string>6B5B7496119E724E0045C0B7</string>
-											<string>6B5B7497119E724E0045C0B7</string>
+											<string>6B5B74C1119E7ADA0045C0B7</string>
+											<string>6B5B74C2119E7ADA0045C0B7</string>
+											<string>6B5B74C3119E7ADA0045C0B7</string>
+											<string>6B5B74C4119E7ADA0045C0B7</string>
+											<string>6B5B74C5119E7ADA0045C0B7</string>
+											<string>6B5B74C6119E7ADA0045C0B7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -346,18 +356,16 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {580, 269}}</string>
+								<string>{{0, 0}, {977, 476}}</string>
 								<key>RubberWindowFrame</key>
-								<string>443 253 788 504 0 0 1280 778 </string>
+								<string>71 67 1185 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>269pt</string>
+							<string>476pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -368,9 +376,9 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 274}, {580, 189}}</string>
+								<string>{{0, 481}, {977, 189}}</string>
 								<key>RubberWindowFrame</key>
-								<string>443 253 788 504 0 0 1280 778 </string>
+								<string>71 67 1185 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -379,7 +387,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>580pt</string>
+					<string>977pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -537,12 +545,12 @@
 		<string>6B5B7405119E31E00045C0B7</string>
 		<string>6B5B7406119E31E00045C0B7</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>6B8C7347119D1D1E00475539</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/dpassage/dev/MIXsim/MIXsim.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>443 253 788 504 0 0 1280 778 </string>
+	<string>71 67 1185 711 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -563,7 +571,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MIXsimTestMain.c</string>
+								<string>MIXwordTest.c</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -634,7 +642,7 @@
 			<key>WindowToolGUID</key>
 			<string>6B8C7347119D1D1E00475539</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

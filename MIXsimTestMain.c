@@ -12,6 +12,8 @@
 
 #include "helloworld.h"
 
+#include "MIXwordTest.h"
+
 START_TEST (test_framework_exists)
 {
 	fail_unless(strcmp(getHelloMessage(), "Hello World!\n") == 0, "Test failed!");
@@ -32,7 +34,7 @@ Suite *hello_suite (void)
 int main(int argc, char *argv[])
 {
 	int number_failed;
-	Suite *s = hello_suite();
+	Suite *s = mix_word_suite();
 	SRunner *sr = srunner_create(s);
 	srunner_run_all(sr, CK_NORMAL);
 	number_failed = srunner_ntests_failed(sr);
