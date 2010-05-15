@@ -18,5 +18,6 @@ int main (int argc, const char * argv[]) {
 		printf("%s\n", s);
 		free(s);
 	}
+	mix_word_destroy(w);
     return 0;
 }

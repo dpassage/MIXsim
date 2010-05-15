@@ -27,6 +27,10 @@ mix_word *mix_word_create(void) {
 	return w;
 }
 
+void mix_word_destroy(mix_word *w) {
+	free(w);
+}
+
 /* return the sign of the mix word */
 int mix_word_sign(mix_word *w) {
 	return w->bytes[0];

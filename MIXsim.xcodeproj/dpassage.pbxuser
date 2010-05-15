@@ -5,7 +5,7 @@
 		activeExecutable = 6B8C7338119D1A0D00475539 /* MIXsim */;
 		activeTarget = 8DD76FA90486AB0100D96B5E /* MIXsim */;
 		addToTargets = (
-			6B5B740B119E32660045C0B7 /* libMIXsim */,
+			6B5B7422119E339B0045C0B7 /* libMIXsimTest */,
 		);
 		codeSenseManager = 6B8C7341119D1A5800475539 /* Code sense */;
 		executables = (
@@ -153,6 +153,26 @@
 			6B5B755B119F2DB10045C0B7 /* PBXTextBookmark */ = 6B5B755B119F2DB10045C0B7 /* PBXTextBookmark */;
 			6B5B755C119F2DB10045C0B7 /* XCBuildMessageTextBookmark */ = 6B5B755C119F2DB10045C0B7 /* XCBuildMessageTextBookmark */;
 			6B5B755D119F2DB10045C0B7 /* PBXTextBookmark */ = 6B5B755D119F2DB10045C0B7 /* PBXTextBookmark */;
+			6B5B7574119F42780045C0B7 /* PBXTextBookmark */ = 6B5B7574119F42780045C0B7 /* PBXTextBookmark */;
+			6B5B757A119F44BB0045C0B7 /* PBXTextBookmark */ = 6B5B757A119F44BB0045C0B7 /* PBXTextBookmark */;
+			6B5B7588119F466F0045C0B7 /* PBXTextBookmark */ = 6B5B7588119F466F0045C0B7 /* PBXTextBookmark */;
+			6B5B7589119F466F0045C0B7 /* PBXTextBookmark */ = 6B5B7589119F466F0045C0B7 /* PBXTextBookmark */;
+			6B5B758A119F466F0045C0B7 /* PBXTextBookmark */ = 6B5B758A119F466F0045C0B7 /* PBXTextBookmark */;
+			6B5B758B119F466F0045C0B7 /* PBXTextBookmark */ = 6B5B758B119F466F0045C0B7 /* PBXTextBookmark */;
+			6B5B758C119F466F0045C0B7 /* PBXTextBookmark */ = 6B5B758C119F466F0045C0B7 /* PBXTextBookmark */;
+			6B5B758D119F466F0045C0B7 /* PBXTextBookmark */ = 6B5B758D119F466F0045C0B7 /* PBXTextBookmark */;
+			6B5B758E119F466F0045C0B7 /* PBXTextBookmark */ = 6B5B758E119F466F0045C0B7 /* PBXTextBookmark */;
+			6B5B758F119F466F0045C0B7 /* PBXTextBookmark */ = 6B5B758F119F466F0045C0B7 /* PBXTextBookmark */;
+			6B5B7590119F466F0045C0B7 /* PBXTextBookmark */ = 6B5B7590119F466F0045C0B7 /* PBXTextBookmark */;
+			6B5B7591119F466F0045C0B7 /* PBXTextBookmark */ = 6B5B7591119F466F0045C0B7 /* PBXTextBookmark */;
+			6B5B7597119F47040045C0B7 /* PBXTextBookmark */ = 6B5B7597119F47040045C0B7 /* PBXTextBookmark */;
+			6B5B7598119F47040045C0B7 /* XCBuildMessageTextBookmark */ = 6B5B7598119F47040045C0B7 /* XCBuildMessageTextBookmark */;
+			6B5B7599119F47040045C0B7 /* PBXTextBookmark */ = 6B5B7599119F47040045C0B7 /* PBXTextBookmark */;
+			6B5B759A119F47090045C0B7 /* PBXTextBookmark */ = 6B5B759A119F47090045C0B7 /* PBXTextBookmark */;
+			6B5B759B119F47090045C0B7 /* PBXTextBookmark */ = 6B5B759B119F47090045C0B7 /* PBXTextBookmark */;
+			6B5B759C119F47090045C0B7 /* PBXTextBookmark */ = 6B5B759C119F47090045C0B7 /* PBXTextBookmark */;
+			6B5B759D119F47090045C0B7 /* PBXTextBookmark */ = 6B5B759D119F47090045C0B7 /* PBXTextBookmark */;
+			6B5B759E119F47090045C0B7 /* PBXTextBookmark */ = 6B5B759E119F47090045C0B7 /* PBXTextBookmark */;
 			6B8C7342119D1D1E00475539 = 6B8C7342119D1D1E00475539 /* PBXTextBookmark */;
 			6B8C7343119D1D1E00475539 = 6B8C7343119D1D1E00475539 /* PBXTextBookmark */;
 		};
@@ -162,9 +182,9 @@
 	};
 	08FB7796FE84155DC02AAC07 /* main.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {439, 299}}";
-			sepNavSelRange = "{281, 0}";
-			sepNavVisRange = "{0, 281}";
+			sepNavIntBoundsRect = "{{0, 0}, {916, 444}}";
+			sepNavSelRange = "{398, 0}";
+			sepNavVisRange = "{0, 415}";
 			sepNavWindowFrame = "{{435, 182}, {750, 558}}";
 		};
 	};
@@ -287,7 +307,7 @@
 		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
 		name = "main.c: 7";
 		rLen = 0;
-		rLoc = 450;
+		rLoc = 472;
 		rType = 0;
 		vrLen = 168;
 		vrLoc = 0;
@@ -393,9 +413,9 @@
 	};
 	6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {916, 444}}";
-			sepNavSelRange = "{186, 0}";
-			sepNavVisRange = "{0, 465}";
+			sepNavIntBoundsRect = "{{0, 0}, {916, 421}}";
+			sepNavSelRange = "{373, 0}";
+			sepNavVisRange = "{0, 530}";
 			sepNavWindowFrame = "{{715, 147}, {750, 558}}";
 		};
 	};
@@ -434,7 +454,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 13";
 		rLen = 0;
-		rLoc = 464;
+		rLoc = 529;
 		rType = 0;
 		vrLen = 192;
 		vrLoc = 0;
@@ -454,7 +474,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 16";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 266;
 		vrLoc = 24;
@@ -474,7 +494,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 16";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 266;
 		vrLoc = 24;
@@ -494,7 +514,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 264;
 		vrLoc = 35;
@@ -514,7 +534,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 264;
 		vrLoc = 35;
@@ -535,7 +555,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 0;
-		rLoc = 13;
+		rLoc = 14;
 		rType = 1;
 	};
 	6B5B7461119E6D310045C0B7 /* PBXTextBookmark */ = {
@@ -543,7 +563,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 297;
 		vrLoc = 24;
@@ -553,7 +573,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 302;
 		vrLoc = 24;
@@ -573,7 +593,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 347;
 		vrLoc = 144;
@@ -583,7 +603,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 350;
 		vrLoc = 244;
@@ -603,7 +623,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 17";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 304;
 		vrLoc = 24;
@@ -612,7 +632,7 @@
 		isa = PBXTextBookmark;
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 1";
-		rLen = 465;
+		rLen = 530;
 		rLoc = 0;
 		rType = 0;
 		vrLen = 350;
@@ -663,7 +683,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 21";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 381;
 		vrLoc = 144;
@@ -747,17 +767,17 @@
 	};
 	6B5B749A119E77590045C0B7 /* MIXwordTest.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
-			sepNavSelRange = "{167, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {916, 421}}";
+			sepNavSelRange = "{119, 49}";
 			sepNavVisRange = "{0, 168}";
 			sepNavWindowFrame = "{{374, 133}, {750, 558}}";
 		};
 	};
 	6B5B749B119E77590045C0B7 /* MIXwordTest.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {621, 442}}";
-			sepNavSelRange = "{422, 13}";
-			sepNavVisRange = "{141, 387}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 442}}";
+			sepNavSelRange = "{379, 0}";
+			sepNavVisRange = "{0, 686}";
 			sepNavWindowFrame = "{{33, 212}, {750, 558}}";
 		};
 	};
@@ -766,7 +786,7 @@
 		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
 		name = "MIXsimTestMain.c: 19";
 		rLen = 0;
-		rLoc = 187;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 226;
 		vrLoc = 24;
@@ -812,15 +832,15 @@
 	6B5B74AD119E795D0045C0B7 /* mix_word.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {916, 507}}";
-			sepNavSelRange = "{473, 154}";
-			sepNavVisRange = "{0, 749}";
+			sepNavSelRange = "{436, 36}";
+			sepNavVisRange = "{32, 780}";
 		};
 	};
 	6B5B74AE119E795D0045C0B7 /* mix_word.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {916, 444}}";
-			sepNavSelRange = "{353, 0}";
-			sepNavVisRange = "{0, 354}";
+			sepNavIntBoundsRect = "{{0, 0}, {916, 611}}";
+			sepNavSelRange = "{463, 0}";
+			sepNavVisRange = "{203, 520}";
 		};
 	};
 	6B5B74BC119E7AC60045C0B7 /* PBXTextBookmark */ = {
@@ -970,7 +990,7 @@
 		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
 		name = "main.c: 9";
 		rLen = 0;
-		rLoc = 432;
+		rLoc = 454;
 		rType = 0;
 		vrLen = 261;
 		vrLoc = 0;
@@ -1020,7 +1040,7 @@
 		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
 		name = "main.c: 10";
 		rLen = 0;
-		rLoc = 393;
+		rLoc = 415;
 		rType = 0;
 		vrLen = 168;
 		vrLoc = 0;
@@ -1082,8 +1102,8 @@
 	};
 	6B5B7526119F28B70045C0B7 /* mix_assembler.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {916, 444}}";
-			sepNavSelRange = "{239, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {916, 421}}";
+			sepNavSelRange = "{225, 0}";
 			sepNavVisRange = "{0, 240}";
 		};
 	};
@@ -1138,7 +1158,7 @@
 		fRef = 6B5B74AE119E795D0045C0B7 /* mix_word.c */;
 		name = "mix_word.c: 24";
 		rLen = 0;
-		rLoc = 672;
+		rLoc = 722;
 		rType = 0;
 		vrLen = 354;
 		vrLoc = 0;
@@ -1201,6 +1221,219 @@
 		rType = 0;
 		vrLen = 387;
 		vrLoc = 141;
+	};
+	6B5B7574119F42780045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B749B119E77590045C0B7 /* MIXwordTest.c */;
+		name = "MIXwordTest.c: 20";
+		rLen = 13;
+		rLoc = 422;
+		rType = 0;
+		vrLen = 358;
+		vrLoc = 141;
+	};
+	6B5B7575119F43810045C0B7 /* MIXassemblerTest.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {916, 421}}";
+			sepNavSelRange = "{189, 0}";
+			sepNavVisRange = "{0, 203}";
+		};
+	};
+	6B5B7576119F43810045C0B7 /* MIXassemblerTest.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {621, 559}}";
+			sepNavSelRange = "{981, 0}";
+			sepNavVisRange = "{721, 335}";
+		};
+	};
+	6B5B757A119F44BB0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B749B119E77590045C0B7 /* MIXwordTest.c */;
+		name = "MIXwordTest.c: 20";
+		rLen = 13;
+		rLoc = 422;
+		rType = 0;
+		vrLen = 358;
+		vrLoc = 141;
+	};
+	6B5B7588119F466F0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
+		name = "main.c: 21";
+		rLen = 0;
+		rLoc = 398;
+		rType = 0;
+		vrLen = 415;
+		vrLoc = 0;
+	};
+	6B5B7589119F466F0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B74AD119E795D0045C0B7 /* mix_word.h */;
+		name = "mix_word.h: 25";
+		rLen = 36;
+		rLoc = 436;
+		rType = 0;
+		vrLen = 780;
+		vrLoc = 32;
+	};
+	6B5B758A119F466F0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B74AE119E795D0045C0B7 /* mix_word.c */;
+		name = "mix_word.c: 32";
+		rLen = 0;
+		rLoc = 463;
+		rType = 0;
+		vrLen = 520;
+		vrLoc = 203;
+	};
+	6B5B758B119F466F0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B7526119F28B70045C0B7 /* mix_assembler.c */;
+		name = "mix_assembler.c: 12";
+		rLen = 0;
+		rLoc = 225;
+		rType = 0;
+		vrLen = 240;
+		vrLoc = 0;
+	};
+	6B5B758C119F466F0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B749A119E77590045C0B7 /* MIXwordTest.h */;
+		name = "MIXwordTest.h: 6";
+		rLen = 0;
+		rLoc = 110;
+		rType = 0;
+		vrLen = 168;
+		vrLoc = 0;
+	};
+	6B5B758D119F466F0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B7575119F43810045C0B7 /* MIXassemblerTest.h */;
+		name = "MIXassemblerTest.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 149;
+		vrLoc = 0;
+	};
+	6B5B758E119F466F0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B749B119E77590045C0B7 /* MIXwordTest.c */;
+		name = "MIXwordTest.c: 13";
+		rLen = 531;
+		rLoc = 167;
+		rType = 0;
+		vrLen = 695;
+		vrLoc = 3;
+	};
+	6B5B758F119F466F0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B7576119F43810045C0B7 /* MIXassemblerTest.c */;
+		name = "MIXassemblerTest.c: 34";
+		rLen = 0;
+		rLoc = 881;
+		rType = 0;
+		vrLen = 902;
+		vrLoc = 168;
+	};
+	6B5B7590119F466F0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
+		name = "MIXsimTestMain.c: 13";
+		rLen = 0;
+		rLoc = 216;
+		rType = 0;
+		vrLen = 465;
+		vrLoc = 0;
+	};
+	6B5B7591119F466F0045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
+		name = "MIXsimTestMain.c: 13";
+		rLen = 0;
+		rLoc = 191;
+		rType = 0;
+		vrLen = 495;
+		vrLoc = 0;
+	};
+	6B5B7597119F47040045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B749B119E77590045C0B7 /* MIXwordTest.c */;
+		name = "MIXwordTest.c: 20";
+		rLen = 13;
+		rLoc = 422;
+		rType = 0;
+		vrLen = 358;
+		vrLoc = 141;
+	};
+	6B5B7598119F47040045C0B7 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'test_create_word' undeclared (first use in this function)";
+		fRef = 6B5B7576119F43810045C0B7 /* MIXassemblerTest.c */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 38;
+		rType = 1;
+	};
+	6B5B7599119F47040045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B7576119F43810045C0B7 /* MIXassemblerTest.c */;
+		name = "MIXassemblerTest.c: 39";
+		rLen = 0;
+		rLoc = 981;
+		rType = 0;
+		vrLen = 335;
+		vrLoc = 721;
+	};
+	6B5B759A119F47090045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */;
+		name = "MIXsimTestMain.c: 23";
+		rLen = 0;
+		rLoc = 373;
+		rType = 0;
+		vrLen = 530;
+		vrLoc = 0;
+	};
+	6B5B759B119F47090045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B7576119F43810045C0B7 /* MIXassemblerTest.c */;
+		name = "MIXassemblerTest.c: 34";
+		rLen = 0;
+		rLoc = 881;
+		rType = 0;
+		vrLen = 870;
+		vrLoc = 26;
+	};
+	6B5B759C119F47090045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B749A119E77590045C0B7 /* MIXwordTest.h */;
+		name = "MIXwordTest.h: 10";
+		rLen = 49;
+		rLoc = 119;
+		rType = 0;
+		vrLen = 168;
+		vrLoc = 0;
+	};
+	6B5B759D119F47090045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B7575119F43810045C0B7 /* MIXassemblerTest.h */;
+		name = "MIXassemblerTest.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 149;
+		vrLoc = 0;
+	};
+	6B5B759E119F47090045C0B7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6B5B7575119F43810045C0B7 /* MIXassemblerTest.h */;
+		name = "MIXassemblerTest.h: 12";
+		rLen = 0;
+		rLoc = 189;
+		rType = 0;
+		vrLen = 203;
+		vrLoc = 0;
 	};
 	6B8C7338119D1A0D00475539 /* MIXsim */ = {
 		isa = PBXExecutable;

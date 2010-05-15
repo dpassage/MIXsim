@@ -283,11 +283,12 @@
 							<array>
 								<array>
 									<integer>8</integer>
+									<integer>4</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 168}, {186, 652}}</string>
+							<string>{{0, 0}, {186, 652}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -306,7 +307,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>104 67 1185 711 0 0 1280 778 </string>
+						<string>280 67 1185 711 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -324,7 +325,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>mix_assembler.c</string>
+								<string>MIXassemblerTest.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -332,28 +333,28 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>mix_assembler.c</string>
+										<string>MIXassemblerTest.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6B5B754F119F2B970045C0B7</string>
+										<string>6B5B759E119F47090045C0B7</string>
 										<key>history</key>
 										<array>
 											<string>6B5B73F6119E31E00045C0B7</string>
-											<string>6B5B7494119E724E0045C0B7</string>
 											<string>6B5B74C1119E7ADA0045C0B7</string>
-											<string>6B5B74C2119E7ADA0045C0B7</string>
-											<string>6B5B74C3119E7ADA0045C0B7</string>
-											<string>6B5B74C4119E7ADA0045C0B7</string>
-											<string>6B5B74F9119F25030045C0B7</string>
 											<string>6B5B74FB119F25030045C0B7</string>
 											<string>6B5B7502119F25950045C0B7</string>
 											<string>6B5B7548119F2B970045C0B7</string>
-											<string>6B5B754A119F2B970045C0B7</string>
-											<string>6B5B754B119F2B970045C0B7</string>
-											<string>6B5B754C119F2B970045C0B7</string>
 											<string>6B5B754D119F2B970045C0B7</string>
-											<string>6B5B754E119F2B970045C0B7</string>
+											<string>6B5B7588119F466F0045C0B7</string>
+											<string>6B5B7589119F466F0045C0B7</string>
+											<string>6B5B758A119F466F0045C0B7</string>
+											<string>6B5B758B119F466F0045C0B7</string>
+											<string>6B5B758E119F466F0045C0B7</string>
+											<string>6B5B759A119F47090045C0B7</string>
+											<string>6B5B759B119F47090045C0B7</string>
+											<string>6B5B759C119F47090045C0B7</string>
+											<string>6B5B759D119F47090045C0B7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -367,7 +368,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {977, 476}}</string>
 								<key>RubberWindowFrame</key>
-								<string>104 67 1185 711 0 0 1280 778 </string>
+								<string>280 67 1185 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -387,7 +388,7 @@
 								<key>Frame</key>
 								<string>{{0, 481}, {977, 189}}</string>
 								<key>RubberWindowFrame</key>
-								<string>104 67 1185 711 0 0 1280 778 </string>
+								<string>280 67 1185 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -551,6 +552,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>6B5B7592119F466F0045C0B7</string>
 		<string>6B5B7405119E31E00045C0B7</string>
 		<string>6B5B7406119E31E00045C0B7</string>
 		<string>1C78EAAD065D492600B07095</string>
@@ -559,7 +561,7 @@
 		<string>/Users/dpassage/dev/MIXsim/MIXsim.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>104 67 1185 711 0 0 1280 778 </string>
+	<string>280 67 1185 711 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -580,7 +582,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>main.c</string>
+								<string>MIXassemblerTest.c</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
