@@ -12,8 +12,13 @@
 
 START_TEST (test_create_word)
 {
+	int i;
 	mix_word *w = mix_word_create();
 	fail_unless(w != NULL, "Failed to create mix word");
+	fail_unless(mix_word_sign(w) == MIX_WORD_PLUS, "Sign of new word is not positive");
+	for (i = 1; i <= 5; i++) {
+		fail_unless(mix_word_byte(w, i) == 0, "Value of byte %d was not zero", i);
+	}
 }
 END_TEST
 

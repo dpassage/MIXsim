@@ -12,6 +12,9 @@
 
 typedef struct mix_word mix_word;
 
+#define MIX_WORD_PLUS (1)
+#define MIX_WORD_MINUS (-1)
+
 /* Returns a word data structure with all-0 contents
  * Caller responsible for destroying
  */
@@ -20,6 +23,12 @@ mix_word *mix_word_create(void);
 /* Destroys a word data structure
  */
 void mix_word_destroy(mix_word *w);
+
+/* return the sign of the mix word */
+int mix_word_sign(mix_word *w);
+
+/* return the indicated byte of the word */
+int mix_word_byte(mix_word *w, int b);
 
 /* Converts a word data structure to standard string representation
  * Caller responsible for freeing data structure
