@@ -282,7 +282,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>8</integer>
 									<integer>4</integer>
 									<integer>0</integer>
 								</array>
@@ -307,7 +306,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>280 67 1185 711 0 0 1280 778 </string>
+						<string>20 67 1185 711 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -325,7 +324,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MIXassemblerTest.h</string>
+								<string>MIXwordTest.c</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -333,11 +332,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MIXassemblerTest.h</string>
+										<string>MIXwordTest.c</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6B5B759E119F47090045C0B7</string>
+										<string>6B5B75E0119F5B490045C0B7</string>
 										<key>history</key>
 										<array>
 											<string>6B5B73F6119E31E00045C0B7</string>
@@ -347,14 +346,14 @@
 											<string>6B5B7548119F2B970045C0B7</string>
 											<string>6B5B754D119F2B970045C0B7</string>
 											<string>6B5B7588119F466F0045C0B7</string>
-											<string>6B5B7589119F466F0045C0B7</string>
-											<string>6B5B758A119F466F0045C0B7</string>
-											<string>6B5B758B119F466F0045C0B7</string>
-											<string>6B5B758E119F466F0045C0B7</string>
 											<string>6B5B759A119F47090045C0B7</string>
 											<string>6B5B759B119F47090045C0B7</string>
 											<string>6B5B759C119F47090045C0B7</string>
-											<string>6B5B759D119F47090045C0B7</string>
+											<string>6B5B75A4119F4A000045C0B7</string>
+											<string>6B5B75DC119F5B490045C0B7</string>
+											<string>6B5B75DD119F5B490045C0B7</string>
+											<string>6B5B75DE119F5B490045C0B7</string>
+											<string>6B5B75DF119F5B490045C0B7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -368,7 +367,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {977, 476}}</string>
 								<key>RubberWindowFrame</key>
-								<string>280 67 1185 711 0 0 1280 778 </string>
+								<string>20 67 1185 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -388,7 +387,7 @@
 								<key>Frame</key>
 								<string>{{0, 481}, {977, 189}}</string>
 								<key>RubberWindowFrame</key>
-								<string>280 67 1185 711 0 0 1280 778 </string>
+								<string>20 67 1185 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -561,7 +560,7 @@
 		<string>/Users/dpassage/dev/MIXsim/MIXsim.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>280 67 1185 711 0 0 1280 778 </string>
+	<string>20 67 1185 711 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -582,7 +581,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MIXassemblerTest.c</string>
+								<string>mix_assembler.c</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -653,7 +652,7 @@
 			<key>WindowToolGUID</key>
 			<string>6B8C7347119D1D1E00475539</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

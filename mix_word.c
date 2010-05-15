@@ -7,6 +7,7 @@
  *
  */
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "mix_word.h"
@@ -41,6 +42,20 @@ int mix_word_byte(mix_word *w, int b) {
 	return w->bytes[b];
 }
 
+void mix_word_set_sign(mix_word *w, int sign) {
+	w->bytes[0] = sign;
+}
+
+void mix_word_set_byte(mix_word *w, int byte, int val) {
+	w->bytes[byte] = val;
+}
+
+/* - xx xx xx xx xx */
 char *mix_word_tostring(mix_word *w) {
-	return NULL;
+	char *ret;
+	char sign = (w->bytes[0] == MIX_WORD_PLUS) ? '+' : '-';
+	
+	asprintf(&ret, "%c %.2d %.2d %.2d %.2d %.2d", sign, w->bytes[1], w->bytes[2], w->bytes[3], w->bytes[4], w->bytes[5]);
+	
+	return ret;
 }
