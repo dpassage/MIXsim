@@ -13,9 +13,11 @@
 		6B5B7465119E6D550045C0B7 /* liblibMIXsim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B740C119E32660045C0B7 /* liblibMIXsim.a */; };
 		6B5B7473119E6FA50045C0B7 /* liblibMIXsim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B740C119E32660045C0B7 /* liblibMIXsim.a */; };
 		6B5B749C119E77590045C0B7 /* MIXwordTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B749B119E77590045C0B7 /* MIXwordTest.c */; };
-		6B5B74AF119E795D0045C0B7 /* mix_word.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B74AE119E795D0045C0B7 /* mix_word.c */; };
 		6B5B74E4119F23360045C0B7 /* testparser.input in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6B5B74CB119F108F0045C0B7 /* testparser.input */; };
 		6B5B74E5119F23360045C0B7 /* testparser.output in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6B5B74CC119F10A80045C0B7 /* testparser.output */; };
+		6B5B7527119F28B70045C0B7 /* mix_assembler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B5B7525119F28B70045C0B7 /* mix_assembler.h */; };
+		6B5B7528119F28B70045C0B7 /* mix_assembler.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B7526119F28B70045C0B7 /* mix_assembler.c */; };
+		6B5B753F119F2B440045C0B7 /* mix_word.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B74AE119E795D0045C0B7 /* mix_word.c */; };
 		8DD76FAC0486AB0100D96B5E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.c */; settings = {ATTRIBUTES = (); }; };
 		8DD76FB00486AB0100D96B5E /* MIXsim.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6A0FF2C0290799A04C91782 /* MIXsim.1 */; };
 /* End PBXBuildFile section */
@@ -83,6 +85,8 @@
 		6B5B74AE119E795D0045C0B7 /* mix_word.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_word.c; sourceTree = "<group>"; };
 		6B5B74CB119F108F0045C0B7 /* testparser.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testparser.input; path = testdata/testparser.input; sourceTree = "<group>"; };
 		6B5B74CC119F10A80045C0B7 /* testparser.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testparser.output; path = testdata/testparser.output; sourceTree = "<group>"; };
+		6B5B7525119F28B70045C0B7 /* mix_assembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_assembler.h; sourceTree = "<group>"; };
+		6B5B7526119F28B70045C0B7 /* mix_assembler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_assembler.c; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* MIXsim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIXsim; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* MIXsim.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIXsim.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +158,8 @@
 				6B5B73B7119E2EFE0045C0B7 /* helloworld.c */,
 				6B5B74AD119E795D0045C0B7 /* mix_word.h */,
 				6B5B74AE119E795D0045C0B7 /* mix_word.c */,
+				6B5B7525119F28B70045C0B7 /* mix_assembler.h */,
+				6B5B7526119F28B70045C0B7 /* mix_assembler.c */,
 			);
 			name = libMIXsim;
 			sourceTree = "<group>";
@@ -193,6 +199,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B5B7527119F28B70045C0B7 /* mix_assembler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +316,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B5B753F119F2B440045C0B7 /* mix_word.c in Sources */,
 				6B5B742D119E33D50045C0B7 /* helloworld.c in Sources */,
+				6B5B7528119F28B70045C0B7 /* mix_assembler.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,7 +328,6 @@
 			files = (
 				6B5B7432119E63630045C0B7 /* MIXsimTestMain.c in Sources */,
 				6B5B749C119E77590045C0B7 /* MIXwordTest.c in Sources */,
-				6B5B74AF119E795D0045C0B7 /* mix_word.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

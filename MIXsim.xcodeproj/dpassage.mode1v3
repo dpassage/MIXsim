@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -278,18 +276,18 @@
 								<string>6B5B743D119E63CB0045C0B7</string>
 								<string>6B5B743E119E63CB0045C0B7</string>
 								<string>6B5B7483119E703B0045C0B7</string>
+								<string>6B5B7547119F2B970045C0B7</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>31</integer>
-									<integer>21</integer>
-									<integer>20</integer>
+									<integer>8</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {186, 652}}</string>
+							<string>{{0, 168}, {186, 652}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -319,12 +317,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>testparser.input</string>
+								<string>mix_assembler.c</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -332,11 +332,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>testparser.input</string>
+										<string>mix_assembler.c</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6B5B74FD119F25030045C0B7</string>
+										<string>6B5B754F119F2B970045C0B7</string>
 										<key>history</key>
 										<array>
 											<string>6B5B73F6119E31E00045C0B7</string>
@@ -345,12 +345,15 @@
 											<string>6B5B74C2119E7ADA0045C0B7</string>
 											<string>6B5B74C3119E7ADA0045C0B7</string>
 											<string>6B5B74C4119E7ADA0045C0B7</string>
-											<string>6B5B74C5119E7ADA0045C0B7</string>
-											<string>6B5B74F8119F25030045C0B7</string>
 											<string>6B5B74F9119F25030045C0B7</string>
-											<string>6B5B74FA119F25030045C0B7</string>
 											<string>6B5B74FB119F25030045C0B7</string>
-											<string>6B5B74FC119F25030045C0B7</string>
+											<string>6B5B7502119F25950045C0B7</string>
+											<string>6B5B7548119F2B970045C0B7</string>
+											<string>6B5B754A119F2B970045C0B7</string>
+											<string>6B5B754B119F2B970045C0B7</string>
+											<string>6B5B754C119F2B970045C0B7</string>
+											<string>6B5B754D119F2B970045C0B7</string>
+											<string>6B5B754E119F2B970045C0B7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -577,7 +580,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MIXwordTest.c</string>
+								<string>main.c</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -648,7 +651,7 @@
 			<key>WindowToolGUID</key>
 			<string>6B8C7347119D1D1E00475539</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

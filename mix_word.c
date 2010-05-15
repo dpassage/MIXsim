@@ -18,3 +18,7 @@ struct mix_word {
 mix_word *mix_word_create(void) {
 	return (mix_word *)malloc(sizeof(mix_word));
 }
+
+char *mix_word_tostring(mix_word *w) {
+	return NULL;
+}
