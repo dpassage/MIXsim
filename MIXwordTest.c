@@ -38,6 +38,20 @@ START_TEST (test_word_setters)
 }
 END_TEST
 
+START_TEST (test_word_string_setter)
+{
+	mix_word *w = mix_word_create();
+	char *expected = "- 13 23 18 03 00";
+	char *rendered;
+	
+	mix_word_set(w, expected);
+	
+	rendered = mix_word_tostring(w);
+	
+	fail_unless(strcmp(expected, rendered) == 0, "Expected %s but was %s", expected, rendered);
+}
+END_TEST
+
 START_TEST (test_word_render)
 {
 	char *expected = "- 13 00 00 03 00";

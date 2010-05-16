@@ -12,9 +12,6 @@
 
 #include "mix_word.h"
 
-struct mix_word {
-	int bytes[6];
-};
 
 mix_word *mix_word_create(void) {
 	int i;
@@ -48,6 +45,12 @@ void mix_word_set_sign(mix_word *w, int sign) {
 
 void mix_word_set_byte(mix_word *w, int byte, int val) {
 	w->bytes[byte] = val;
+}
+
+void mix_word_set(mix_word *w, const char *s) {
+	char sign;
+	sscanf(s, "%c %d %d %d %d %d", &sign, &(w->bytes[1]), &(w->bytes[2]), &(w->bytes[3]), &(w->bytes[4]), &(w->bytes[5]));
+	w->bytes[0] = (sign == '-') ? MIX_WORD_MINUS : MIX_WORD_PLUS;
 }
 
 /* - xx xx xx xx xx */

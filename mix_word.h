@@ -10,6 +10,10 @@
 #ifndef MIX_WORD_H
 #define MIX_WORD_H
 
+struct mix_word {
+	int bytes[6];
+};
+
 typedef struct mix_word mix_word;
 
 #define MIX_WORD_PLUS (1)
@@ -32,6 +36,8 @@ int mix_word_byte(mix_word *w, int b);
 
 void mix_word_set_sign(mix_word *w, int sign);
 void mix_word_set_byte(mix_word *w, int byte, int val);
+void mix_word_set(mix_word *w, const char *s);
+
 /* Converts a word data structure to standard string representation
  * Caller responsible for freeing data structure
  */

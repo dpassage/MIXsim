@@ -18,6 +18,9 @@
 		6B5B7528119F28B70045C0B7 /* mix_assembler.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B7526119F28B70045C0B7 /* mix_assembler.c */; };
 		6B5B753F119F2B440045C0B7 /* mix_word.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B74AE119E795D0045C0B7 /* mix_word.c */; };
 		6B5B7577119F43810045C0B7 /* MIXassemblerTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B7576119F43810045C0B7 /* MIXassemblerTest.c */; };
+		6BF32D1B119F8CD900AAC892 /* MIXmachineTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */; };
+		6BF32D28119F8FA700AAC892 /* mix_machine.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF32D26119F8FA700AAC892 /* mix_machine.h */; };
+		6BF32D29119F8FA700AAC892 /* mix_machine.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D27119F8FA700AAC892 /* mix_machine.c */; };
 		8DD76FAC0486AB0100D96B5E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.c */; settings = {ATTRIBUTES = (); }; };
 		8DD76FB00486AB0100D96B5E /* MIXsim.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6A0FF2C0290799A04C91782 /* MIXsim.1 */; };
 /* End PBXBuildFile section */
@@ -27,21 +30,21 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6B5B740B119E32660045C0B7 /* libMIXsim */;
+			remoteGlobalIDString = 6B5B740B119E32660045C0B7;
 			remoteInfo = libMIXsim;
 		};
 		6B5B7429119E33B80045C0B7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6B5B740B119E32660045C0B7 /* libMIXsim */;
+			remoteGlobalIDString = 6B5B740B119E32660045C0B7;
 			remoteInfo = libMIXsim;
 		};
 		6B5B742B119E33B80045C0B7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6B5B7422119E339B0045C0B7 /* libMIXsimTest */;
+			remoteGlobalIDString = 6B5B7422119E339B0045C0B7;
 			remoteInfo = libMIXsimTest;
 		};
 /* End PBXContainerItemProxy section */
@@ -87,6 +90,10 @@
 		6B5B7526119F28B70045C0B7 /* mix_assembler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_assembler.c; sourceTree = "<group>"; };
 		6B5B7575119F43810045C0B7 /* MIXassemblerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIXassemblerTest.h; sourceTree = "<group>"; };
 		6B5B7576119F43810045C0B7 /* MIXassemblerTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MIXassemblerTest.c; sourceTree = "<group>"; };
+		6BF32D19119F8CD900AAC892 /* MIXmachineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIXmachineTest.h; path = unittests/MIXmachineTest.h; sourceTree = "<group>"; };
+		6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXmachineTest.c; path = unittests/MIXmachineTest.c; sourceTree = "<group>"; };
+		6BF32D26119F8FA700AAC892 /* mix_machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_machine.h; sourceTree = "<group>"; };
+		6BF32D27119F8FA700AAC892 /* mix_machine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_machine.c; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* MIXsim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIXsim; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* MIXsim.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIXsim.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +165,8 @@
 				6B5B74AE119E795D0045C0B7 /* mix_word.c */,
 				6B5B7525119F28B70045C0B7 /* mix_assembler.h */,
 				6B5B7526119F28B70045C0B7 /* mix_assembler.c */,
+				6BF32D26119F8FA700AAC892 /* mix_machine.h */,
+				6BF32D27119F8FA700AAC892 /* mix_machine.c */,
 			);
 			name = libMIXsim;
 			sourceTree = "<group>";
@@ -166,6 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */,
+				6BF32D19119F8CD900AAC892 /* MIXmachineTest.h */,
+				6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */,
 				6B5B749A119E77590045C0B7 /* MIXwordTest.h */,
 				6B5B749B119E77590045C0B7 /* MIXwordTest.c */,
 				6B5B7575119F43810045C0B7 /* MIXassemblerTest.h */,
@@ -200,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B5B7527119F28B70045C0B7 /* mix_assembler.h in Headers */,
+				6BF32D28119F8FA700AAC892 /* mix_machine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +330,7 @@
 			files = (
 				6B5B753F119F2B440045C0B7 /* mix_word.c in Sources */,
 				6B5B7528119F28B70045C0B7 /* mix_assembler.c in Sources */,
+				6BF32D29119F8FA700AAC892 /* mix_machine.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +341,7 @@
 				6B5B7432119E63630045C0B7 /* MIXsimTestMain.c in Sources */,
 				6B5B749C119E77590045C0B7 /* MIXwordTest.c in Sources */,
 				6B5B7577119F43810045C0B7 /* MIXassemblerTest.c in Sources */,
+				6BF32D1B119F8CD900AAC892 /* MIXmachineTest.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +472,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = libMIXsimTest;
+				USER_HEADER_SEARCH_PATHS = unittests/;
 			};
 			name = Debug;
 		};
