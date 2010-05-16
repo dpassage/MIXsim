@@ -21,6 +21,6 @@ int mix_device_get_type(mix_device *d);
 #define MIX_DEVICE_PRINTER 1
 #define MIX_D_P_NEWPAGE 1
 
-mix_device *mix_device_printer_create();
+mix_device *mix_device_printer_create(void);
 
 #endif /* MIX_DEVICE_H */

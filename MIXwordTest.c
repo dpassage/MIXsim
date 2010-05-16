@@ -94,8 +94,8 @@ Suite *mix_word_suite(void)
 	TCase *tc_core = tcase_create("Core");
 	tcase_add_test (tc_core, test_create_word);
 	tcase_add_test (tc_core, test_word_setters);
-	tcase_add_test (tc_core, test_word_render);
-	
+    tcase_add_test (tc_core, test_word_string_setter);
+	tcase_add_test (tc_core, test_word_render);	
 	tcase_add_test (tc_core, test_word_clear);
 	suite_add_tcase (s, tc_core);
 

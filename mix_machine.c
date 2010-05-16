@@ -97,12 +97,32 @@ void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit) {
     m->devices[unit] = d;
 }
 
-int mix_machine_device_control(mix_machine *mix, int unit, int m) {
+int mix_machine_instr_HLT(mix_machine *mix, int f, int m) {
+    mix->time++;
+    return MIX_M_HALT;
+}
+
+int mix_machine_instr_LDA(mix_machine *mix, int f, int m) {
+    mix_load_reg(&(mix->ra), &(mix->words[m]), f);
+    mix->time = mix->time + 2;
+    mix->ip++;
+    return MIX_M_OK;
+}
+
+int mix_machine_instr_LDX(mix_machine *mix, int f, int m) {
+    mix_load_reg(&(mix->rx), &(mix->words[m]), f);
+    mix->time = mix->time + 2;
+    mix->ip++;
+    return MIX_M_OK;
+}
+
+int mix_machine_instr_IOC(mix_machine *mix, int unit, int m) {
     if (mix->devices[unit] == NULL) {
         return MIX_M_ERROR;
     }
     mix_device_control(mix->devices[unit], m);
     mix->time++;
+    mix->ip++;
     return MIX_M_OK;
 }
 
@@ -110,37 +130,30 @@ int mix_machine_execute(mix_machine *mix)
 {
 	mix_word instr = mix->words[mix->ip];
 	int opcode = instr.bytes[5];
-	int m;
+	int m = (instr.bytes[1] * 100) + instr.bytes[2] * 
+            (instr.bytes[0] == MIX_WORD_MINUS ? -1 : 1);
+    int f = instr.bytes[4];
     int result;
 	
 	switch (opcode) {
         case MIX_OP_05:
-            switch (instr.bytes[4]) {
+            switch (f) {
                 case 2: /* HLT */
-                    mix->time++;
-                    return 1;
+                    return mix_machine_instr_HLT(mix, f, m);
                     break;
                 default:
                     return -1;
                     break;
             }
             break;
-
 		case MIX_OP_LDA:
-			m = (instr.bytes[1] * 100) + instr.bytes[2];
-			mix_load_reg(&(mix->ra), &(mix->words[m]), instr.bytes[4]);
-			mix->time = mix->time + 2;
-			mix->ip++;
+            return mix_machine_instr_LDA(mix, f, m);
 			break;
 		case MIX_OP_LDX:
-			m = (instr.bytes[1] * 100) + instr.bytes[2];
-			mix_load_reg(&(mix->rx), &(mix->words[m]), instr.bytes[4]);
-			mix->time = mix->time + 2;
-			mix->ip++;
+            return mix_machine_instr_LDX(mix, f, m);
 			break;
         case MIX_OP_IOC:
-            result = mix_machine_device_control(mix, instr.bytes[4], m);
-            mix->ip++;
+            result = mix_machine_instr_IOC(mix, f, m);
             return result;
             break;
 		default:
