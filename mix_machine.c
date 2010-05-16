@@ -27,6 +27,10 @@ mix_machine *mix_machine_create(void)
 	return (mix_machine *)malloc(sizeof(mix_machine));
 }
 
+void mix_machine_destroy(mix_machine *m) {
+    free(m);
+}
+
 void mix_machine_load_mem(mix_machine *m, mix_word *w, int loc)
 {
 	m->words[loc] = *w;

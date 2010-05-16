@@ -20,6 +20,8 @@
 typedef struct mix_machine mix_machine;
 
 mix_machine *mix_machine_create(void);
+void mix_machine_destroy(mix_machine *m);
+
 void mix_machine_load_mem(mix_machine *m, mix_word *w, int loc);
 mix_word *mix_machine_read_mem(mix_machine *m, mix_word *w, int loc);
 int mix_machine_get_time(mix_machine *m);
