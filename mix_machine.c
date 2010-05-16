@@ -97,9 +97,13 @@ void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit) {
     m->devices[unit] = d;
 }
 
-void mix_machine_device_control(mix_machine *mix, int unit, int m) {
+int mix_machine_device_control(mix_machine *mix, int unit, int m) {
+    if (mix->devices[unit] == NULL) {
+        return MIX_M_ERROR;
+    }
     mix_device_control(mix->devices[unit], m);
     mix->time++;
+    return MIX_M_OK;
 }
 
 int mix_machine_execute(mix_machine *mix)
@@ -107,6 +111,7 @@ int mix_machine_execute(mix_machine *mix)
 	mix_word instr = mix->words[mix->ip];
 	int opcode = instr.bytes[5];
 	int m;
+    int result;
 	
 	switch (opcode) {
         case MIX_OP_05:
@@ -134,8 +139,9 @@ int mix_machine_execute(mix_machine *mix)
 			mix->ip++;
 			break;
         case MIX_OP_IOC:
-            mix_machine_device_control(mix, instr.bytes[4], m);
+            result = mix_machine_device_control(mix, instr.bytes[4], m);
             mix->ip++;
+            return result;
             break;
 		default:
             return -1;

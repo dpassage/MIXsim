@@ -203,6 +203,25 @@ START_TEST(test_IOC_instruction)
 }
 END_TEST
 
+START_TEST(test_IOC_unknown_device)
+{
+	mix_machine *m = mix_machine_create();
+	mix_word w;
+    int ret;
+	mix_device *d; 
+    
+    d = mix_device_printer_create();
+    mix_machine_device_attach(m, d, 18);
+    
+    mix_word_set(&w, "+ 00 00 00 12 35"); /* device 12 should be a disk */
+    mix_machine_load_mem(m, &w, 3000);
+    
+    mix_machine_set_ip(m, 3000);
+    ret = mix_machine_execute(m);
+	fail_unless	(ret == MIX_M_ERROR, "machine should have errored on unknown device");
+}
+END_TEST
+
 START_TEST(test_device_attach)
 {
     mix_machine *m = mix_machine_create();
@@ -225,6 +244,7 @@ Suite *mix_machine_suite(void)
 	tcase_add_test (tc_core, test_LDX_instruction);
     tcase_add_test (tc_core, test_HLT_instruction);
     tcase_add_test (tc_core, test_IOC_instruction);
+    tcase_add_test (tc_core, test_IOC_unknown_device);
 	tcase_add_test (tc_core, test_load_register);
     tcase_add_test (tc_core, test_device_attach);
 	suite_add_tcase (s, tc_core);
