@@ -12,19 +12,27 @@ int main (int argc, const char * argv[]) {
     int loc;
 	mix_word w;
     int ret;    
+	FILE *infile;
+	
+	if (argc == 1) {
+		infile = stdin;
+	} else {
+		infile = fopen(argv[1], "r");
+	}
     
     /* create new machine */
     m = mix_machine_create();
+    mix_machine_device_attach(m, mix_device_printer_create(), 18);
     
     /* read start line and set Ip */
-    if (fgets(readbuf, 500, stdin) != NULL) {
+    if (fgets(readbuf, 500, infile) != NULL) {
         sscanf(readbuf, "START: %d\n", &ip);
     }
     
     mix_machine_set_ip(m, ip);
     
     /* for each remaining line */
-	while (fgets(readbuf, 500, stdin) != NULL) {
+	while (fgets(readbuf, 500, infile) != NULL) {
         if (readbuf[4] != ':') {
             continue;
         }

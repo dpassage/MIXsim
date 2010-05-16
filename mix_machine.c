@@ -19,6 +19,7 @@ struct mix_machine {
 	mix_word ra;
 	mix_word rx;
 	mix_word words[4000];
+    mix_device *devices[20];
 };
 
 mix_machine *mix_machine_create(void)
@@ -88,6 +89,19 @@ void mix_load_reg(mix_word *reg, mix_word *mem, int f) {
 	return;
 }
 
+mix_device *mix_machine_device_get(mix_machine *m, int unit) {
+    return m->devices[unit];
+}
+
+void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit) {
+    m->devices[unit] = d;
+}
+
+void mix_machine_device_control(mix_machine *mix, int unit, int m) {
+    mix_device_control(mix->devices[unit], m);
+    mix->time++;
+}
+
 int mix_machine_execute(mix_machine *mix)
 {
 	mix_word instr = mix->words[mix->ip];
@@ -119,6 +133,10 @@ int mix_machine_execute(mix_machine *mix)
 			mix->time = mix->time + 2;
 			mix->ip++;
 			break;
+        case MIX_OP_IOC:
+            mix_machine_device_control(mix, instr.bytes[4], m);
+            mix->ip++;
+            break;
 		default:
             return -1;
 			break;

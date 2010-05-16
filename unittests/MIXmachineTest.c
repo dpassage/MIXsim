@@ -9,6 +9,7 @@
 
 #include "MIXmachineTest.h"
 
+#include "mix_device.h"
 #include "mix_machine.h"
 #include "mix_word.h"
 
@@ -178,6 +179,41 @@ START_TEST(test_HLT_instruction)
 }
 END_TEST
 
+START_TEST(test_IOC_instruction)
+{
+	mix_machine *m = mix_machine_create();
+	mix_word w;
+	int time;
+    int ret;
+	mix_device *d; 
+    
+    d = mix_device_printer_create();
+    mix_machine_device_attach(m, d, 18);
+    
+    mix_word_set(&w, "+ 00 00 00 18 35");
+    mix_machine_load_mem(m, &w, 3000);
+    
+    time = mix_machine_get_time(m);
+    mix_machine_set_ip(m, 3000);
+    ret = mix_machine_execute(m);
+	fail_if	(ret == MIX_M_ERROR, "machine returned error on execution");
+    fail_unless(mix_machine_get_time(m) - time == 1,  
+                "Instruction did not take right amount of time");
+    fail_unless(mix_device_last_op(d) == MIX_D_P_NEWPAGE, "printer did not get set to new page");
+}
+END_TEST
+
+START_TEST(test_device_attach)
+{
+    mix_machine *m = mix_machine_create();
+    mix_device *d = mix_device_printer_create();
+    
+    mix_machine_device_attach(m, d, 18);
+    
+    fail_unless(mix_machine_device_get(m, 18) == d, "device attach failed");
+}
+END_TEST
+
 Suite *mix_machine_suite(void)
 {
 	Suite *s = suite_create("mix_machine");
@@ -188,7 +224,9 @@ Suite *mix_machine_suite(void)
 	tcase_add_test (tc_core, test_LDA_instruction);
 	tcase_add_test (tc_core, test_LDX_instruction);
     tcase_add_test (tc_core, test_HLT_instruction);
+    tcase_add_test (tc_core, test_IOC_instruction);
 	tcase_add_test (tc_core, test_load_register);
+    tcase_add_test (tc_core, test_device_attach);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

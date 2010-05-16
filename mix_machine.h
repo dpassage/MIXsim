@@ -10,6 +10,7 @@
 #ifndef MIX_MACHINE_H
 #define MIX_MACHINE_H
 
+#include "mix_device.h"
 #include "mix_word.h"
 
 #define MIX_M_OK     0
@@ -28,6 +29,10 @@ int mix_machine_execute(mix_machine *m);
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w);
 mix_word *mix_machine_read_rx(mix_machine *m, mix_word *w);
 void mix_load_reg(mix_word *reg, mix_word *mem, int f);
+
+void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit);
+mix_device *mix_machine_device_get(mix_machine *m, int unit);
+
 
 
 #endif /* MIX_MACHINE_H */
