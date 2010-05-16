@@ -87,28 +87,11 @@ void mix_machine_execute(mix_machine *mix)
 	mix_word instr = mix->words[mix->ip];
 	int opcode = instr.bytes[5];
 	int m;
-	int fieldleft; int fieldright;
 	
 	switch (opcode) {
 		case MIX_OP_LDA:
 			m = (instr.bytes[1] * 100) + instr.bytes[2];
-			fieldleft = instr.bytes[4] / 8;
-			fieldright = instr.bytes[4] % 8;
-			/* if field left is 0, copy sign from mem to reg, increment field left */
-			if (fieldleft == 0) {
-				mix->ra.bytes[0] = mix->words[m].bytes[0];
-				fieldleft++;
-			} else {
-				mix->ra.bytes[0] = MIX_WORD_PLUS;
-			}
-
-			/* (1:4) 1->2 2->3 3->4 4->5 */
-			int tocopy = (fieldright - fieldleft) + 1;
-			int tobyte = 5;
-			int frombyte = fieldright;
-			for (; tocopy > 0; tocopy--, tobyte--, frombyte--) {
-				mix->ra.bytes[tobyte] = mix->words[m].bytes[frombyte];
-			}
+			mix_load_reg(&(mix->ra), &(mix->words[m]), instr.bytes[4]);
 			mix->time = mix->time + 2;
 			mix->ip++;
 			break;
