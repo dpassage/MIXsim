@@ -10,9 +10,13 @@
 #include <stdlib.h>
 
 #include "mix_machine.h"
+#include "mix_opcodes.h"
 #include "mix_word.h"
 
 struct mix_machine {
+	int ip;
+	unsigned int time;
+	mix_word ra;
 	mix_word words[4000];
 };
 
@@ -32,3 +36,86 @@ mix_word *mix_machine_read_mem(mix_machine *m, mix_word *w, int loc)
 	*w = m->words[loc];
 	return w;
 }
+
+void mix_machine_set_ip(mix_machine *m, int loc)
+{
+	m->ip = loc;
+	return;
+}
+
+int mix_machine_get_ip(mix_machine *m)
+{
+	return m->ip;
+}
+
+
+int mix_machine_get_time(mix_machine *m) {
+	return m->time;
+}
+
+mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w) {
+	*w = m->ra;
+	return w;
+}
+
+void mix_load_reg(mix_word *reg, mix_word *mem, int f) {
+	
+	mix_word_clear(reg);
+	
+	int fieldleft = f / 8;
+	int fieldright = f % 8;
+	if (fieldleft == 0) {
+		reg->bytes[0] = mem->bytes[0];
+		fieldleft++;
+	} else {
+		reg->bytes[0] = MIX_WORD_PLUS;
+	}
+	
+	/* (1:4) 1->2 2->3 3->4 4->5 */
+	int tocopy = (fieldright - fieldleft) + 1;
+	int tobyte = 5;
+	int frombyte = fieldright;
+	for (; tocopy > 0; tocopy--, tobyte--, frombyte--) {
+		reg->bytes[tobyte] = mem->bytes[frombyte];
+	}
+	
+	return;
+}
+
+void mix_machine_execute(mix_machine *mix)
+{
+	mix_word instr = mix->words[mix->ip];
+	int opcode = instr.bytes[5];
+	int m;
+	int fieldleft; int fieldright;
+	
+	switch (opcode) {
+		case MIX_OP_LDA:
+			m = (instr.bytes[1] * 100) + instr.bytes[2];
+			fieldleft = instr.bytes[4] / 8;
+			fieldright = instr.bytes[4] % 8;
+			/* if field left is 0, copy sign from mem to reg, increment field left */
+			if (fieldleft == 0) {
+				mix->ra.bytes[0] = mix->words[m].bytes[0];
+				fieldleft++;
+			} else {
+				mix->ra.bytes[0] = MIX_WORD_PLUS;
+			}
+
+			/* (1:4) 1->2 2->3 3->4 4->5 */
+			int tocopy = (fieldright - fieldleft) + 1;
+			int tobyte = 5;
+			int frombyte = fieldright;
+			for (; tocopy > 0; tocopy--, tobyte--, frombyte--) {
+				mix->ra.bytes[tobyte] = mix->words[m].bytes[frombyte];
+			}
+			mix->time = mix->time + 2;
+			mix->ip++;
+			break;
+		default:
+			break;
+	}
+	return;
+}
+
+

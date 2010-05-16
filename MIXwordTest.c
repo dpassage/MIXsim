@@ -66,6 +66,21 @@ START_TEST (test_word_render)
 }
 END_TEST
 
+START_TEST(test_word_clear)
+{
+	char *expected = "+ 00 00 00 00 00";
+	mix_word *w = mix_word_create();
+	mix_word_set_byte(w, 1, 13);
+	mix_word_set_byte(w, 4, 3);
+	mix_word_set_sign(w, MIX_WORD_MINUS);
+
+	mix_word_clear(w);
+	
+	char *rendered = mix_word_tostring(w);
+	fail_unless(strcmp(rendered, expected) == 0, "Expected %s but was %s", expected, rendered);
+}
+END_TEST
+
 Suite *mix_word_suite(void)
 {
 	Suite *s = suite_create("mix_word");
@@ -75,6 +90,7 @@ Suite *mix_word_suite(void)
 	tcase_add_test (tc_core, test_word_setters);
 	tcase_add_test (tc_core, test_word_render);
 	
+	tcase_add_test (tc_core, test_word_clear);
 	suite_add_tcase (s, tc_core);
 
 	return s;

@@ -62,3 +62,11 @@ char *mix_word_tostring(mix_word *w) {
 	
 	return ret;
 }
+
+void mix_word_clear(mix_word *w) {
+	w->bytes[0] = MIX_WORD_PLUS;
+	for (int i = 1; i <= 5; i++) {
+		w->bytes[i] = 0;
+	}
+	return;
+}
