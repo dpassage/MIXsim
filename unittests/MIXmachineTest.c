@@ -138,7 +138,7 @@ START_TEST(test_LDX_instruction)
 		
 		fail_unless(mix_machine_get_ip(m) == 3001, "Instruction did not execute");
 		fail_unless(mix_machine_get_time(m) - time == 2, "Instruction did not take right amount of time");
-		fail_unless(strcmp(result, test_LDA[i][1]) == 0, "Expected to read %s got %s", test_LDX[i][1], result);
+		fail_unless(strcmp(result, test_LDX[i][1]) == 0, "Expected to read %s got %s", test_LDX[i][1], result);
 		
 	}
 }
