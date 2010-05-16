@@ -12,6 +12,7 @@
 
 #include "MIXassemblerTest.h"
 #include "mix_device_test.h"
+#include "mix_instructions_test.h"
 #include "MIXmachineTest.h"
 #include "MIXwordTest.h"
 
@@ -22,6 +23,7 @@ int main(int argc, char *argv[])
 	SRunner *sr = srunner_create(mix_word_suite());
 	srunner_add_suite(sr, mix_assembler_suite());
 	srunner_add_suite(sr, mix_machine_suite());
+    srunner_add_suite(sr, mix_instructions_suite());
 	srunner_add_suite(sr, mix_device_suite());
     
 	srunner_set_fork_status (sr, CK_NOFORK);

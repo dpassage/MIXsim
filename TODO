@@ -1,5 +1,5 @@
 - Unit tests on devices
 - Ensure machine errors on unattached device (instead of seg fault)
-* refactor machine.c - one function per instruction
+- refactor machine.c - one function per instruction
 * Refactor machine unit tests - move instructions to different test suite
 * Look for constants to change to enums
