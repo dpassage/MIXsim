@@ -12,8 +12,6 @@
 		6B5B7465119E6D550045C0B7 /* liblibMIXsim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B740C119E32660045C0B7 /* liblibMIXsim.a */; };
 		6B5B7473119E6FA50045C0B7 /* liblibMIXsim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B740C119E32660045C0B7 /* liblibMIXsim.a */; };
 		6B5B749C119E77590045C0B7 /* MIXwordTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B749B119E77590045C0B7 /* MIXwordTest.c */; };
-		6B5B74E4119F23360045C0B7 /* testparser.input in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6B5B74CB119F108F0045C0B7 /* testparser.input */; };
-		6B5B74E5119F23360045C0B7 /* testparser.output in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6B5B74CC119F10A80045C0B7 /* testparser.output */; };
 		6B5B7527119F28B70045C0B7 /* mix_assembler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B5B7525119F28B70045C0B7 /* mix_assembler.h */; };
 		6B5B7528119F28B70045C0B7 /* mix_assembler.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B7526119F28B70045C0B7 /* mix_assembler.c */; };
 		6B5B753F119F2B440045C0B7 /* mix_word.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B74AE119E795D0045C0B7 /* mix_word.c */; };
@@ -22,7 +20,9 @@
 		6BF32D28119F8FA700AAC892 /* mix_machine.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF32D26119F8FA700AAC892 /* mix_machine.h */; };
 		6BF32D29119F8FA700AAC892 /* mix_machine.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D27119F8FA700AAC892 /* mix_machine.c */; };
 		6BF32DAC119FBFE200AAC892 /* mix_opcodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF32DAB119FBFE200AAC892 /* mix_opcodes.h */; };
-		8DD76FAC0486AB0100D96B5E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.c */; settings = {ATTRIBUTES = (); }; };
+		6BF32EA411A0615600AAC892 /* program_p.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA111A05F4900AAC892 /* program_p.mix */; };
+		6BF32EA511A0615600AAC892 /* program_p.loadtest_output in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA311A0610100AAC892 /* program_p.loadtest_output */; };
+		8DD76FAC0486AB0100D96B5E /* MIXsim.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* MIXsim.c */; settings = {ATTRIBUTES = (); }; };
 		8DD76FB00486AB0100D96B5E /* MIXsim.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6A0FF2C0290799A04C91782 /* MIXsim.1 */; };
 /* End PBXBuildFile section */
 
@@ -57,8 +57,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				6B5B74E4119F23360045C0B7 /* testparser.input in CopyFiles */,
-				6B5B74E5119F23360045C0B7 /* testparser.output in CopyFiles */,
+				6BF32EA411A0615600AAC892 /* program_p.mix in CopyFiles */,
+				6BF32EA511A0615600AAC892 /* program_p.loadtest_output in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +75,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		08FB7796FE84155DC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		08FB7796FE84155DC02AAC07 /* MIXsim.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MIXsim.c; sourceTree = "<group>"; };
 		6B5B740C119E32660045C0B7 /* liblibMIXsim.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibMIXsim.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5B7423119E339B0045C0B7 /* libMIXsimTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libMIXsimTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MIXsimTestMain.c; sourceTree = "<group>"; };
@@ -85,8 +85,6 @@
 		6B5B749B119E77590045C0B7 /* MIXwordTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MIXwordTest.c; sourceTree = "<group>"; };
 		6B5B74AD119E795D0045C0B7 /* mix_word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_word.h; sourceTree = "<group>"; };
 		6B5B74AE119E795D0045C0B7 /* mix_word.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_word.c; sourceTree = "<group>"; };
-		6B5B74CB119F108F0045C0B7 /* testparser.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testparser.input; path = testdata/testparser.input; sourceTree = "<group>"; };
-		6B5B74CC119F10A80045C0B7 /* testparser.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testparser.output; path = testdata/testparser.output; sourceTree = "<group>"; };
 		6B5B7525119F28B70045C0B7 /* mix_assembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_assembler.h; sourceTree = "<group>"; };
 		6B5B7526119F28B70045C0B7 /* mix_assembler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_assembler.c; sourceTree = "<group>"; };
 		6B5B7575119F43810045C0B7 /* MIXassemblerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIXassemblerTest.h; sourceTree = "<group>"; };
@@ -97,6 +95,9 @@
 		6BF32D27119F8FA700AAC892 /* mix_machine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_machine.c; sourceTree = "<group>"; };
 		6BF32DAB119FBFE200AAC892 /* mix_opcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_opcodes.h; sourceTree = "<group>"; };
 		6BF32E6F11A0554800AAC892 /* MIXas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = MIXas; path = build/Debug/MIXas; sourceTree = "<group>"; };
+		6BF32E9811A057B000AAC892 /* program_p.mixal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = program_p.mixal; path = testdata/program_p.mixal; sourceTree = "<group>"; };
+		6BF32EA111A05F4900AAC892 /* program_p.mix */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = program_p.mix; path = testdata/program_p.mix; sourceTree = "<group>"; };
+		6BF32EA311A0610100AAC892 /* program_p.loadtest_output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = program_p.loadtest_output; path = testdata/program_p.loadtest_output; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* MIXsim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIXsim; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* MIXsim.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIXsim.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,7 +154,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				08FB7796FE84155DC02AAC07 /* main.c */,
+				08FB7796FE84155DC02AAC07 /* MIXsim.c */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -200,8 +201,9 @@
 		6B5B74CA119F105D0045C0B7 /* Test files */ = {
 			isa = PBXGroup;
 			children = (
-				6B5B74CB119F108F0045C0B7 /* testparser.input */,
-				6B5B74CC119F10A80045C0B7 /* testparser.output */,
+				6BF32EA111A05F4900AAC892 /* program_p.mix */,
+				6BF32E9811A057B000AAC892 /* program_p.mixal */,
+				6BF32EA311A0610100AAC892 /* program_p.loadtest_output */,
 			);
 			name = "Test files";
 			sourceTree = "<group>";
@@ -349,7 +351,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$BUILT_PRODUCTS_DIR/MIXsim < $BUILT_PRODUCTS_DIR/testparser.input > $BUILD_PRODUCTS_DIR/testparser.test\ndiff $BUILT_PRODUCTS_DIR/testparser.output $BUILD_PRODUCTS_DIR/testparser.test\nexit 0\n";
+			shellScript = "$BUILT_PRODUCTS_DIR/MIXsim < $BUILT_PRODUCTS_DIR/program_p.mix > $BUILD_PRODUCTS_DIR/program_p.testout\ndiff $BUILT_PRODUCTS_DIR/program_p.loadtest_output $BUILD_PRODUCTS_DIR/program_p.testout\nexit 0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -386,7 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DD76FAC0486AB0100D96B5E /* main.c in Sources */,
+				8DD76FAC0486AB0100D96B5E /* MIXsim.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
