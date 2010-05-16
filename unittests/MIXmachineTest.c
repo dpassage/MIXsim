@@ -35,7 +35,8 @@ START_TEST(test_set_memory_cell)
 	w = mix_word_create();
 	mix_machine_read_mem(m, w, 3248);
 	s = mix_word_tostring(w);
-	fail_unless(strcmp(expected, s) == 0, "Reading from machine expected %s got %s", expected, s);
+	fail_unless(strcmp(expected, s) == 0, 
+                "Reading from machine expected %s got %s", expected, s);
 }
 END_TEST
 
@@ -64,7 +65,9 @@ START_TEST(test_load_register)
 		mix_load_reg(&reg, &mem, load_reg_cases[i].f);
 		
 		s = mix_word_tostring(&reg);
-		fail_unless(strcmp(load_reg_cases[i].result, s) == 0, "Case %d: Expected %s was %s", i, load_reg_cases[i].result, s);
+		fail_unless(strcmp(load_reg_cases[i].result, s) == 0, 
+                    "Case %d: Expected %s was %s", 
+                    i, load_reg_cases[i].result, s);
 		
 	}
 }
@@ -101,9 +104,12 @@ START_TEST(test_LDA_instruction)
 		w = mix_machine_read_ra(m, w);
 		result = mix_word_tostring(w);
 		
-		fail_unless(mix_machine_get_ip(m) == 3001, "Instruction did not execute");
-		fail_unless(mix_machine_get_time(m) - time == 2, "Instruction did not take right amount of time");
-		fail_unless(strcmp(result, test_LDA[i][1]) == 0, "Expected to read %s got %s", test_LDA[i][1], result);
+		fail_unless(mix_machine_get_ip(m) == 3001, 
+                    "Instruction did not execute");
+		fail_unless(mix_machine_get_time(m) - time == 2, 
+                    "Instruction did not take right amount of time");
+		fail_unless(strcmp(result, test_LDA[i][1]) == 0, 
+                    "Expected to read %s got %s", test_LDA[i][1], result);
 		
 	}
 }
@@ -140,9 +146,12 @@ START_TEST(test_LDX_instruction)
 		w = mix_machine_read_rx(m, w);
 		result = mix_word_tostring(w);
 		
-		fail_unless(mix_machine_get_ip(m) == 3001, "Instruction did not execute");
-		fail_unless(mix_machine_get_time(m) - time == 2, "Instruction did not take right amount of time");
-		fail_unless(strcmp(result, test_LDX[i][1]) == 0, "Expected to read %s got %s", test_LDX[i][1], result);
+		fail_unless(mix_machine_get_ip(m) == 3001, 
+                    "Instruction did not execute");
+		fail_unless(mix_machine_get_time(m) - time == 2, 
+                    "Instruction did not take right amount of time");
+		fail_unless(strcmp(result, test_LDX[i][1]) == 0, 
+                    "Expected to read %s got %s", test_LDX[i][1], result);
 		
 	}
 }
@@ -164,7 +173,8 @@ START_TEST(test_HLT_instruction)
     ret = mix_machine_execute(m);
 	fail_if	(ret == -1, "machine returned error on execution");
     fail_unless (ret == 1, "machine should have halted execution");
-    fail_unless(mix_machine_get_time(m) - time == 1, "Instruction did not take right amount of time");
+    fail_unless(mix_machine_get_time(m) - time == 1, 
+                "Instruction did not take right amount of time");
 }
 END_TEST
 

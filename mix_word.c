@@ -49,16 +49,21 @@ void mix_word_set_byte(mix_word *w, int byte, int val) {
 
 void mix_word_set(mix_word *w, const char *s) {
 	char sign;
-	sscanf(s, "%c %d %d %d %d %d", &sign, &(w->bytes[1]), &(w->bytes[2]), &(w->bytes[3]), &(w->bytes[4]), &(w->bytes[5]));
+	sscanf(s, "%c %d %d %d %d %d", 
+           &sign, &(w->bytes[1]), &(w->bytes[2]), 
+                  &(w->bytes[3]), &(w->bytes[4]), 
+                  &(w->bytes[5]));
 	w->bytes[0] = (sign == '-') ? MIX_WORD_MINUS : MIX_WORD_PLUS;
 }
 
-/* - xx xx xx xx xx */
 char *mix_word_tostring(mix_word *w) {
 	char *ret;
 	char sign = (w->bytes[0] == MIX_WORD_PLUS) ? '+' : '-';
 	
-	asprintf(&ret, "%c %.2d %.2d %.2d %.2d %.2d", sign, w->bytes[1], w->bytes[2], w->bytes[3], w->bytes[4], w->bytes[5]);
+	asprintf(&ret, "%c %.2d %.2d %.2d %.2d %.2d", 
+             sign, w->bytes[1], w->bytes[2], 
+                   w->bytes[3], w->bytes[4], 
+                   w->bytes[5]);
 	
 	return ret;
 }

@@ -22,7 +22,8 @@ START_TEST (test_parse_load)
 	char *load = "LDA 2000,2(0:3)\n";
 	result = mix_assemble_line(load, w);
 	fail_unless(result == 0, "Parser failed");
-	fail_unless(mix_word_sign(w) == MIX_WORD_PLUS, "Sign of new word is not positive");
+	fail_unless(mix_word_sign(w) == MIX_WORD_PLUS, 
+                "Sign of new word is not positive");
 	fail_unless(mix_word_byte(w, 1) == 20, "Byte 1 is incorrect");
 	fail_unless(mix_word_byte(w, 2) == 00, "Byte 2 is incorrect");
 	fail_unless(mix_word_byte(w, 3) == 2, "Byte 3 is incorrect");
@@ -49,7 +50,9 @@ START_TEST (test_parser_cases)
 		parse_code = mix_assemble_line(testcases[i][0], w);
 		fail_unless(parse_code == 0, "Parser failed");
 		rendered_result = mix_word_tostring(w);
-		fail_unless(strcmp(rendered_result, testcases[i][1]) == 0, "Parser test %d failed: expected %s got %s", i, testcases[i][1], rendered_result);
+		fail_unless(strcmp(rendered_result, testcases[i][1]) == 0, 
+                    "Parser test %d failed: expected %s got %s", 
+                    i, testcases[i][1], rendered_result);
 		free(rendered_result);
 	}
 }

@@ -15,9 +15,11 @@ START_TEST (test_create_word)
 	int i;
 	mix_word *w = mix_word_create();
 	fail_unless(w != NULL, "Failed to create mix word");
-	fail_unless(mix_word_sign(w) == MIX_WORD_PLUS, "Sign of new word is not positive");
+	fail_unless(mix_word_sign(w) == MIX_WORD_PLUS, 
+                "Sign of new word is not positive");
 	for (i = 1; i <= 5; i++) {
-		fail_unless(mix_word_byte(w, i) == 0, "Value of byte %d was not zero", i);
+		fail_unless(mix_word_byte(w, i) == 0, 
+                    "Value of byte %d was not zero", i);
 	}
 }
 END_TEST
@@ -33,7 +35,8 @@ START_TEST (test_word_setters)
 	
 	fail_unless(mix_word_sign(w) == MIX_WORD_MINUS, "Word sign incorrect");
 	for (i = 1; i <= 5; i++) {
-		fail_unless(mix_word_byte(w, i) == i, "Value of byte %d was not correct", i);
+		fail_unless(mix_word_byte(w, i) == i, 
+                    "Value of byte %d was not correct", i);
 	}
 }
 END_TEST
@@ -48,7 +51,8 @@ START_TEST (test_word_string_setter)
 	
 	rendered = mix_word_tostring(w);
 	
-	fail_unless(strcmp(expected, rendered) == 0, "Expected %s but was %s", expected, rendered);
+	fail_unless(strcmp(expected, rendered) == 0, 
+                "Expected %s but was %s", expected, rendered);
 }
 END_TEST
 
@@ -62,7 +66,8 @@ START_TEST (test_word_render)
 	mix_word_set_sign(w, MIX_WORD_MINUS);
 	
 	char *rendered = mix_word_tostring(w);
-	fail_unless(strcmp(rendered, expected) == 0, "Expected %s but was %s", expected, rendered);
+	fail_unless(strcmp(rendered, expected) == 0, 
+                "Expected %s but was %s", expected, rendered);
 }
 END_TEST
 
@@ -77,7 +82,8 @@ START_TEST(test_word_clear)
 	mix_word_clear(w);
 	
 	char *rendered = mix_word_tostring(w);
-	fail_unless(strcmp(rendered, expected) == 0, "Expected %s but was %s", expected, rendered);
+	fail_unless(strcmp(rendered, expected) == 0, 
+                "Expected %s but was %s", expected, rendered);
 }
 END_TEST
 
