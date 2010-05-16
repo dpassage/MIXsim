@@ -12,6 +12,10 @@
 
 #include "mix_word.h"
 
+#define MIX_M_OK     0
+#define MIX_M_HALT   1
+#define MIX_M_ERROR -1
+
 typedef struct mix_machine mix_machine;
 
 mix_machine *mix_machine_create(void);

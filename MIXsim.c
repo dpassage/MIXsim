@@ -41,9 +41,9 @@ int main (int argc, const char * argv[]) {
     do {
         printf("Running instr %d\n", mix_machine_get_ip(m));
         ret = mix_machine_execute(m);
-    } while (ret == 0);
+    } while (ret == MIX_M_OK);
     
-    if (ret == 1) {
+    if (ret == MIX_M_HALT) {
         printf("Program halted!\n");
         printf("Time elapsed = %d\n", mix_machine_get_time(m));               
     } else {

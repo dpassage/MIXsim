@@ -99,7 +99,7 @@ START_TEST(test_LDA_instruction)
 		time = mix_machine_get_time(m);
 		mix_machine_set_ip(m, 3000);
 		ret = mix_machine_execute(m);
-        fail_unless(ret != -1, "machine returned error");
+        fail_unless(ret == MIX_M_OK, "machine returned error");
 		
 		w = mix_machine_read_ra(m, w);
 		result = mix_word_tostring(w);
@@ -141,7 +141,7 @@ START_TEST(test_LDX_instruction)
 		time = mix_machine_get_time(m);
 		mix_machine_set_ip(m, 3000);
 		ret = mix_machine_execute(m);
-        fail_unless(ret != -1, "machine returned error");
+        fail_unless(ret == MIX_M_OK, "machine returned error");
 
 		w = mix_machine_read_rx(m, w);
 		result = mix_word_tostring(w);
@@ -171,8 +171,8 @@ START_TEST(test_HLT_instruction)
     time = mix_machine_get_time(m);
     mix_machine_set_ip(m, 3000);
     ret = mix_machine_execute(m);
-	fail_if	(ret == -1, "machine returned error on execution");
-    fail_unless (ret == 1, "machine should have halted execution");
+	fail_if	(ret == MIX_M_ERROR, "machine returned error on execution");
+    fail_unless (ret == MIX_M_HALT, "machine should have halted execution");
     fail_unless(mix_machine_get_time(m) - time == 1, 
                 "Instruction did not take right amount of time");
 }
