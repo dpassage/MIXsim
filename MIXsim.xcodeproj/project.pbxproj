@@ -96,6 +96,7 @@
 		6BF32D26119F8FA700AAC892 /* mix_machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_machine.h; sourceTree = "<group>"; };
 		6BF32D27119F8FA700AAC892 /* mix_machine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_machine.c; sourceTree = "<group>"; };
 		6BF32DAB119FBFE200AAC892 /* mix_opcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_opcodes.h; sourceTree = "<group>"; };
+		6BF32E6F11A0554800AAC892 /* MIXas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = MIXas; path = build/Debug/MIXas; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* MIXsim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIXsim; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* MIXsim.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIXsim.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +115,13 @@
 			files = (
 				6B5B7455119E6B260045C0B7 /* libcheck.a in Frameworks */,
 				6B5B7465119E6D550045C0B7 /* liblibMIXsim.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BF32E6D11A0554800AAC892 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +164,7 @@
 				8DD76FB20486AB0100D96B5E /* MIXsim */,
 				6B5B740C119E32660045C0B7 /* liblibMIXsim.a */,
 				6B5B7423119E339B0045C0B7 /* libMIXsimTest */,
+				6BF32E6F11A0554800AAC892 /* MIXas */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -256,6 +265,22 @@
 			productReference = 6B5B7423119E339B0045C0B7 /* libMIXsimTest */;
 			productType = "com.apple.product-type.tool";
 		};
+		6BF32E6E11A0554800AAC892 /* MIXas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BF32E7311A0556600AAC892 /* Build configuration list for PBXNativeTarget "MIXas" */;
+			buildPhases = (
+				6BF32E6C11A0554800AAC892 /* Sources */,
+				6BF32E6D11A0554800AAC892 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIXas;
+			productName = MIXas;
+			productReference = 6BF32E6F11A0554800AAC892 /* MIXas */;
+			productType = "com.apple.product-type.tool";
+		};
 		8DD76FA90486AB0100D96B5E /* MIXsim */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB928508733DD80010E9CD /* Build configuration list for PBXNativeTarget "MIXsim" */;
@@ -294,6 +319,7 @@
 				8DD76FA90486AB0100D96B5E /* MIXsim */,
 				6B5B740B119E32660045C0B7 /* libMIXsim */,
 				6B5B7422119E339B0045C0B7 /* libMIXsimTest */,
+				6BF32E6E11A0554800AAC892 /* MIXas */,
 			);
 		};
 /* End PBXProject section */
@@ -346,6 +372,13 @@
 				6B5B749C119E77590045C0B7 /* MIXwordTest.c in Sources */,
 				6B5B7577119F43810045C0B7 /* MIXassemblerTest.c in Sources */,
 				6BF32D1B119F8CD900AAC892 /* MIXmachineTest.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BF32E6C11A0554800AAC892 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +533,36 @@
 			};
 			name = Release;
 		};
+		6BF32E7111A0554800AAC892 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = MIXas;
+			};
+			name = Debug;
+		};
+		6BF32E7211A0554800AAC892 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = MIXas;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -535,6 +598,15 @@
 			buildConfigurations = (
 				6B5B7425119E339C0045C0B7 /* Debug */,
 				6B5B7426119E339C0045C0B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BF32E7311A0556600AAC892 /* Build configuration list for PBXNativeTarget "MIXas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BF32E7111A0554800AAC892 /* Debug */,
+				6BF32E7211A0554800AAC892 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -17,6 +17,7 @@ struct mix_machine {
 	int ip;
 	unsigned int time;
 	mix_word ra;
+	mix_word rx;
 	mix_word words[4000];
 };
 
@@ -58,6 +59,11 @@ mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w) {
 	return w;
 }
 
+mix_word *mix_machine_read_rx(mix_machine *m, mix_word *w) {
+	*w = m->rx;
+	return w;
+}
+
 void mix_load_reg(mix_word *reg, mix_word *mem, int f) {
 	
 	mix_word_clear(reg);
@@ -92,6 +98,12 @@ void mix_machine_execute(mix_machine *mix)
 		case MIX_OP_LDA:
 			m = (instr.bytes[1] * 100) + instr.bytes[2];
 			mix_load_reg(&(mix->ra), &(mix->words[m]), instr.bytes[4]);
+			mix->time = mix->time + 2;
+			mix->ip++;
+			break;
+		case MIX_OP_LDX:
+			m = (instr.bytes[1] * 100) + instr.bytes[2];
+			mix_load_reg(&(mix->rx), &(mix->words[m]), instr.bytes[4]);
 			mix->time = mix->time + 2;
 			mix->ip++;
 			break;

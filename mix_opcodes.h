@@ -11,5 +11,6 @@
 #define MIX_OPCODES_H
 
 #define MIX_OP_LDA 8
+#define	MIX_OP_LDX 15
 
 #endif
