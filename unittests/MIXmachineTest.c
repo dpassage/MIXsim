@@ -84,6 +84,7 @@ START_TEST(test_LDA_instruction)
 	char *result;
 	int time;
 	int i;
+    int ret;
 	
 	mix_word_set(w, testvalue);
 	mix_machine_load_mem(m, w, 2000);
@@ -94,7 +95,8 @@ START_TEST(test_LDA_instruction)
 				
 		time = mix_machine_get_time(m);
 		mix_machine_set_ip(m, 3000);
-		mix_machine_execute(m);
+		ret = mix_machine_execute(m);
+        fail_unless(ret != -1, "machine returned error");
 		
 		w = mix_machine_read_ra(m, w);
 		result = mix_word_tostring(w);
@@ -121,6 +123,7 @@ START_TEST(test_LDX_instruction)
 	char *result;
 	int time;
 	int i;
+    int ret;
 	
 	mix_word_set(w, testvalue);
 	mix_machine_load_mem(m, w, 2000);
@@ -131,8 +134,9 @@ START_TEST(test_LDX_instruction)
 		
 		time = mix_machine_get_time(m);
 		mix_machine_set_ip(m, 3000);
-		mix_machine_execute(m);
-		
+		ret = mix_machine_execute(m);
+        fail_unless(ret != -1, "machine returned error");
+
 		w = mix_machine_read_rx(m, w);
 		result = mix_word_tostring(w);
 		
@@ -141,6 +145,26 @@ START_TEST(test_LDX_instruction)
 		fail_unless(strcmp(result, test_LDX[i][1]) == 0, "Expected to read %s got %s", test_LDX[i][1], result);
 		
 	}
+}
+END_TEST
+
+START_TEST(test_HLT_instruction)
+{
+	mix_machine *m = mix_machine_create();
+	mix_word w;
+	int time;
+    int ret;
+	
+    
+    mix_word_set(&w, "+ 00 00 00 02 05");
+    mix_machine_load_mem(m, &w, 3000);
+    
+    time = mix_machine_get_time(m);
+    mix_machine_set_ip(m, 3000);
+    ret = mix_machine_execute(m);
+	fail_if	(ret == -1, "machine returned error on execution");
+    fail_unless (ret == 1, "machine should have halted execution");
+    fail_unless(mix_machine_get_time(m) - time == 1, "Instruction did not take right amount of time");
 }
 END_TEST
 
@@ -153,6 +177,7 @@ Suite *mix_machine_suite(void)
 	tcase_add_test (tc_core, test_set_memory_cell);
 	tcase_add_test (tc_core, test_LDA_instruction);
 	tcase_add_test (tc_core, test_LDX_instruction);
+    tcase_add_test (tc_core, test_HLT_instruction);
 	tcase_add_test (tc_core, test_load_register);
 	suite_add_tcase (s, tc_core);
 	

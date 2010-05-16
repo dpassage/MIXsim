@@ -88,13 +88,25 @@ void mix_load_reg(mix_word *reg, mix_word *mem, int f) {
 	return;
 }
 
-void mix_machine_execute(mix_machine *mix)
+int mix_machine_execute(mix_machine *mix)
 {
 	mix_word instr = mix->words[mix->ip];
 	int opcode = instr.bytes[5];
 	int m;
 	
 	switch (opcode) {
+        case MIX_OP_05:
+            switch (instr.bytes[4]) {
+                case 2: /* HLT */
+                    mix->time++;
+                    return 1;
+                    break;
+                default:
+                    return -1;
+                    break;
+            }
+            break;
+
 		case MIX_OP_LDA:
 			m = (instr.bytes[1] * 100) + instr.bytes[2];
 			mix_load_reg(&(mix->ra), &(mix->words[m]), instr.bytes[4]);
@@ -108,9 +120,10 @@ void mix_machine_execute(mix_machine *mix)
 			mix->ip++;
 			break;
 		default:
+            return -1;
 			break;
 	}
-	return;
+	return 0;
 }
 
 

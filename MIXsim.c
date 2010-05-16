@@ -11,6 +11,7 @@ int main (int argc, const char * argv[]) {
     int i = 0;
     int loc;
 	mix_word w;
+    int ret;    
     
     /* create new machine */
     m = mix_machine_create();
@@ -37,5 +38,17 @@ int main (int argc, const char * argv[]) {
     printf("Locations loaded: %d\n", i);
     printf("Starting instruction: %d\n", ip);
     
+    do {
+        printf("Running instr %d\n", mix_machine_get_ip(m));
+        ret = mix_machine_execute(m);
+    } while (ret == 0);
+    
+    if (ret == 1) {
+        printf("Program halted!\n");
+        printf("Time elapsed = %d\n", mix_machine_get_time(m));               
+    } else {
+        printf("Machine aborted!\n");
+    }
+                   
     return 0;
 }

@@ -22,6 +22,8 @@
 		6BF32DAC119FBFE200AAC892 /* mix_opcodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF32DAB119FBFE200AAC892 /* mix_opcodes.h */; };
 		6BF32EA411A0615600AAC892 /* program_p.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA111A05F4900AAC892 /* program_p.mix */; };
 		6BF32EA511A0615600AAC892 /* program_p.loadtest_output in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA311A0610100AAC892 /* program_p.loadtest_output */; };
+		6BF32ECB11A0699000AAC892 /* halt.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EC811A0689D00AAC892 /* halt.mix */; };
+		6BF32ED911A06A8400AAC892 /* halt.output in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32ED611A06A7000AAC892 /* halt.output */; };
 		8DD76FAC0486AB0100D96B5E /* MIXsim.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* MIXsim.c */; settings = {ATTRIBUTES = (); }; };
 		8DD76FB00486AB0100D96B5E /* MIXsim.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6A0FF2C0290799A04C91782 /* MIXsim.1 */; };
 /* End PBXBuildFile section */
@@ -57,6 +59,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				6BF32ED911A06A8400AAC892 /* halt.output in CopyFiles */,
+				6BF32ECB11A0699000AAC892 /* halt.mix in CopyFiles */,
 				6BF32EA411A0615600AAC892 /* program_p.mix in CopyFiles */,
 				6BF32EA511A0615600AAC892 /* program_p.loadtest_output in CopyFiles */,
 			);
@@ -98,6 +102,8 @@
 		6BF32E9811A057B000AAC892 /* program_p.mixal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = program_p.mixal; path = testdata/program_p.mixal; sourceTree = "<group>"; };
 		6BF32EA111A05F4900AAC892 /* program_p.mix */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = program_p.mix; path = testdata/program_p.mix; sourceTree = "<group>"; };
 		6BF32EA311A0610100AAC892 /* program_p.loadtest_output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = program_p.loadtest_output; path = testdata/program_p.loadtest_output; sourceTree = "<group>"; };
+		6BF32EC811A0689D00AAC892 /* halt.mix */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = halt.mix; path = testdata/halt.mix; sourceTree = "<group>"; };
+		6BF32ED611A06A7000AAC892 /* halt.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = halt.output; path = testdata/halt.output; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* MIXsim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIXsim; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* MIXsim.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIXsim.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +210,8 @@
 				6BF32EA111A05F4900AAC892 /* program_p.mix */,
 				6BF32E9811A057B000AAC892 /* program_p.mixal */,
 				6BF32EA311A0610100AAC892 /* program_p.loadtest_output */,
+				6BF32EC811A0689D00AAC892 /* halt.mix */,
+				6BF32ED611A06A7000AAC892 /* halt.output */,
 			);
 			name = "Test files";
 			sourceTree = "<group>";
@@ -292,6 +300,7 @@
 				8DD76FAD0486AB0100D96B5E /* Frameworks */,
 				8DD76FAF0486AB0100D96B5E /* CopyFiles */,
 				6B5B74E8119F23650045C0B7 /* CopyFiles */,
+				6BF32ECA11A0694000AAC892 /* ShellScript */,
 				6B5B74E7119F23470045C0B7 /* ShellScript */,
 			);
 			buildRules = (
@@ -352,6 +361,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "$BUILT_PRODUCTS_DIR/MIXsim < $BUILT_PRODUCTS_DIR/program_p.mix > $BUILD_PRODUCTS_DIR/program_p.testout\ndiff $BUILT_PRODUCTS_DIR/program_p.loadtest_output $BUILD_PRODUCTS_DIR/program_p.testout\nexit 0\n";
+		};
+		6BF32ECA11A0694000AAC892 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$BUILT_PRODUCTS_DIR/MIXsim < $BUILT_PRODUCTS_DIR/halt.mix > $BUILD_PRODUCTS_DIR/halt.testout\ndiff $BUILT_PRODUCTS_DIR/halt.output $BUILD_PRODUCTS_DIR/halt.testout\nexit 0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
