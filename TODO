@@ -1,1 +1,4 @@
-* Data structure for a MIX word
+- Unit tests on devices
+* Ensure machine errors on unattached device (instead of seg fault)
+* Refactor machine unit tests - move instructions to different test suite
+* Look for constants to change to enums

@@ -14,6 +14,7 @@
 
 struct mix_device {
     int last_op;
+    int type;
 };
 
 void mix_device_control(mix_device *d, int m) {
@@ -25,7 +26,14 @@ int mix_device_last_op(mix_device *d) {
     return d->last_op;
 }
 
+int mix_device_get_type(mix_device *d) {
+    return d->type;
+}
+
 mix_device *mix_device_printer_create() {
-    return (mix_device *)malloc(sizeof(mix_device));
+    mix_device *d = (mix_device *)malloc(sizeof(mix_device));
+    d->last_op = 0;
+    d->type = MIX_DEVICE_PRINTER;
+    return d;
 }
 

@@ -26,6 +26,7 @@
 		6BF32ED911A06A8400AAC892 /* halt.output in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32ED611A06A7000AAC892 /* halt.output */; };
 		6BF32F0F11A077C700AAC892 /* mix_device.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF32F0D11A077C700AAC892 /* mix_device.h */; };
 		6BF32F1011A077C700AAC892 /* mix_device.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32F0E11A077C700AAC892 /* mix_device.c */; };
+		6BF32FB211A09C4E00AAC892 /* mix_device_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32FB111A09C4E00AAC892 /* mix_device_test.c */; };
 		8DD76FAC0486AB0100D96B5E /* MIXsim.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* MIXsim.c */; settings = {ATTRIBUTES = (); }; };
 		8DD76FB00486AB0100D96B5E /* MIXsim.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6A0FF2C0290799A04C91782 /* MIXsim.1 */; };
 /* End PBXBuildFile section */
@@ -108,6 +109,8 @@
 		6BF32ED611A06A7000AAC892 /* halt.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = halt.output; path = testdata/halt.output; sourceTree = "<group>"; };
 		6BF32F0D11A077C700AAC892 /* mix_device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_device.h; sourceTree = "<group>"; };
 		6BF32F0E11A077C700AAC892 /* mix_device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_device.c; sourceTree = "<group>"; };
+		6BF32FB011A09C4E00AAC892 /* mix_device_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_device_test.h; path = unittests/mix_device_test.h; sourceTree = "<group>"; };
+		6BF32FB111A09C4E00AAC892 /* mix_device_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_device_test.c; path = unittests/mix_device_test.c; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* MIXsim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIXsim; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* MIXsim.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIXsim.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +209,8 @@
 				6B5B749B119E77590045C0B7 /* MIXwordTest.c */,
 				6B5B7575119F43810045C0B7 /* MIXassemblerTest.h */,
 				6B5B7576119F43810045C0B7 /* MIXassemblerTest.c */,
+				6BF32FB011A09C4E00AAC892 /* mix_device_test.h */,
+				6BF32FB111A09C4E00AAC892 /* mix_device_test.c */,
 			);
 			name = libMIXsimTest;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				6B5B749C119E77590045C0B7 /* MIXwordTest.c in Sources */,
 				6B5B7577119F43810045C0B7 /* MIXassemblerTest.c in Sources */,
 				6BF32D1B119F8CD900AAC892 /* MIXmachineTest.c in Sources */,
+				6BF32FB211A09C4E00AAC892 /* mix_device_test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
