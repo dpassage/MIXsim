@@ -16,6 +16,7 @@
 struct mix_machine {
 	int ip;
 	unsigned int time;
+    mix_word ri[7]; /* only 1-6 used */
 	mix_word ra;
 	mix_word rx;
 	mix_word words[4000];
@@ -57,6 +58,15 @@ int mix_machine_get_ip(mix_machine *m)
 
 int mix_machine_get_time(mix_machine *m) {
 	return m->time;
+}
+
+mix_word *mix_machine_read_ri(mix_machine *m, mix_word *w, int i) {
+    *w = m->ri[i];
+    return w;
+}
+    
+mix_word *mix_machine_read_r1(mix_machine *m, mix_word *w) {	
+	return mix_machine_read_ri(m, w, 1);
 }
 
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w) {
@@ -106,6 +116,25 @@ int mix_machine_instr_HLT(mix_machine *mix, int f, int m) {
     return MIX_M_HALT;
 }
 
+int mix_machine_instr_IOC(mix_machine *mix, int unit, int m) {
+    if (mix->devices[unit] == NULL) {
+        return MIX_M_ERROR;
+    }
+    mix_device_control(mix->devices[unit], m);
+    mix->time++;
+    mix->ip++;
+    return MIX_M_OK;
+}
+
+int mix_machine_instr_LDi(mix_machine *mix, int f, int m, int i) {
+    mix_load_reg(&(mix->ri[i]), &(mix->words[m]), f);
+    mix->ri[i].bytes[1] = 0;
+    mix->ri[i].bytes[2] = 0;
+    mix->ri[i].bytes[3] = 0;    
+    mix->time = mix->time + 2;
+    mix->ip++;
+    return MIX_M_OK;    
+}
 int mix_machine_instr_LDA(mix_machine *mix, int f, int m) {
     mix_load_reg(&(mix->ra), &(mix->words[m]), f);
     mix->time = mix->time + 2;
@@ -120,15 +149,6 @@ int mix_machine_instr_LDX(mix_machine *mix, int f, int m) {
     return MIX_M_OK;
 }
 
-int mix_machine_instr_IOC(mix_machine *mix, int unit, int m) {
-    if (mix->devices[unit] == NULL) {
-        return MIX_M_ERROR;
-    }
-    mix_device_control(mix->devices[unit], m);
-    mix->time++;
-    mix->ip++;
-    return MIX_M_OK;
-}
 
 int mix_machine_execute(mix_machine *mix)
 {
@@ -137,7 +157,6 @@ int mix_machine_execute(mix_machine *mix)
 	int m = (instr.bytes[1] * 100) + instr.bytes[2] * 
             (instr.bytes[0] == MIX_WORD_MINUS ? -1 : 1);
     int f = instr.bytes[4];
-    int result;
 	
 	switch (opcode) {
         case MIX_OP_05:
@@ -150,6 +169,9 @@ int mix_machine_execute(mix_machine *mix)
                     break;
             }
             break;
+        case MIX_OP_LD1:
+            return mix_machine_instr_LDi(mix, f, m, 1);
+            break;
 		case MIX_OP_LDA:
             return mix_machine_instr_LDA(mix, f, m);
 			break;
@@ -157,8 +179,7 @@ int mix_machine_execute(mix_machine *mix)
             return mix_machine_instr_LDX(mix, f, m);
 			break;
         case MIX_OP_IOC:
-            result = mix_machine_instr_IOC(mix, f, m);
-            return result;
+            return mix_machine_instr_IOC(mix, f, m);
             break;
 		default:
             return -1;
