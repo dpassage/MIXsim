@@ -25,7 +25,13 @@ struct mix_machine {
 
 mix_machine *mix_machine_create(void)
 {
-	return (mix_machine *)malloc(sizeof(mix_machine));
+    mix_machine *m = (mix_machine *)malloc(sizeof(mix_machine));
+    mix_word_clear(&(m->ra));
+    mix_word_clear(&(m->rx));
+    for (int i = 1; i <= 6; i++) {
+        mix_word_clear(&(m->ri[i]));
+    }
+    return m;
 }
 
 void mix_machine_destroy(mix_machine *m) {
@@ -149,6 +155,18 @@ int mix_machine_instr_LDX(mix_machine *mix, int f, int m) {
     return MIX_M_OK;
 }
 
+int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i) {
+    mix_word *reg = &(mix->ri[i]);
+    int accum = mix_word_value(reg, 5 /* (0:5) */);
+    accum += m;
+    if (accum < -9999 || accum > 9999 ) {
+        return MIX_M_UNDEF;
+    }
+    mix_word_set_value(reg, 5 /* 0:5 */, accum);
+    mix->time++;
+    mix->ip++;
+    return MIX_M_OK;
+}
 
 int mix_machine_execute(mix_machine *mix)
 {
@@ -157,6 +175,7 @@ int mix_machine_execute(mix_machine *mix)
 	int m = (instr.bytes[1] * 100) + instr.bytes[2] * 
             (instr.bytes[0] == MIX_WORD_MINUS ? -1 : 1);
     int f = instr.bytes[4];
+    int i;
 	
 	switch (opcode) {
         case MIX_OP_05:
@@ -169,18 +188,39 @@ int mix_machine_execute(mix_machine *mix)
                     break;
             }
             break;
-        case MIX_OP_LD1:
-            return mix_machine_instr_LDi(mix, f, m, 1);
-            break;
 		case MIX_OP_LDA:
             return mix_machine_instr_LDA(mix, f, m);
 			break;
+        case MIX_OP_LD1:
+        case MIX_OP_LD2:
+        case MIX_OP_LD3:
+        case MIX_OP_LD4:
+        case MIX_OP_LD5:
+        case MIX_OP_LD6:
+            i = opcode - MIX_OP_LDA;
+            return mix_machine_instr_LDi(mix, f, m, i);
+            break;
 		case MIX_OP_LDX:
             return mix_machine_instr_LDX(mix, f, m);
 			break;
         case MIX_OP_IOC:
             return mix_machine_instr_IOC(mix, f, m);
             break;
+        case MIX_OP_ADR1:
+        case MIX_OP_ADR2:
+        case MIX_OP_ADR3:
+        case MIX_OP_ADR4:
+        case MIX_OP_ADR5:
+        case MIX_OP_ADR6:
+            i = opcode - MIX_OP_ADRA;
+            switch (f) {
+                case 0: /* INCi */
+                    return mix_machine_instr_INCi(mix, f, m, i);
+                    break;
+                default:
+                    return MIX_M_ERROR;
+                    break;
+            }
 		default:
             return -1;
 			break;

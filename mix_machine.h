@@ -16,6 +16,7 @@
 #define MIX_M_OK     0
 #define MIX_M_HALT   1
 #define MIX_M_ERROR -1
+#define MIX_M_UNDEF -42
 
 typedef struct mix_machine mix_machine;
 
@@ -39,12 +40,13 @@ mix_device *mix_machine_device_get(mix_machine *m, int unit);
 void mix_load_reg(mix_word *reg, mix_word *mem, int f);
 
 /* opcode instructions in alpha order*/
-int mix_machine_instr_HLT(mix_machine *mix, int f, int m);
-int mix_machine_instr_IOC(mix_machine *mix, int f, int m);
-int mix_machine_instr_LDi(mix_machine *mix, int f, int m, int i);
-int mix_machine_instr_LD1(mix_machine *mix, int f, int m);
-int mix_machine_instr_LDA(mix_machine *mix, int f, int m);
-int mix_machine_instr_LDX(mix_machine *mix, int f, int m);
+int mix_machine_instr_HLT (mix_machine *mix, int f, int m);
+int mix_machine_instr_IOC (mix_machine *mix, int f, int m);
+int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i);
+int mix_machine_instr_LDi (mix_machine *mix, int f, int m, int i);
+int mix_machine_instr_LD1 (mix_machine *mix, int f, int m);
+int mix_machine_instr_LDA (mix_machine *mix, int f, int m);
+int mix_machine_instr_LDX (mix_machine *mix, int f, int m);
 
 
 #endif /* MIX_MACHINE_H */

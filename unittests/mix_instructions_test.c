@@ -225,6 +225,43 @@ START_TEST(test_IOC_unknown_device)
 }
 END_TEST
 
+START_TEST(test_INCi_instructions) 
+{
+    mix_word *w = mix_word_create();
+    int ret;
+    int time = mix_machine_get_time(mix);
+    int ip = mix_machine_get_ip(mix);
+    
+    /* ensure ri is 0 */
+    w = mix_machine_read_ri(mix, w, 1);
+    fail_unless(mix_word_value(w, 5) == 0, "register didn't start out at 0");
+    
+    /* add 9; ensure result is 9 */
+    ret = mix_machine_instr_INCi(mix, 0, 9, 1);
+    fail_unless(ret == MIX_M_OK, "instr should have succeeded");
+    fail_unless(mix_machine_get_time(mix) - time == 1, "instr took wrong amount of time");
+    fail_unless(mix_machine_get_ip(mix) - ip == 1, "instr should have advanced ip");
+    w = mix_machine_read_ri(mix, w, 1);
+    fail_unless(mix_word_value(w, 5) == 9, "register should be 9");
+    
+    /* add 247; ensure result is 256 */
+    ret = mix_machine_instr_INCi(mix, 0, 247, 1);
+    fail_unless(ret == MIX_M_OK, "instr should have succeeded");
+    w = mix_machine_read_ri(mix, w, 1);
+    fail_unless(mix_word_value(w, 5) == 256, "register should be 9");
+
+    /* add -42; ensure result is 214 */
+    ret = mix_machine_instr_INCi(mix, 0, -42, 1);
+    fail_unless(ret == MIX_M_OK, "instr should have succeeded");
+    w = mix_machine_read_ri(mix, w, 1);
+    fail_unless(mix_word_value(w, 5) == 214, "register should be 9");
+
+    /* add 9999; ensure result is MIX_M_UNDEF */
+    ret = mix_machine_instr_INCi(mix, 0, 9999, 1);
+    fail_unless(ret == MIX_M_UNDEF, "result should be undefined");
+}
+END_TEST
+
 Suite *mix_instructions_suite(void)
 {
 	Suite *s = suite_create("mix_instructions");
@@ -237,6 +274,7 @@ Suite *mix_instructions_suite(void)
     tcase_add_test (tc_core, test_HLT_instruction);
     tcase_add_test (tc_core, test_IOC_instruction);
     tcase_add_test (tc_core, test_IOC_unknown_device);
+    tcase_add_test (tc_core, test_INCi_instructions);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

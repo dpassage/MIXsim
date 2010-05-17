@@ -27,7 +27,10 @@ int main (int argc, const char * argv[]) {
     /* read start line and set Ip */
     if (fgets(readbuf, 500, infile) != NULL) {
         sscanf(readbuf, "START: %d\n", &ip);
+    } else {
+        return -1;
     }
+
     
     mix_machine_set_ip(m, ip);
     

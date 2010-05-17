@@ -37,7 +37,11 @@ int mix_word_byte(mix_word *w, int b);
 void mix_word_set_sign(mix_word *w, int sign);
 void mix_word_set_byte(mix_word *w, int byte, int val);
 void mix_word_set(mix_word *w, const char *s);
+void mix_word_set_value(mix_word *w, int f, int val);
 void mix_word_clear(mix_word *w);
+
+/* Returns the integer value of the indicated fields */
+int mix_word_value(mix_word *w, int f);
 
 /* Converts a word data structure to standard string representation
  * Caller responsible for freeing data structure

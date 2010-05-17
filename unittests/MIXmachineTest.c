@@ -16,8 +16,15 @@
 START_TEST(test_create_machine)
 {
 	mix_machine *m = mix_machine_create();
+    mix_word w;
+    int i;
 	
 	fail_unless(m != NULL, "Failed to create machine");
+    fail_unless(mix_word_value(mix_machine_read_ra(m, &w), 5 /* (0:5) */) == 0, "ra wasn't empty");
+    fail_unless(mix_word_value(mix_machine_read_rx(m, &w), 5 /* (0:5) */) == 0, "rx wasn't empty");
+    for (i = 1; i <= 6; i++) {
+        fail_unless(mix_word_value(mix_machine_read_ri(m, &w, i), 5 /* (0:5) */) == 0, "r%d wasn't empty", i);
+    }
 }
 END_TEST
 

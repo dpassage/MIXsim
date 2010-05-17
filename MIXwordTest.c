@@ -87,6 +87,31 @@ START_TEST(test_word_clear)
 }
 END_TEST
 
+START_TEST(test_word_value)
+{
+    mix_word *w = mix_word_create();
+    mix_word_set(w, "- 13 23 18 03 00");
+    
+    fail_unless(mix_word_value(w,  2 /* (0:2) */) == -1323);
+    fail_unless(mix_word_value(w,  1 /* (0:1) */) ==   -13);
+    fail_unless(mix_word_value(w,  9 /* (1:1) */) ==    13);
+    fail_unless(mix_word_value(w, 37 /* (4:5) */) ==   300);
+    fail_unless(mix_word_value(w, 28 /* (3:4) */) ==  1803);
+    fail_unless(mix_word_value(w, 45 /* (5:5) */) ==     0);
+}
+END_TEST
+
+START_TEST(test_word_set_value)
+{
+    mix_word *w = mix_word_create();
+    mix_word_set(w, "- 13 23 18 03 00");
+    
+    mix_word_set_value(w, 19 /* (2:3) */, 500);
+    fail_unless(strcmp(mix_word_tostring(w), "- 13 05 00 03 00") == 00, "setting 2:3 to 500 didn't work");
+}
+END_TEST
+
+
 Suite *mix_word_suite(void)
 {
 	Suite *s = suite_create("mix_word");
@@ -97,6 +122,8 @@ Suite *mix_word_suite(void)
     tcase_add_test (tc_core, test_word_string_setter);
 	tcase_add_test (tc_core, test_word_render);	
 	tcase_add_test (tc_core, test_word_clear);
+    tcase_add_test (tc_core, test_word_value);
+    tcase_add_test (tc_core, test_word_set_value);
 	suite_add_tcase (s, tc_core);
 
 	return s;

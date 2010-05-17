@@ -102,7 +102,7 @@
 		6BF32D26119F8FA700AAC892 /* mix_machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_machine.h; sourceTree = "<group>"; };
 		6BF32D27119F8FA700AAC892 /* mix_machine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_machine.c; sourceTree = "<group>"; };
 		6BF32DAB119FBFE200AAC892 /* mix_opcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_opcodes.h; sourceTree = "<group>"; };
-		6BF32E6F11A0554800AAC892 /* MIXas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = MIXas; path = build/Debug/MIXas; sourceTree = "<group>"; };
+		6BF32E6F11A0554800AAC892 /* MIXas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIXas; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF32E9811A057B000AAC892 /* program_p.mixal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = program_p.mixal; path = testdata/program_p.mixal; sourceTree = "<group>"; };
 		6BF32EA111A05F4900AAC892 /* program_p.mix */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = program_p.mix; path = testdata/program_p.mix; sourceTree = "<group>"; };
 		6BF32EA311A0610100AAC892 /* program_p.loadtest_output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = program_p.loadtest_output; path = testdata/program_p.loadtest_output; sourceTree = "<group>"; };
