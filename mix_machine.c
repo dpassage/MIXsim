@@ -171,11 +171,17 @@ int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i) {
 int mix_machine_execute(mix_machine *mix)
 {
 	mix_word instr = mix->words[mix->ip];
-	int opcode = instr.bytes[5];
-	int m = (instr.bytes[1] * 100) + instr.bytes[2] * 
-            (instr.bytes[0] == MIX_WORD_MINUS ? -1 : 1);
-    int f = instr.bytes[4];
-    int i;
+	int opcode = mix_word_value(&instr, 45 /* (5:5) */);
+	int m =      mix_word_value(&instr,  2 /* (0:2) */);
+    int f =      mix_word_value(&instr, 36 /* (4:4) */);
+    int i =      mix_word_value(&instr, 27 /* (3:3) */);
+    
+    if (i > 6) {
+        return MIX_M_ERROR;
+    }
+    if (i > 0) {
+        m += mix_word_value(&(mix->ri[i]), 5 /* (0:5) */);
+    }
 	
 	switch (opcode) {
         case MIX_OP_05:
