@@ -30,7 +30,6 @@ void mix_machine_set_ip(mix_machine *m, int loc);
 int mix_machine_get_ip(mix_machine *m);
 int mix_machine_execute(mix_machine *m);
 mix_word *mix_machine_read_ri(mix_machine *m, mix_word *w, int i);
-mix_word *mix_machine_read_r1(mix_machine *m, mix_word *w);
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w);
 mix_word *mix_machine_read_rx(mix_machine *m, mix_word *w);
 
@@ -44,7 +43,6 @@ int mix_machine_instr_HLT (mix_machine *mix, int f, int m);
 int mix_machine_instr_IOC (mix_machine *mix, int f, int m);
 int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_LDi (mix_machine *mix, int f, int m, int i);
-int mix_machine_instr_LD1 (mix_machine *mix, int f, int m);
 int mix_machine_instr_LDA (mix_machine *mix, int f, int m);
 int mix_machine_instr_LDX (mix_machine *mix, int f, int m);
 

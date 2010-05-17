@@ -71,10 +71,6 @@ mix_word *mix_machine_read_ri(mix_machine *m, mix_word *w, int i) {
     return w;
 }
     
-mix_word *mix_machine_read_r1(mix_machine *m, mix_word *w) {	
-	return mix_machine_read_ri(m, w, 1);
-}
-
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w) {
 	*w = m->ra;
 	return w;

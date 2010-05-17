@@ -3,7 +3,7 @@
 - refactor machine.c - one function per instruction
 - Refactor machine unit tests - move instructions to different test suite
 - refactor instruction unit tests to have setup clause
-* refactor instruction unit tests to directly call instruction function
-* add tests for LDi instruction
-* define LDi instruction
+- refactor instruction unit tests to directly call instruction function
+- add tests for LDi instruction
+- define LDi instruction
 * Look for constants to change to enums
