@@ -13,6 +13,7 @@
 #include "MIXassemblerTest.h"
 #include "mix_device_test.h"
 #include "mix_instructions_test.h"
+#include "mix_instr_decode_test.h"
 #include "MIXmachineTest.h"
 #include "MIXwordTest.h"
 
@@ -25,8 +26,7 @@ int main(int argc, char *argv[])
 	srunner_add_suite(sr, mix_machine_suite());
     srunner_add_suite(sr, mix_instructions_suite());
 	srunner_add_suite(sr, mix_device_suite());
-    
-	srunner_set_fork_status (sr, CK_NOFORK);
+    srunner_add_suite(sr, mix_instr_decode_suite());
 
 	srunner_run_all(sr, CK_NORMAL);
 	number_failed = srunner_ntests_failed(sr);

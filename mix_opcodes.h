@@ -19,6 +19,14 @@
 #define MIX_OP_LD5  13
 #define MIX_OP_LD6  14
 #define	MIX_OP_LDX  15
+#define MIX_OP_STA  24
+#define MIX_OP_ST1  25
+#define MIX_OP_ST2  26
+#define MIX_OP_ST3  27
+#define MIX_OP_ST4  28
+#define MIX_OP_ST5  29
+#define MIX_OP_ST6  30
+#define MIX_OP_STX  31
 #define MIX_OP_IOC  35
 #define MIX_OP_ADRA 48
 #define MIX_OP_ADR1 49

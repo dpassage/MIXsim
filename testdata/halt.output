@@ -1,5 +1,5 @@
 Locations loaded: 1
 Starting instruction: 3000
-Running instr 3000
+Running instr 3000: HLT  
 Program halted!
 Time elapsed = 1

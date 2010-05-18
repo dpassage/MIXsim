@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B2C4D2C11A209500051952E /* mix_instr_decode_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B2C4D2B11A209500051952E /* mix_instr_decode_test.c */; };
+		6B2C4D8A11A21A770051952E /* mix_instr_decode.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B2C4D3C11A20B4F0051952E /* mix_instr_decode.c */; };
+		6B2C4D8B11A21A7A0051952E /* mix_instr_decode.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B2C4D3B11A20B4F0051952E /* mix_instr_decode.h */; };
 		6B5B7432119E63630045C0B7 /* MIXsimTestMain.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */; };
 		6B5B7455119E6B260045C0B7 /* libcheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B7454119E6B260045C0B7 /* libcheck.a */; };
 		6B5B7465119E6D550045C0B7 /* liblibMIXsim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B740C119E32660045C0B7 /* liblibMIXsim.a */; };
@@ -84,6 +87,10 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* MIXsim.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MIXsim.c; sourceTree = "<group>"; };
+		6B2C4D2A11A209500051952E /* mix_instr_decode_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_instr_decode_test.h; path = unittests/mix_instr_decode_test.h; sourceTree = "<group>"; };
+		6B2C4D2B11A209500051952E /* mix_instr_decode_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_instr_decode_test.c; path = unittests/mix_instr_decode_test.c; sourceTree = "<group>"; };
+		6B2C4D3B11A20B4F0051952E /* mix_instr_decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_instr_decode.h; sourceTree = "<group>"; };
+		6B2C4D3C11A20B4F0051952E /* mix_instr_decode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_instr_decode.c; sourceTree = "<group>"; };
 		6B5B740C119E32660045C0B7 /* liblibMIXsim.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibMIXsim.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5B7423119E339B0045C0B7 /* libMIXsimTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libMIXsimTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MIXsimTestMain.c; sourceTree = "<group>"; };
@@ -198,6 +205,8 @@
 				6BF32DAB119FBFE200AAC892 /* mix_opcodes.h */,
 				6BF32F0D11A077C700AAC892 /* mix_device.h */,
 				6BF32F0E11A077C700AAC892 /* mix_device.c */,
+				6B2C4D3B11A20B4F0051952E /* mix_instr_decode.h */,
+				6B2C4D3C11A20B4F0051952E /* mix_instr_decode.c */,
 			);
 			name = libMIXsim;
 			sourceTree = "<group>";
@@ -216,6 +225,8 @@
 				6BF32FB111A09C4E00AAC892 /* mix_device_test.c */,
 				6BF3303711A0A92C00AAC892 /* mix_instructions_test.h */,
 				6BF3303811A0A92C00AAC892 /* mix_instructions_test.c */,
+				6B2C4D2A11A209500051952E /* mix_instr_decode_test.h */,
+				6B2C4D2B11A209500051952E /* mix_instr_decode_test.c */,
 			);
 			name = libMIXsimTest;
 			sourceTree = "<group>";
@@ -248,6 +259,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B2C4D8B11A21A7A0051952E /* mix_instr_decode.h in Headers */,
 				6B5B7527119F28B70045C0B7 /* mix_assembler.h in Headers */,
 				6BF32D28119F8FA700AAC892 /* mix_machine.h in Headers */,
 				6BF32DAC119FBFE200AAC892 /* mix_opcodes.h in Headers */,
@@ -399,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B2C4D8A11A21A770051952E /* mix_instr_decode.c in Sources */,
 				6B5B753F119F2B440045C0B7 /* mix_word.c in Sources */,
 				6B5B7528119F28B70045C0B7 /* mix_assembler.c in Sources */,
 				6BF32D29119F8FA700AAC892 /* mix_machine.c in Sources */,
@@ -416,6 +429,7 @@
 				6BF32D1B119F8CD900AAC892 /* MIXmachineTest.c in Sources */,
 				6BF32FB211A09C4E00AAC892 /* mix_device_test.c in Sources */,
 				6BF3303911A0A92C00AAC892 /* mix_instructions_test.c in Sources */,
+				6B2C4D2C11A209500051952E /* mix_instr_decode_test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

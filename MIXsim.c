@@ -50,7 +50,6 @@ int main (int argc, const char * argv[]) {
     printf("Starting instruction: %d\n", ip);
     
     do {
-        printf("Running instr %d\n", mix_machine_get_ip(m));
         ret = mix_machine_execute(m);
     } while (ret == MIX_M_OK);
     

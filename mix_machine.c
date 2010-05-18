@@ -7,8 +7,10 @@
  *
  */
 
+#include <stdio.h>
 #include <stdlib.h>
 
+#include "mix_instr_decode.h"
 #include "mix_machine.h"
 #include "mix_opcodes.h"
 #include "mix_word.h"
@@ -61,7 +63,6 @@ int mix_machine_get_ip(mix_machine *m)
 	return m->ip;
 }
 
-
 int mix_machine_get_time(mix_machine *m) {
 	return m->time;
 }
@@ -94,7 +95,6 @@ void mix_load_reg(mix_word *reg, mix_word *mem, int f) {
 		reg->bytes[0] = MIX_WORD_PLUS;
 	}
 	
-	/* (1:4) 1->2 2->3 3->4 4->5 */
 	int tocopy = (fieldright - fieldleft) + 1;
 	int tobyte = 5;
 	int frombyte = fieldright;
@@ -167,6 +167,15 @@ int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i) {
 int mix_machine_execute(mix_machine *mix)
 {
 	mix_word instr = mix->words[mix->ip];
+    char mix_instr_text[100];
+
+    printf("Running instr %d: ", mix->ip);
+    if (mix_instr_decode(&instr, mix_instr_text) == NULL) {
+        printf("Could not decode instruction %s\n", mix_word_tostring(&instr)); 
+    } else {
+        printf("%s\n", mix_instr_text); 
+    }
+    
 	int opcode = mix_word_value(&instr, 45 /* (5:5) */);
 	int m =      mix_word_value(&instr,  2 /* (0:2) */);
     int f =      mix_word_value(&instr, 36 /* (4:4) */);
