@@ -91,6 +91,8 @@
 		6B2C4D2B11A209500051952E /* mix_instr_decode_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_instr_decode_test.c; path = unittests/mix_instr_decode_test.c; sourceTree = "<group>"; };
 		6B2C4D3B11A20B4F0051952E /* mix_instr_decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_instr_decode.h; sourceTree = "<group>"; };
 		6B2C4D3C11A20B4F0051952E /* mix_instr_decode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_instr_decode.c; sourceTree = "<group>"; };
+		6B2C4E6E11A2345F0051952E /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		6B2C4E7111A237E10051952E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6B5B740C119E32660045C0B7 /* liblibMIXsim.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibMIXsim.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5B7423119E339B0045C0B7 /* libMIXsimTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libMIXsimTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5B7431119E63630045C0B7 /* MIXsimTestMain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MIXsimTestMain.c; sourceTree = "<group>"; };
@@ -246,6 +248,8 @@
 		C6A0FF2B0290797F04C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
+				6B2C4E6E11A2345F0051952E /* README */,
+				6B2C4E7111A237E10051952E /* LICENSE */,
 				C6A0FF2C0290799A04C91782 /* MIXsim.1 */,
 				6B5B7499119E77120045C0B7 /* TODO */,
 			);

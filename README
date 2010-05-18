@@ -1,0 +1,20 @@
+MIXsim Copyright 2010 David G. Paschich (dpassage@flophouse.com).
+
+For what it's worth, this program is available under a license equivalent
+to the BSD 2-clause license; see LICENSE.
+
+The MIX machine itself was defined by Donald Knuth in his work "The Art
+of Computer Programming".  He uses the machine, and the assembly language
+that goes with it, to illustrate the algorithms in the book.
+
+I'm working from Volume 2, "Seminumerical Algorithms", of the first edition,
+published in 1969 [Knuth1969V2].  I understand that there's an assembler for 
+MIX written in MIX in another volume, but this is the only one I have to hand.
+
+Non-trivial test programs in the "testdata" directory are identified by
+author, with references below.  Given the nature of this work, I hope that
+the authors of the test programs will allow me to continure to distribute them;
+if not, please contact me above.
+
+[KNUTH1969V2] Knuth, Donald E. 1969. "The Art of Computer Programming, Volume 
+    2: Seminumerical Algorithms". Addison-Wesley, Reading, Massachusetts.
