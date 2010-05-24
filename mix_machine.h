@@ -33,6 +33,8 @@ mix_word *mix_machine_read_ri(mix_machine *m, mix_word *w, int i);
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w);
 mix_word *mix_machine_read_rx(mix_machine *m, mix_word *w);
 
+void mix_machine_load_ri(mix_machine *m, mix_word *w, int i);
+
 void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit);
 mix_device *mix_machine_device_get(mix_machine *m, int unit);
 
@@ -45,6 +47,6 @@ int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_LDi (mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_LDA (mix_machine *mix, int f, int m);
 int mix_machine_instr_LDX (mix_machine *mix, int f, int m);
-
+int mix_machine_instr_STi (mix_machine *mix, int f, int m, int i);
 
 #endif /* MIX_MACHINE_H */

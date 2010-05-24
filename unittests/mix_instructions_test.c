@@ -122,13 +122,13 @@ START_TEST(test_LDX_instruction)
 END_TEST
 
 static struct load_reg_case load_smallreg_cases[]  = {
-	{  5 /* (0:5) */, "- 00 00 00 05 04"},
-	{ 13 /* (1:5) */, "+ 00 00 00 05 04"},
-	{ 29 /* (3:5) */, "+ 00 00 00 05 04"},
-	{  3 /* (0:3) */, "- 00 00 00 80 03"},
-	{ 36 /* (4:4) */, "+ 00 00 00 00 05"},
-	{  0 /* (0:0) */, "- 00 00 00 00 00"},
-	{ -1, NULL}
+    {  5 /* (0:5) */, "- 00 00 00 05 04"},
+    { 13 /* (1:5) */, "+ 00 00 00 05 04"},
+    { 29 /* (3:5) */, "+ 00 00 00 05 04"},
+    {  3 /* (0:3) */, "- 00 00 00 80 03"},
+    { 36 /* (4:4) */, "+ 00 00 00 00 05"},
+    {  0 /* (0:0) */, "- 00 00 00 00 00"},
+    { -1, NULL }
 };
 
 START_TEST(test_LDi_instructions)
@@ -162,7 +162,60 @@ START_TEST(test_LDi_instructions)
             fail_unless(mix_machine_get_time(mix) - time == 2, 
                         "Instruction did not take right amount of time");
             fail_unless(strcmp(result, load_smallreg_cases[j].result) == 0, 
-                        "Expected to read %s got %s", load_smallreg_cases[j].result, result);
+                        "Case %d: Expected to read %s got %s", j, load_smallreg_cases[j].result, result);
+            
+        }        
+    }
+}
+END_TEST
+
+static struct load_reg_case store_smallreg_cases[] = {
+	{ MIX_F(0, 5) , "+ 00 00 00 09 00"},
+	{ MIX_F(1, 5) , "- 00 00 00 09 00"},
+	{ MIX_F(5, 5) , "- 01 02 03 04 00"},
+	{ MIX_F(2, 2) , "- 01 00 03 04 05"},
+	{ MIX_F(2, 3) , "- 01 09 00 04 05"},
+	{ MIX_F(0, 1) , "+ 00 02 03 04 05"},
+	{ -1, NULL}
+};
+
+START_TEST(test_STi_instructions)
+{
+	mix_word *w = mix_word_create();
+    mix_word *loc2000word = mix_word_create();
+	char *loc2000val = "- 01 02 03 04 05";
+    char *regval = "+ 00 00 00 09 00";
+	char *result;
+	int time;
+    int ret;
+	
+    mix_word_set(loc2000word, loc2000val);
+    
+    for (int i = 1; i <= 6; i++) {
+        
+        mix_word_set(w, regval);
+        mix_machine_load_ri(mix, w, i);
+        
+        for (int j = 0; load_smallreg_cases[j].f != -1; j++) {
+            
+            mix_machine_load_mem(mix, loc2000word, 2000);
+            
+            time = mix_machine_get_time(mix);
+            mix_machine_set_ip(mix, 3000);
+            
+            ret = mix_machine_instr_STi(mix, store_smallreg_cases[j].f, 2000, i);
+            
+            fail_unless(ret == MIX_M_OK, "machine returned error");
+            
+            w = mix_machine_read_mem(mix, w, 2000);
+            result = mix_word_tostring(w);
+            
+            fail_unless(mix_machine_get_ip(mix) == 3001, 
+                        "Instruction did not execute");
+            fail_unless(mix_machine_get_time(mix) - time == 2, 
+                        "Instruction did not take right amount of time");
+            fail_unless(strcmp(result, store_smallreg_cases[j].result) == 0, 
+                        "Case %d: Expected to read %s got %s", j, load_smallreg_cases[j].result, result);
             
         }        
     }
@@ -271,6 +324,7 @@ Suite *mix_instructions_suite(void)
     tcase_add_test (tc_core, test_LDi_instructions);
 	tcase_add_test (tc_core, test_LDA_instruction);
 	tcase_add_test (tc_core, test_LDX_instruction);
+    tcase_add_test (tc_core, test_STi_instructions);
     tcase_add_test (tc_core, test_HLT_instruction);
     tcase_add_test (tc_core, test_IOC_instruction);
     tcase_add_test (tc_core, test_IOC_unknown_device);

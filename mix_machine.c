@@ -42,7 +42,7 @@ void mix_machine_destroy(mix_machine *m) {
 
 void mix_machine_load_mem(mix_machine *m, mix_word *w, int loc)
 {
-	m->words[loc] = *w;
+ 	m->words[loc] = *w;
 	return;
 }
 
@@ -71,7 +71,14 @@ mix_word *mix_machine_read_ri(mix_machine *m, mix_word *w, int i) {
     *w = m->ri[i];
     return w;
 }
-    
+
+void mix_machine_load_ri(mix_machine *m, mix_word *w, int i) {
+    m->ri[i] = *w;
+    m->ri[i].bytes[1] = 0;
+    m->ri[i].bytes[2] = 0;
+    m->ri[i].bytes[3] = 0;
+}
+
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w) {
 	*w = m->ra;
 	return w;
@@ -164,6 +171,27 @@ int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i) {
     return MIX_M_OK;
 }
 
+int mix_machine_instr_STi (mix_machine *mix, int f, int m, int i) {
+    mix_word *reg = &(mix->ri[i]);
+    mix_word *mem = &(mix->words[m]);
+    int left = f / 8;
+    int right = f % 8;
+    
+    if (left == 0) {
+        mem->bytes[0] = reg->bytes[0];
+        left++;
+    }
+    
+    for (int j = 5; right >= left; j--, right--) {
+        mem->bytes[right] = reg->bytes[j];
+    }
+    
+    mix->ip++;
+    mix->time += 2;
+    return MIX_M_OK;
+}
+
+
 int mix_machine_execute(mix_machine *mix)
 {
 	mix_word instr = mix->words[mix->ip];
@@ -214,6 +242,15 @@ int mix_machine_execute(mix_machine *mix)
 		case MIX_OP_LDX:
             return mix_machine_instr_LDX(mix, f, m);
 			break;
+        case MIX_OP_ST1:
+        case MIX_OP_ST2:
+        case MIX_OP_ST3:
+        case MIX_OP_ST4:
+        case MIX_OP_ST5:
+        case MIX_OP_ST6:
+            i = opcode - MIX_OP_STA;
+            return mix_machine_instr_STi(mix, f, m, i);
+            break;
         case MIX_OP_IOC:
             return mix_machine_instr_IOC(mix, f, m);
             break;
