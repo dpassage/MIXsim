@@ -28,6 +28,14 @@
 #define MIX_OP_ST6  30
 #define MIX_OP_STX  31
 #define MIX_OP_IOC  35
+#define MIX_OP_JA   40
+#define MIX_OP_J1   41
+#define MIX_OP_J2   42
+#define MIX_OP_J3   43
+#define MIX_OP_J4   44
+#define MIX_OP_J5   45
+#define MIX_OP_J6   46
+#define MIX_OP_JX   47
 #define MIX_OP_ADRA 48
 #define MIX_OP_ADR1 49
 #define MIX_OP_ADR2 50

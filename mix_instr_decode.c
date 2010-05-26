@@ -13,8 +13,20 @@
 #include "mix_opcodes.h"
 #include "mix_instr_decode.h"
 
+static const char regtrans[] = {
+    'A',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    'X'
+};
+
 static char *opcode_05(char *, int, int);
 static char *opcode_addr_trans(char *, int, int);
+static char *opcode_jreg_trans(char *, int, int);
 
 static char *field_omitted(char *, int, int); /* field is usually omitted */
 static char *field_standard(char *, int, int); /* field in standard (l:r) notation */
@@ -85,6 +97,27 @@ static char *opcode_addr_trans(char *buf, int f, int c) {
     return buf;
 }
 
+static char *opcode_jreg_trans(char *buf, int f, int c) {
+    buf[0] = 'J';
+    buf[1] = regtrans[c - MIX_OP_JA];
+    switch (f) {
+        case 0:
+            buf[2] = 'N';
+            buf[3] = ' ';
+            break;
+        case 1:
+            buf[2] = 'Z';
+            buf[3] = ' ';
+            break;
+        default:
+            return NULL;
+            break;
+    }
+    buf[4] = ' ';
+    buf[5] = '\0';
+    return buf;
+}
+
 static char* field_omitted(char *buf, int f, int c) {
     buf[0] = '\0';
     return buf;
@@ -151,7 +184,7 @@ struct mix_decoding_struct {
     /*38*/  { 0, 0, 0 },
     /*39*/  { 0, 0, 0 },
     /*40*/  { 0, 0, 0 },
-    /*41*/  { 0, 0, 0 },
+    /*41*/  { 0, opcode_jreg_trans, field_omitted },
     /*42*/  { 0, 0, 0 },
     /*43*/  { 0, 0, 0 },
     /*44*/  { 0, 0, 0 },
