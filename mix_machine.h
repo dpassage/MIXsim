@@ -48,6 +48,7 @@ void mix_load_reg(mix_word *reg, mix_word *mem, int f);
 int mix_machine_instr_HLT (mix_machine *mix, int f, int m);
 int mix_machine_instr_IOC (mix_machine *mix, int f, int m);
 int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i);
+int mix_machine_instr_Ji  (mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_JMP (mix_machine *mix, int f, int m);
 int mix_machine_instr_LDi (mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_LDA (mix_machine *mix, int f, int m);

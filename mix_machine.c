@@ -200,6 +200,47 @@ int mix_machine_instr_JMP (mix_machine *mix, int f, int m) {
     return MIX_M_OK;
 }
 
+int mix_machine_instr_Ji (mix_machine *mix, int f, int m, int i) {
+    switch (f) {
+        case 0: /* N */
+            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) < 0) {
+                return mix_machine_instr_JMP(mix, f, m);
+            }
+            break;
+        case 1: /* Z */
+            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) == 0) {
+                return mix_machine_instr_JMP(mix, f, m);
+            }
+            break;
+        case 2: /* P */
+            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) > 0) {
+                return mix_machine_instr_JMP(mix, f, m);
+            }
+            break;
+        case 3: /* NN */
+            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) >= 0) {
+                return mix_machine_instr_JMP(mix, f, m);
+            }
+            break;
+        case 4: /* NZ */
+            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) != 0) {
+                return mix_machine_instr_JMP(mix, f, m);
+            }
+            break;
+        case 5: /* NP */
+            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) <= 0) {
+                return mix_machine_instr_JMP(mix, f, m);
+            }
+            break;
+        default:
+            return MIX_M_ERROR;
+            break;
+    }
+    mix->ip++;
+    mix->time++;
+    return MIX_M_OK;
+}
+
 int mix_machine_execute(mix_machine *mix)
 {
 	mix_word instr = mix->words[mix->ip];
@@ -261,6 +302,15 @@ int mix_machine_execute(mix_machine *mix)
             break;
         case MIX_OP_IOC:
             return mix_machine_instr_IOC(mix, f, m);
+            break;
+        case MIX_OP_J1:
+        case MIX_OP_J2:
+        case MIX_OP_J3:
+        case MIX_OP_J4:
+        case MIX_OP_J5:
+        case MIX_OP_J6:
+            i = opcode - MIX_OP_JA;
+            return mix_machine_instr_Ji(mix, f, m, i);
             break;
         case MIX_OP_ADR1:
         case MIX_OP_ADR2:
