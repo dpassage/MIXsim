@@ -18,10 +18,7 @@
 struct mix_machine {
 	int ip;
 	unsigned int time;
-    mix_word ri[7]; /* only 1-6 used */
-	mix_word ra;
-	mix_word rx;
-    mix_word rj;
+    mix_word ri[9]; /* 0 is ra; 7 is rx; 8 is rj */
 	mix_word words[4000];
     mix_device *devices[20];
 };
@@ -29,9 +26,7 @@ struct mix_machine {
 mix_machine *mix_machine_create(void)
 {
     mix_machine *m = (mix_machine *)malloc(sizeof(mix_machine));
-    mix_word_clear(&(m->ra));
-    mix_word_clear(&(m->rx));
-    for (int i = 1; i <= 6; i++) {
+    for (int i = 0; i <= 8; i++) {
         mix_word_clear(&(m->ri[i]));
     }
     return m;
@@ -81,17 +76,17 @@ void mix_machine_load_ri(mix_machine *m, mix_word *w, int i) {
 }
 
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w) {
-	*w = m->ra;
+	*w = m->ri[0];
 	return w;
 }
 
 mix_word *mix_machine_read_rx(mix_machine *m, mix_word *w) {
-	*w = m->rx;
+	*w = m->ri[7];
 	return w;
 }
 
 mix_word *mix_machine_read_rj(mix_machine *m, mix_word *w) {
-    *w = m->rj;
+    *w = m->ri[8];
     return w;
 }
 
@@ -152,14 +147,14 @@ int mix_machine_instr_LDi(mix_machine *mix, int f, int m, int i) {
 }
 
 int mix_machine_instr_LDA(mix_machine *mix, int f, int m) {
-    mix_load_reg(&(mix->ra), &(mix->words[m]), f);
+    mix_load_reg(&(mix->ri[0]), &(mix->words[m]), f);
     mix->time = mix->time + 2;
     mix->ip++;
     return MIX_M_OK;
 }
 
 int mix_machine_instr_LDX(mix_machine *mix, int f, int m) {
-    mix_load_reg(&(mix->rx), &(mix->words[m]), f);
+    mix_load_reg(&(mix->ri[7]), &(mix->words[m]), f);
     mix->time = mix->time + 2;
     mix->ip++;
     return MIX_M_OK;
@@ -199,7 +194,7 @@ int mix_machine_instr_STi (mix_machine *mix, int f, int m, int i) {
 }
 
 int mix_machine_instr_JMP (mix_machine *mix, int f, int m) {
-    mix_word_set_value(&(mix->rj), MIX_F(0, 2), mix->ip + 1);
+    mix_word_set_value(&(mix->ri[8]), MIX_F(0, 2), mix->ip + 1);
     mix->ip = m;
     mix->time++;
     return MIX_M_OK;
