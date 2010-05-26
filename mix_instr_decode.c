@@ -142,26 +142,27 @@ struct mix_decoding_struct {
     char *opstr;
     char *(*opcode)(char *, int, int);
     char *(*field)(char *, int, int);
+    int printaddr;
 } mix_decoding_table[] = {
-    /*00*/  { "NOP  ", 0, field_omitted },
-    /*01*/  { 0, 0, 0 },
-    /*02*/  { 0, 0, 0 },
-    /*03*/  { 0, 0, 0 },
-    /*04*/  { 0, 0, 0 },
-    /*05*/  { 0, opcode_05, field_omitted },
-    /*06*/  { 0, 0, 0 },
-    /*07*/  { 0, 0, 0 },
-    /*08*/  { "LDA  ", 0, field_standard },
-    /*09*/  { "LD1  ", 0, field_standard },
-    /*10*/  { "LD2  ", 0, field_standard },
-    /*11*/  { 0, 0, 0 },
-    /*12*/  { 0, 0, 0 },
-    /*13*/  { 0, 0, 0 },
-    /*14*/  { 0, 0, 0 },
-    /*15*/  { 0, 0, 0 },
-    /*16*/  { 0, 0, 0 },
-    /*17*/  { 0, 0, 0 },
-    /*18*/  { 0, 0, 0 },
+    /*00*/  { "NOP  ", 0, field_omitted, 0 },
+    /*01*/  { 0, 0, 0, 0},
+    /*02*/  { 0, 0, 0, 0 },
+    /*03*/  { 0, 0, 0, 0 },
+    /*04*/  { 0, 0, 0, 0 },
+    /*05*/  { 0, opcode_05, field_omitted, 0 },
+    /*06*/  { 0, 0, 0, 0 },
+    /*07*/  { 0, 0, 0, 0 },
+    /*08*/  { "LDA  ", 0, field_standard, 0 },
+    /*09*/  { "LD1  ", 0, field_standard , 0},
+    /*10*/  { "LD2  ", 0, field_standard, 0 },
+    /*11*/  { 0, 0, 0, 0 },
+    /*12*/  { 0, 0, 0, 0 },
+    /*13*/  { 0, 0, 0, 0 },
+    /*14*/  { 0, 0, 0, 0 },
+    /*15*/  { 0, 0, 0, 0 },
+    /*16*/  { 0, 0, 0, 0 },
+    /*17*/  { 0, 0, 0, 0 },
+    /*18*/  { 0, 0, 0, 0 },
     /*19*/  { 0, 0, 0 },
     /*20*/  { 0, 0, 0 },
     /*21*/  { 0, 0, 0 },
@@ -191,7 +192,7 @@ struct mix_decoding_struct {
     /*45*/  { 0, 0, 0 },
     /*46*/  { 0, 0, 0 },
     /*47*/  { 0, 0, 0 },
-    /*48*/  { 0, 0, 0 },
+    /*48*/  { 0, opcode_addr_trans, field_omitted, 1 },
     /*49*/  { 0, opcode_addr_trans, field_omitted },
     /*50*/  { 0, opcode_addr_trans, field_omitted },
     /*51*/  { 0, opcode_addr_trans, field_omitted },
@@ -247,7 +248,7 @@ char *mix_instr_decode(mix_word *w, char *buffer) {
     if (mix_opcode_decoder(instrbuf, a, i, f, c) == NULL) {
         return NULL;
     } 
-    if (a != 0) {
+    if (a != 0 || mix_decoding_table[c].printaddr == 1) {
         sprintf(addrbuf, "%d", a);
     } else {
         addrbuf[0] = '\0';

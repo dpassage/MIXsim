@@ -63,9 +63,8 @@ int mix_machine_get_time(mix_machine *m) {
 	return m->time;
 }
 
-mix_word *mix_machine_read_ri(mix_machine *m, mix_word *w, int i) {
-    *w = m->ri[i];
-    return w;
+void mix_machine_load_ra(mix_machine *m, mix_word *w) {
+    m->ri[0] = *w;
 }
 
 void mix_machine_load_ri(mix_machine *m, mix_word *w, int i) {
@@ -78,6 +77,11 @@ void mix_machine_load_ri(mix_machine *m, mix_word *w, int i) {
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w) {
 	*w = m->ri[0];
 	return w;
+}
+
+mix_word *mix_machine_read_ri(mix_machine *m, mix_word *w, int i) {
+    *w = m->ri[i];
+    return w;
 }
 
 mix_word *mix_machine_read_rx(mix_machine *m, mix_word *w) {
@@ -322,6 +326,7 @@ int mix_machine_execute(mix_machine *mix)
             i = opcode - MIX_OP_JA;
             return mix_machine_instr_Ji(mix, f, m, i);
             break;
+        case MIX_OP_ADRA:
         case MIX_OP_ADR1:
         case MIX_OP_ADR2:
         case MIX_OP_ADR3:

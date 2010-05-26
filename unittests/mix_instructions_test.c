@@ -340,6 +340,32 @@ START_TEST(test_ENTi_instructions)
 }
 END_TEST
 
+START_TEST(test_ENTA_instruction) 
+{
+	mix_word w;
+    int ret;
+    int time;
+    
+    mix_word_set(&w, "+ 00 00 00 02 48"); /* ENTA 0 */
+    mix_machine_load_mem(mix, &w, 3000);
+    
+    mix_word_clear(&w);
+    mix_word_set_value(&w, MIX_F(0, 5), 12);
+    mix_machine_load_ra(mix, &w);
+    
+    mix_machine_set_ip(mix, 3000);
+    time = mix_machine_get_time(mix);
+    
+    ret = mix_machine_execute(mix);
+	fail_unless	(ret == MIX_M_OK, "ENTA should have executed");
+    fail_unless (mix_machine_get_time(mix) - time == 1, "ENTA should have taken one tick");
+    fail_unless (mix_machine_get_ip(mix) == 3001, "ENTA should have incremented IP");
+    fail_unless (mix_machine_read_ra(mix, &w) == &w, "could not read ra");
+    fail_unless (mix_word_value(&w, MIX_F(0, 5)) == 0, "ENTA should be 0");
+}
+END_TEST
+
+
 START_TEST(test_JMP_instruction)
 {
     int time = mix_machine_get_time(mix);
@@ -448,6 +474,7 @@ Suite *mix_instructions_suite(void)
     tcase_add_test (tc_core, test_Ji_instructions);
     tcase_add_test (tc_core, test_J1Z_instruction);
     tcase_add_test (tc_core, test_ENTi_instructions);
+    tcase_add_test (tc_core, test_ENTA_instruction);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

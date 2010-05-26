@@ -37,6 +37,7 @@ mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w);
 mix_word *mix_machine_read_rx(mix_machine *m, mix_word *w);
 mix_word *mix_machine_read_rj(mix_machine *m, mix_word *w);
 
+void mix_machine_load_ra(mix_machine *m, mix_word *w);
 void mix_machine_load_ri(mix_machine *m, mix_word *w, int i);
 
 void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit);

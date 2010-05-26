@@ -107,7 +107,7 @@ void mix_word_set_value(mix_word *w, int f, int val) {
         val = -val;
     }
 
-    while (right >= left && val > 0) {
+    while (right >= left) {
         w->bytes[right] = val % 100;
         right--;
         val = val / 100;
