@@ -292,8 +292,10 @@ START_TEST(test_INCi_instructions)
     /* add 9; ensure result is 9 */
     ret = mix_machine_instr_INCi(mix, 0, 9, 1);
     fail_unless(ret == MIX_M_OK, "instr should have succeeded");
-    fail_unless(mix_machine_get_time(mix) - time == 1, "instr took wrong amount of time");
-    fail_unless(mix_machine_get_ip(mix) - ip == 1, "instr should have advanced ip");
+    fail_unless(mix_machine_get_time(mix) - time == 1, 
+                "instr took wrong amount of time");
+    fail_unless(mix_machine_get_ip(mix) - ip == 1, 
+                "instr should have advanced ip");
     w = mix_machine_read_ri(mix, w, 1);
     fail_unless(mix_word_value(w, 5) == 9, "register should be 9");
     
@@ -315,6 +317,24 @@ START_TEST(test_INCi_instructions)
 }
 END_TEST
 
+START_TEST(test_JMP_instruction)
+{
+    int time = mix_machine_get_time(mix);
+    mix_machine_set_ip(mix, 3000);
+    mix_word w;
+    
+    int ret = mix_machine_instr_JMP(mix, 0, 200);
+
+    fail_unless(ret == MIX_M_OK, "JMP instr failed");
+    fail_unless(mix_machine_get_ip(mix) == 200, "JMP failed toset IP");
+    /* ensure time elapsed was 1 */
+    fail_unless(mix_machine_get_time(mix) - time == 1, "time failed to advance");
+    /* ensure reg J is 3001 */
+    fail_unless(mix_machine_read_rj(mix, &w) == &w, "failed to read jump register");
+    fail_unless(mix_word_value(&w, MIX_F(0, 2)) == 3001, "jump register had wrong value");    
+}
+END_TEST
+
 Suite *mix_instructions_suite(void)
 {
 	Suite *s = suite_create("mix_instructions");
@@ -329,6 +349,7 @@ Suite *mix_instructions_suite(void)
     tcase_add_test (tc_core, test_IOC_instruction);
     tcase_add_test (tc_core, test_IOC_unknown_device);
     tcase_add_test (tc_core, test_INCi_instructions);
+    tcase_add_test (tc_core, test_JMP_instruction);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

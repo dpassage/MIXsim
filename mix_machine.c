@@ -21,6 +21,7 @@ struct mix_machine {
     mix_word ri[7]; /* only 1-6 used */
 	mix_word ra;
 	mix_word rx;
+    mix_word rj;
 	mix_word words[4000];
     mix_device *devices[20];
 };
@@ -89,6 +90,11 @@ mix_word *mix_machine_read_rx(mix_machine *m, mix_word *w) {
 	return w;
 }
 
+mix_word *mix_machine_read_rj(mix_machine *m, mix_word *w) {
+    *w = m->rj;
+    return w;
+}
+
 void mix_load_reg(mix_word *reg, mix_word *mem, int f) {
 	
 	mix_word_clear(reg);
@@ -144,6 +150,7 @@ int mix_machine_instr_LDi(mix_machine *mix, int f, int m, int i) {
     mix->ip++;
     return MIX_M_OK;    
 }
+
 int mix_machine_instr_LDA(mix_machine *mix, int f, int m) {
     mix_load_reg(&(mix->ra), &(mix->words[m]), f);
     mix->time = mix->time + 2;
@@ -191,6 +198,12 @@ int mix_machine_instr_STi (mix_machine *mix, int f, int m, int i) {
     return MIX_M_OK;
 }
 
+int mix_machine_instr_JMP (mix_machine *mix, int f, int m) {
+    mix_word_set_value(&(mix->rj), MIX_F(0, 2), mix->ip + 1);
+    mix->ip = m;
+    mix->time++;
+    return MIX_M_OK;
+}
 
 int mix_machine_execute(mix_machine *mix)
 {
