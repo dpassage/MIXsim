@@ -45,6 +45,7 @@ mix_device *mix_machine_device_get(mix_machine *m, int unit);
 void mix_load_reg(mix_word *reg, mix_word *mem, int f);
 
 /* instructions in alpha order by mixal symbol */
+int mix_machine_instr_ENTi(mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_HLT (mix_machine *mix, int f, int m);
 int mix_machine_instr_IOC (mix_machine *mix, int f, int m);
 int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i);

@@ -317,6 +317,29 @@ START_TEST(test_INCi_instructions)
 }
 END_TEST
 
+START_TEST(test_ENTi_instructions) 
+{
+    mix_word *w = mix_word_create();
+    int ret;
+    int time = mix_machine_get_time(mix);
+    int ip = mix_machine_get_ip(mix);
+    
+    /* ensure ri is 0 */
+    w = mix_machine_read_ri(mix, w, 1);
+    fail_unless(mix_word_value(w, MIX_F(0, 5)) == 0, "register didn't start out at 0");
+ 
+    ret = mix_machine_instr_ENTi(mix, 2, 300, 1);
+    fail_unless(ret == MIX_M_OK, "instr should have succeeded");
+    fail_unless(mix_machine_get_time(mix) - time == 1, 
+                "instr took wrong amount of time");
+    fail_unless(mix_machine_get_ip(mix) - ip == 1, 
+                "instr should have advanced ip");
+    w = mix_machine_read_ri(mix, w, 1);
+    fail_unless(mix_word_value(w, 5) == 300, "register should be 9");
+    
+}
+END_TEST
+
 START_TEST(test_JMP_instruction)
 {
     int time = mix_machine_get_time(mix);
@@ -424,6 +447,7 @@ Suite *mix_instructions_suite(void)
     tcase_add_test (tc_core, test_JMP_instruction);
     tcase_add_test (tc_core, test_Ji_instructions);
     tcase_add_test (tc_core, test_J1Z_instruction);
+    tcase_add_test (tc_core, test_ENTi_instructions);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

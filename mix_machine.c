@@ -241,6 +241,16 @@ int mix_machine_instr_Ji (mix_machine *mix, int f, int m, int i) {
     return MIX_M_OK;
 }
 
+int mix_machine_instr_ENTi(mix_machine *mix, int f, int m, int i) {
+    mix_word_set_value(&(mix->ri[i]), MIX_F(0,5), m);
+    mix->ri[i].bytes[1] = 0;
+    mix->ri[i].bytes[2] = 0;
+    mix->ri[i].bytes[3] = 0;
+    mix->ip++;
+    mix->time++;
+    return MIX_M_OK;
+}
+
 int mix_machine_execute(mix_machine *mix)
 {
 	mix_word instr = mix->words[mix->ip];
@@ -322,6 +332,9 @@ int mix_machine_execute(mix_machine *mix)
             switch (f) {
                 case 0: /* INCi */
                     return mix_machine_instr_INCi(mix, f, m, i);
+                    break;
+                case 2: /* ENTi */
+                    return mix_machine_instr_ENTi(mix, f, m, i);
                     break;
                 default:
                     return MIX_M_ERROR;
