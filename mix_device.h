@@ -15,8 +15,8 @@ typedef struct mix_device mix_device;
 /* general for all devices */
 
 void mix_device_control(mix_device *d, int m);
-int mix_device_last_op(mix_device *d);
-int mix_device_get_type(mix_device *d);
+int mix_device_last_op(const mix_device *d);
+int mix_device_get_type(const mix_device *d);
 
 #define MIX_DEVICE_PRINTER 1
 #define MIX_D_P_NEWPAGE 1
