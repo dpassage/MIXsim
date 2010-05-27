@@ -20,7 +20,7 @@ card:   COMMENT  { fprintf(stderr, "Comment!\n"); }
     | line
 ;
 
-line: loc OPCODE address '\n'
+line: loc OPCODE address '\n' { fprintf(stderr, "Line o' code!\n"); }
 ;
 
 loc: /* empty */

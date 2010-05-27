@@ -45,6 +45,10 @@ START_TEST(test_lex_halt)
     int nexttoken = yylex();
     fail_unless(nexttoken == OPCODE, "token should be an opcode");
     fail_unless(strcmp(mixlex_get_token(), "HLT") == 0, "token should be HLT");
+    nexttoken = yylex();
+    fail_unless(nexttoken == '\n', "token should be newline");
+    nexttoken = yylex();
+    fail_unless(nexttoken == 0, "we should be done");
 }
 END_TEST
 

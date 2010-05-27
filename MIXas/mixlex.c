@@ -37,7 +37,8 @@ static enum lexstate {
     LOC_INTOKEN,
     LOC_AFTERTOKEN,
     OPCODE_INTOKEN,
-    OPCODE_AFTERTOKEN
+    OPCODE_AFTERTOKEN,
+    LINEEND
 } lexstate = LINESTART;
 
 void mixlex_reset(void) {
@@ -52,6 +53,10 @@ int yylex (void) {
     int ch;
     char *buf = &tokenbuffer[0];
     
+    if (lexstate == LINEEND) {
+        lexstate = LINESTART;
+        return '\n';
+    }
     while ((ch = (getnextchar)()) != EOF) {
         lex_column++;
         if (lex_column == 1 && ch == '*') {
@@ -69,7 +74,7 @@ int yylex (void) {
             switch (ch) {
                 case '\n':
                     lex_column = 0;
-                    lexstate = LINESTART;
+                    lexstate = LINEEND;
                     /* fallthrough */
                 case ' ':
                     if (lexstate == LOC_INTOKEN) {
@@ -92,7 +97,7 @@ int yylex (void) {
                         lexstate = LOC_AFTERTOKEN;
                         break;
                     case '\n':
-                        lexstate = LINESTART;
+                        lexstate = LINEEND;
                         lex_column = 0;
                     default:
                         if (isupper(ch) || isdigit(ch)) {
@@ -107,7 +112,7 @@ int yylex (void) {
             case LOC_INTOKEN:
                 switch (ch) {
                     case '\n':
-                        lexstate = LINESTART;
+                        lexstate = LINEEND;
                         lex_column = 0;
                         *buf = '\0';
                         buf = &tokenbuffer[0];
@@ -127,7 +132,7 @@ int yylex (void) {
             case OPCODE_INTOKEN:
                     switch (ch) {
                         case '\n':
-                            lexstate = LINESTART;
+                            lexstate = LINEEND;
                             lex_column = 0;
                             *buf = '\0';
                             buf = &tokenbuffer[0];
@@ -150,7 +155,7 @@ int yylex (void) {
 
             default:
                 if (ch == '\n') {
-                    lexstate = LINESTART;
+                    lexstate = LINEEND;
                     lex_column = 0;
                 }
                 break;
