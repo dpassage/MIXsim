@@ -27,7 +27,8 @@ loc: /* empty */
     | SYMBOL
 ;
 
-address: NUMBER
+address: /* empty */ 
+    | NUMBER
 ;
 
 %%

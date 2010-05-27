@@ -12,7 +12,7 @@
 #include "mixlexTest.h"
 
 static int cur = 0;
-static char *testcomment = "* THIS IS A COMMENT\n";
+static char const *testcomment;
 
 static int nextchar(void) {
     if (testcomment[cur] == '\0') {
@@ -21,21 +21,40 @@ static int nextchar(void) {
     
     return (testcomment[cur++]);
 }
-    
-START_TEST(test_lexer)
+
+static void set_test_string(const char *s) {
+    testcomment = s;
+    cur = 0;
+}
+
+START_TEST(test_lex_comment)
 {
+    set_test_string("* THIS IS A COMMENT\n");
+    mixlex_reset();
     mixlex_set_getchar(nextchar);
     int nexttoken = yylex();
     fail_unless(nexttoken == COMMENT, "token should be a comment");
 }
 END_TEST
     
+START_TEST(test_lex_halt)
+{
+    set_test_string("           HLT\n");
+    mixlex_reset();
+    mixlex_set_getchar(nextchar);
+    int nexttoken = yylex();
+    fail_unless(nexttoken == OPCODE, "token should be an opcode");
+    fail_unless(strcmp(mixlex_get_token(), "HLT") == 0, "token should be HLT");
+}
+END_TEST
+
 Suite *mixlex_suite(void)
 {
 	Suite *s = suite_create("mixlex");
 	
 	TCase *tc_core = tcase_create("Core");
-	tcase_add_test (tc_core, test_lexer);
+	tcase_add_test (tc_core, test_lex_comment);
+	tcase_add_test (tc_core, test_lex_halt);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

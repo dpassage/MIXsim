@@ -398,11 +398,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BF32E7311A0556600AAC892 /* Build configuration list for PBXNativeTarget "MIXas" */;
 			buildPhases = (
+				6BD1D3E211AE516600838507 /* ShellScript */,
 				6BF32E6C11A0554800AAC892 /* Sources */,
 				6BF32E6D11A0554800AAC892 /* Frameworks */,
 				6BD1CFCF11ACCE8B00838507 /* CopyFiles */,
 				6BD1CFCE11ACCE6D00838507 /* ShellScript */,
-				6BD1D3E211AE516600838507 /* ShellScript */,
 			);
 			buildRules = (
 			);
