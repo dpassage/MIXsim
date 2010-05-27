@@ -14,18 +14,22 @@
 FILE *inputfile;
 int lex_column = 0;
 char symbolbuffer[11];
+int (*getnextchar)(void);
 
 void mixlex_input(FILE *f) {
     inputfile = f;
 }
+void mixlex_set_getchar(int (*nextchar)(void)) {
+    getnextchar = nextchar;
+}
 
 int yylex (void) {
     
-    char ch = fgetc(inputfile);
+    char ch = (getnextchar)();
     if (lex_column == 0 && ch == '*') {
         /* this is a comment line */
         do {
-            ch = fgetc(inputfile);
+            ch = (getnextchar)();
             if (ch == -1) {
                 return -1;
             }

@@ -24,6 +24,11 @@
 		6BD1CFF111ACD00200838507 /* MIXas.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1CFF011ACD00200838507 /* MIXas.c */; };
 		6BD1D35211AE37C200838507 /* mixal.y in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D35111AE37C200838507 /* mixal.y */; };
 		6BD1D38911AE45AB00838507 /* mixlex.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D38811AE45AB00838507 /* mixlex.c */; };
+		6BD1D3AB11AE4AD900838507 /* libcheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B7454119E6B260045C0B7 /* libcheck.a */; };
+		6BD1D3AE11AE4B4C00838507 /* MIXasTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D3AD11AE4B4C00838507 /* MIXasTest.c */; };
+		6BD1D3B111AE4BAF00838507 /* mixlexTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D3B011AE4BAF00838507 /* mixlexTest.c */; };
+		6BD1D3C611AE4CFC00838507 /* mixal.y in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D35111AE37C200838507 /* mixal.y */; };
+		6BD1D3C711AE4CFC00838507 /* mixlex.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D38811AE45AB00838507 /* mixlex.c */; };
 		6BF32D1B119F8CD900AAC892 /* MIXmachineTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */; };
 		6BF32D28119F8FA700AAC892 /* mix_machine.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF32D26119F8FA700AAC892 /* mix_machine.h */; };
 		6BF32D29119F8FA700AAC892 /* mix_machine.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D27119F8FA700AAC892 /* mix_machine.c */; };
@@ -127,6 +132,10 @@
 		6BD1D35111AE37C200838507 /* mixal.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; name = mixal.y; path = MIXas/mixal.y; sourceTree = "<group>"; };
 		6BD1D38711AE45AB00838507 /* mixlex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mixlex.h; path = MIXas/mixlex.h; sourceTree = "<group>"; };
 		6BD1D38811AE45AB00838507 /* mixlex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mixlex.c; path = MIXas/mixlex.c; sourceTree = "<group>"; };
+		6BD1D3A611AE4AB300838507 /* MIXasTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIXasTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BD1D3AD11AE4B4C00838507 /* MIXasTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXasTest.c; path = MIXas/unittests/MIXasTest.c; sourceTree = "<group>"; };
+		6BD1D3AF11AE4BAF00838507 /* mixlexTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mixlexTest.h; path = MIXas/unittests/mixlexTest.h; sourceTree = "<group>"; };
+		6BD1D3B011AE4BAF00838507 /* mixlexTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mixlexTest.c; path = MIXas/unittests/mixlexTest.c; sourceTree = "<group>"; };
 		6BF32D19119F8CD900AAC892 /* MIXmachineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIXmachineTest.h; path = unittests/MIXmachineTest.h; sourceTree = "<group>"; };
 		6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXmachineTest.c; path = unittests/MIXmachineTest.c; sourceTree = "<group>"; };
 		6BF32D26119F8FA700AAC892 /* mix_machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_machine.h; sourceTree = "<group>"; };
@@ -165,6 +174,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6BD1D3A411AE4AB300838507 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BD1D3AB11AE4AD900838507 /* libcheck.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BF32E6D11A0554800AAC892 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -186,6 +203,7 @@
 		08FB7794FE84155DC02AAC07 /* MIXsim */ = {
 			isa = PBXGroup;
 			children = (
+				6BD1D3AC11AE4AF600838507 /* MIXasTest */,
 				6BD1CFEF11ACCFE000838507 /* MIXas */,
 				6B5B74CA119F105D0045C0B7 /* Test files */,
 				6B5B7417119E32D00045C0B7 /* libMIXsimTest */,
@@ -213,6 +231,7 @@
 				6B5B740C119E32660045C0B7 /* liblibMIXsim.a */,
 				6B5B7423119E339B0045C0B7 /* libMIXsimTest */,
 				6BF32E6F11A0554800AAC892 /* MIXas */,
+				6BD1D3A611AE4AB300838507 /* MIXasTest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -279,6 +298,16 @@
 			name = MIXas;
 			sourceTree = "<group>";
 		};
+		6BD1D3AC11AE4AF600838507 /* MIXasTest */ = {
+			isa = PBXGroup;
+			children = (
+				6BD1D3AD11AE4B4C00838507 /* MIXasTest.c */,
+				6BD1D3AF11AE4BAF00838507 /* mixlexTest.h */,
+				6BD1D3B011AE4BAF00838507 /* mixlexTest.c */,
+			);
+			name = MIXasTest;
+			sourceTree = "<group>";
+		};
 		C6A0FF2B0290797F04C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +371,22 @@
 			productReference = 6B5B7423119E339B0045C0B7 /* libMIXsimTest */;
 			productType = "com.apple.product-type.tool";
 		};
+		6BD1D3A511AE4AB300838507 /* MIXasTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BD1D3AA11AE4AD200838507 /* Build configuration list for PBXNativeTarget "MIXasTest" */;
+			buildPhases = (
+				6BD1D3A311AE4AB300838507 /* Sources */,
+				6BD1D3A411AE4AB300838507 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIXasTest;
+			productName = MIXasTest;
+			productReference = 6BD1D3A611AE4AB300838507 /* MIXasTest */;
+			productType = "com.apple.product-type.tool";
+		};
 		6BF32E6E11A0554800AAC892 /* MIXas */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BF32E7311A0556600AAC892 /* Build configuration list for PBXNativeTarget "MIXas" */;
@@ -400,6 +445,7 @@
 				6B5B740B119E32660045C0B7 /* libMIXsim */,
 				6B5B7422119E339B0045C0B7 /* libMIXsimTest */,
 				6BF32E6E11A0554800AAC892 /* MIXas */,
+				6BD1D3A511AE4AB300838507 /* MIXasTest */,
 			);
 		};
 /* End PBXProject section */
@@ -483,6 +529,17 @@
 				6B69D76A11AA41E9007D5BA8 /* MIXsimTestMain.c in Sources */,
 				6B69D77311AA4233007D5BA8 /* MIXwordTest.c in Sources */,
 				6B69D77411AA4233007D5BA8 /* MIXassemblerTest.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BD1D3A311AE4AB300838507 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BD1D3C611AE4CFC00838507 /* mixal.y in Sources */,
+				6BD1D3C711AE4CFC00838507 /* mixlex.c in Sources */,
+				6BD1D3AE11AE4B4C00838507 /* MIXasTest.c in Sources */,
+				6BD1D3B111AE4BAF00838507 /* mixlexTest.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +716,45 @@
 			};
 			name = Release;
 		};
+		6BD1D3A811AE4AB400838507 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = /opt/local/include;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = MIXasTest;
+			};
+			name = Debug;
+		};
+		6BD1D3A911AE4AB400838507 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = MIXasTest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		6BF32E7111A0554800AAC892 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -724,6 +820,15 @@
 			buildConfigurations = (
 				6B5B7425119E339C0045C0B7 /* Debug */,
 				6B5B7426119E339C0045C0B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BD1D3AA11AE4AD200838507 /* Build configuration list for PBXNativeTarget "MIXasTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BD1D3A811AE4AB400838507 /* Debug */,
+				6BD1D3A911AE4AB400838507 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

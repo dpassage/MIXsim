@@ -13,6 +13,8 @@
 #include <stdio.h>
 
 void mixlex_input(FILE *);
+void mixlex_set_getchar(int (*nextchar)(void));
+
 int yylex(void);
 
 #endif /* MIXLEX_H */
