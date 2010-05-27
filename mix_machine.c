@@ -41,8 +41,7 @@ void mix_machine_destroy(mix_machine *m) {
     free(m);
 }
 
-void mix_machine_load_mem(mix_machine *m, mix_word *w, int loc)
-{
+void mix_machine_load_mem(mix_machine *m, const mix_word *w, int loc) {
  	m->words[loc] = *w;
 	return;
 }
@@ -73,7 +72,7 @@ mix_word *mix_machine_read_ri(mix_machine *m, mix_word *w, int i) {
     return w;
 }
 
-void mix_machine_load_ri(mix_machine *m, mix_word *w, int i) {
+void mix_machine_load_ri(mix_machine *m, const mix_word *w, int i) {
     m->ri[i] = *w;
     m->ri[i].bytes[1] = 0;
     m->ri[i].bytes[2] = 0;
@@ -95,7 +94,7 @@ mix_word *mix_machine_read_rj(mix_machine *m, mix_word *w) {
     return w;
 }
 
-void mix_load_reg(mix_word *reg, mix_word *mem, int f) {
+void mix_load_reg(mix_word *reg, const mix_word *mem, int f) {
 	
 	mix_word_clear(reg);
 	

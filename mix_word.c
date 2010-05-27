@@ -30,12 +30,12 @@ void mix_word_destroy(mix_word *w) {
 }
 
 /* return the sign of the mix word */
-int mix_word_sign(mix_word *w) {
+int mix_word_sign(const mix_word *w) {
 	return w->bytes[0];
 }
 
 /* return the indicated byte of the word */
-int mix_word_byte(mix_word *w, int b) {
+int mix_word_byte(const mix_word *w, int b) {
 	return w->bytes[b];
 }
 
@@ -56,7 +56,7 @@ void mix_word_set(mix_word *w, const char *s) {
 	w->bytes[0] = (sign == '-') ? MIX_WORD_MINUS : MIX_WORD_PLUS;
 }
 
-char *mix_word_tostring(mix_word *w) {
+char *mix_word_tostring(const mix_word *w) {
 	char *ret;
 	char sign = (w->bytes[0] == MIX_WORD_PLUS) ? '+' : '-';
 	
@@ -76,7 +76,7 @@ void mix_word_clear(mix_word *w) {
 	return;
 }
 
-int mix_word_value(mix_word *w, int f) {
+int mix_word_value(const mix_word *w, int f) {
     int sign = 1;
     int accum = 0;
     int left = f / 8;

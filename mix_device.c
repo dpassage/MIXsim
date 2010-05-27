@@ -22,11 +22,11 @@ void mix_device_control(mix_device *d, int m) {
     d->last_op = MIX_D_P_NEWPAGE;
 }
 
-int mix_device_last_op(mix_device *d) {
+int mix_device_last_op(const mix_device *d) {
     return d->last_op;
 }
 
-int mix_device_get_type(mix_device *d) {
+int mix_device_get_type(const mix_device *d) {
     return d->type;
 }
 
