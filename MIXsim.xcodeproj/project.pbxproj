@@ -19,6 +19,7 @@
 		6B69D76A11AA41E9007D5BA8 /* MIXsimTestMain.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D76911AA41E9007D5BA8 /* MIXsimTestMain.c */; };
 		6B69D77311AA4233007D5BA8 /* MIXwordTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D76F11AA4233007D5BA8 /* MIXwordTest.c */; };
 		6B69D77411AA4233007D5BA8 /* MIXassemblerTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D77011AA4233007D5BA8 /* MIXassemblerTest.c */; };
+		6BD1D22711ADF8F200838507 /* mix_machine_callbacks_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D22611ADF8F200838507 /* mix_machine_callbacks_test.c */; };
 		6BF32D1B119F8CD900AAC892 /* MIXmachineTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */; };
 		6BF32D28119F8FA700AAC892 /* mix_machine.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF32D26119F8FA700AAC892 /* mix_machine.h */; };
 		6BF32D29119F8FA700AAC892 /* mix_machine.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D27119F8FA700AAC892 /* mix_machine.c */; };
@@ -106,6 +107,8 @@
 		6B69D77011AA4233007D5BA8 /* MIXassemblerTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXassemblerTest.c; path = unittests/MIXassemblerTest.c; sourceTree = "<group>"; };
 		6B69D77111AA4233007D5BA8 /* MIXassemblerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIXassemblerTest.h; path = unittests/MIXassemblerTest.h; sourceTree = "<group>"; };
 		6B69D77211AA4233007D5BA8 /* MIXwordTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIXwordTest.h; path = unittests/MIXwordTest.h; sourceTree = "<group>"; };
+		6BD1D22511ADF8F200838507 /* mix_machine_callbacks_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_machine_callbacks_test.h; path = unittests/mix_machine_callbacks_test.h; sourceTree = "<group>"; };
+		6BD1D22611ADF8F200838507 /* mix_machine_callbacks_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_machine_callbacks_test.c; path = unittests/mix_machine_callbacks_test.c; sourceTree = "<group>"; };
 		6BF32D19119F8CD900AAC892 /* MIXmachineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIXmachineTest.h; path = unittests/MIXmachineTest.h; sourceTree = "<group>"; };
 		6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXmachineTest.c; path = unittests/MIXmachineTest.c; sourceTree = "<group>"; };
 		6BF32D26119F8FA700AAC892 /* mix_machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_machine.h; sourceTree = "<group>"; };
@@ -229,6 +232,8 @@
 				6BF3303811A0A92C00AAC892 /* mix_instructions_test.c */,
 				6B2C4D2A11A209500051952E /* mix_instr_decode_test.h */,
 				6B2C4D2B11A209500051952E /* mix_instr_decode_test.c */,
+				6BD1D22511ADF8F200838507 /* mix_machine_callbacks_test.h */,
+				6BD1D22611ADF8F200838507 /* mix_machine_callbacks_test.c */,
 			);
 			name = libMIXsimTest;
 			sourceTree = "<group>";
@@ -353,6 +358,9 @@
 /* Begin PBXProject section */
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Balveda Software";
+			};
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "MIXsim" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
@@ -434,6 +442,7 @@
 				6B69D76A11AA41E9007D5BA8 /* MIXsimTestMain.c in Sources */,
 				6B69D77311AA4233007D5BA8 /* MIXwordTest.c in Sources */,
 				6B69D77411AA4233007D5BA8 /* MIXassemblerTest.c in Sources */,
+				6BD1D22711ADF8F200838507 /* mix_machine_callbacks_test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

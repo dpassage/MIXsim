@@ -21,14 +21,24 @@ struct mix_machine {
     mix_word ri[9]; /* 0 is ra; 7 is rx; 8 is rj */
 	mix_word words[4000];
     mix_device *devices[20];
+    
+    void (*callback_exec)(int ip, const mix_word *w);
 };
 
+static void null_callback_exec(int ip, const mix_word *w) {
+    return;
+}
+                               
 mix_machine *mix_machine_create(void)
 {
     mix_machine *m = (mix_machine *)malloc(sizeof(mix_machine));
+
     for (int i = 0; i <= 8; i++) {
         mix_word_clear(&(m->ri[i]));
     }
+    
+    m->callback_exec = null_callback_exec;
+    
     return m;
 }
 
@@ -255,11 +265,17 @@ int mix_machine_instr_ENTi(mix_machine *mix, int f, int m, int i) {
     return MIX_M_OK;
 }
 
+void mix_machine_set_callback_exec(mix_machine *mix, void (*callback_exec)(int ip, const mix_word *instr)) {
+    mix->callback_exec = callback_exec;
+}
+
 int mix_machine_execute(mix_machine *mix)
 {
 	mix_word instr = mix->words[mix->ip];
     char mix_instr_text[100];
 
+    (mix->callback_exec)(mix->ip, &instr);
+    
     printf("Running instr %d: ", mix->ip);
     if (mix_instr_decode(&instr, mix_instr_text) == NULL) {
         printf("Could not decode instruction %s\n", mix_word_tostring(&instr)); 
