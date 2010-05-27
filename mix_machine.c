@@ -272,17 +272,9 @@ void mix_machine_set_callback_exec(mix_machine *mix, void (*callback_exec)(int i
 int mix_machine_execute(mix_machine *mix)
 {
 	mix_word instr = mix->words[mix->ip];
-    char mix_instr_text[100];
 
     (mix->callback_exec)(mix->ip, &instr);
-    
-    printf("Running instr %d: ", mix->ip);
-    if (mix_instr_decode(&instr, mix_instr_text) == NULL) {
-        printf("Could not decode instruction %s\n", mix_word_tostring(&instr)); 
-    } else {
-        printf("%s\n", mix_instr_text); 
-    }
-    
+        
 	int opcode = mix_word_value(&instr, 45 /* (5:5) */);
 	int m =      mix_word_value(&instr,  2 /* (0:2) */);
     int f =      mix_word_value(&instr, 36 /* (4:4) */);

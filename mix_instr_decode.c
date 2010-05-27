@@ -257,7 +257,7 @@ static char *mix_opcode_decoder(char *buffer, int a, int i, int f, int c) {
     return NULL;
 }
 
-char *mix_instr_decode(mix_word *w, char *buffer) {
+char *mix_instr_decode(const mix_word *w, char *buffer) {
     char instrbuf[6];
     char addrbuf[5];
     char idxbuf[5];

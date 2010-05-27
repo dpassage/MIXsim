@@ -12,6 +12,6 @@
 
 #include "mix_word.h"
 
-char *mix_instr_decode(mix_word *w, char *buffer);
+char *mix_instr_decode(const mix_word *w, char *buffer);
 
 #endif /* MIX_INSTR_DECODE */

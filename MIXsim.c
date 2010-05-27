@@ -1,8 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "mix_instr_decode.h"
 #include "mix_machine.h"
 #include "mix_word.h"
+
+static void print_instr_callback(int ip, const mix_word *instr) {
+    char mix_instr_text[100];
+    printf("Running instr %d: ", ip);
+    if (mix_instr_decode(instr, mix_instr_text) == NULL) {
+        printf("Could not decode instruction %s\n", mix_word_tostring(instr)); 
+    } else {
+        printf("%s\n", mix_instr_text); 
+    }
+}
 
 int main (int argc, const char * argv[]) {
     mix_machine *m;
@@ -23,6 +34,7 @@ int main (int argc, const char * argv[]) {
     /* create new machine */
     m = mix_machine_create();
     mix_machine_device_attach(m, mix_device_printer_create(), 18);
+    mix_machine_set_callback_exec(m, print_instr_callback);
     
     /* read start line and set Ip */
     if (fgets(readbuf, 500, infile) != NULL) {
@@ -30,7 +42,6 @@ int main (int argc, const char * argv[]) {
     } else {
         return -1;
     }
-
     
     mix_machine_set_ip(m, ip);
     
