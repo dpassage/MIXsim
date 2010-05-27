@@ -22,6 +22,8 @@
 		6BD1CFCB11ACCE6300838507 /* halt.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EC811A0689D00AAC892 /* halt.mix */; };
 		6BD1CFCC11ACCE6300838507 /* halt.mixal in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BD1CFC911ACCB2E00838507 /* halt.mixal */; };
 		6BD1CFF111ACD00200838507 /* MIXas.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1CFF011ACD00200838507 /* MIXas.c */; };
+		6BD1D35211AE37C200838507 /* mixal.y in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D35111AE37C200838507 /* mixal.y */; };
+		6BD1D38911AE45AB00838507 /* mixlex.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D38811AE45AB00838507 /* mixlex.c */; };
 		6BF32D1B119F8CD900AAC892 /* MIXmachineTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */; };
 		6BF32D28119F8FA700AAC892 /* mix_machine.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF32D26119F8FA700AAC892 /* mix_machine.h */; };
 		6BF32D29119F8FA700AAC892 /* mix_machine.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D27119F8FA700AAC892 /* mix_machine.c */; };
@@ -122,6 +124,9 @@
 		6B69D77211AA4233007D5BA8 /* MIXwordTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIXwordTest.h; path = unittests/MIXwordTest.h; sourceTree = "<group>"; };
 		6BD1CFC911ACCB2E00838507 /* halt.mixal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = halt.mixal; path = testdata/halt.mixal; sourceTree = "<group>"; };
 		6BD1CFF011ACD00200838507 /* MIXas.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXas.c; path = MIXas/MIXas.c; sourceTree = "<group>"; };
+		6BD1D35111AE37C200838507 /* mixal.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; name = mixal.y; path = MIXas/mixal.y; sourceTree = "<group>"; };
+		6BD1D38711AE45AB00838507 /* mixlex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mixlex.h; path = MIXas/mixlex.h; sourceTree = "<group>"; };
+		6BD1D38811AE45AB00838507 /* mixlex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mixlex.c; path = MIXas/mixlex.c; sourceTree = "<group>"; };
 		6BF32D19119F8CD900AAC892 /* MIXmachineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIXmachineTest.h; path = unittests/MIXmachineTest.h; sourceTree = "<group>"; };
 		6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXmachineTest.c; path = unittests/MIXmachineTest.c; sourceTree = "<group>"; };
 		6BF32D26119F8FA700AAC892 /* mix_machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_machine.h; sourceTree = "<group>"; };
@@ -267,6 +272,9 @@
 			isa = PBXGroup;
 			children = (
 				6BD1CFF011ACD00200838507 /* MIXas.c */,
+				6BD1D35111AE37C200838507 /* mixal.y */,
+				6BD1D38711AE45AB00838507 /* mixlex.h */,
+				6BD1D38811AE45AB00838507 /* mixlex.c */,
 			);
 			name = MIXas;
 			sourceTree = "<group>";
@@ -434,7 +442,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$BUILT_PRODUCTS_DIR/MIXas -o $BUILT_PRODUCTS_DIR/halt.out.mix $BUILD_PRODUCTS_DIR/halt.mixal\ndiff $BUILT_PRODUCTS_DIR/halt.out.mix $BUILT_PRODUCTS_DIR/halt.mix\nexit 0\n";
+			shellScript = "$BUILT_PRODUCTS_DIR/MIXas -o $BUILT_PRODUCTS_DIR/halt.out.mix $BUILT_PRODUCTS_DIR/halt.mixal\ndiff $BUILT_PRODUCTS_DIR/halt.out.mix $BUILT_PRODUCTS_DIR/halt.mix\nexit 0\n";
 		};
 		6BF32ECA11A0694000AAC892 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -483,6 +491,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BD1CFF111ACD00200838507 /* MIXas.c in Sources */,
+				6BD1D35211AE37C200838507 /* mixal.y in Sources */,
+				6BD1D38911AE45AB00838507 /* mixlex.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
