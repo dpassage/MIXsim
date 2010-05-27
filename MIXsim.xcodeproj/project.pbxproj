@@ -67,6 +67,13 @@
 			remoteGlobalIDString = 6B5B7422119E339B0045C0B7;
 			remoteInfo = libMIXsimTest;
 		};
+		6BD1D3DF11AE515500838507 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BD1D3A511AE4AB300838507 /* MIXasTest */;
+			remoteInfo = MIXasTest;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -395,10 +402,12 @@
 				6BF32E6D11A0554800AAC892 /* Frameworks */,
 				6BD1CFCF11ACCE8B00838507 /* CopyFiles */,
 				6BD1CFCE11ACCE6D00838507 /* ShellScript */,
+				6BD1D3E211AE516600838507 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6BD1D3E011AE515500838507 /* PBXTargetDependency */,
 			);
 			name = MIXas;
 			productName = MIXas;
@@ -490,6 +499,19 @@
 			shellPath = /bin/sh;
 			shellScript = "$BUILT_PRODUCTS_DIR/MIXas -o $BUILT_PRODUCTS_DIR/halt.out.mix $BUILT_PRODUCTS_DIR/halt.mixal\ndiff $BUILT_PRODUCTS_DIR/halt.out.mix $BUILT_PRODUCTS_DIR/halt.mix\nexit 0\n";
 		};
+		6BD1D3E211AE516600838507 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = $TARGET_BUILD_DIR/MIXasTest;
+		};
 		6BF32ECA11A0694000AAC892 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -578,6 +600,11 @@
 			isa = PBXTargetDependency;
 			target = 6B5B7422119E339B0045C0B7 /* libMIXsimTest */;
 			targetProxy = 6B5B742B119E33B80045C0B7 /* PBXContainerItemProxy */;
+		};
+		6BD1D3E011AE515500838507 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BD1D3A511AE4AB300838507 /* MIXasTest */;
+			targetProxy = 6BD1D3DF11AE515500838507 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

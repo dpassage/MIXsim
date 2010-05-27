@@ -11,10 +11,13 @@
 
 #include "y.tab.h"
 
-FILE *inputfile;
-int lex_column = 0;
-char symbolbuffer[11];
-int (*getnextchar)(void);
+static FILE *inputfile;
+static int mixlex_default_getnextchar(void) {
+    return fgetc(inputfile);
+}
+
+static int lex_column = 0;
+static int (*getnextchar)(void) = mixlex_default_getnextchar;
 
 void mixlex_input(FILE *f) {
     inputfile = f;
@@ -22,6 +25,7 @@ void mixlex_input(FILE *f) {
 void mixlex_set_getchar(int (*nextchar)(void)) {
     getnextchar = nextchar;
 }
+
 
 int yylex (void) {
     
