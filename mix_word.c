@@ -30,12 +30,12 @@ void mix_word_destroy(mix_word *w) {
 }
 
 /* return the sign of the mix word */
-int mix_word_sign(mix_word *w) {
+int mix_word_sign(const mix_word *w) {
 	return w->bytes[0];
 }
 
 /* return the indicated byte of the word */
-int mix_word_byte(mix_word *w, int b) {
+int mix_word_byte(const mix_word *w, int b) {
 	return w->bytes[b];
 }
 
