@@ -333,6 +333,7 @@ int mix_machine_execute(mix_machine *mix)
         case MIX_OP_ADR4:
         case MIX_OP_ADR5:
         case MIX_OP_ADR6:
+        case MIX_OP_ADRX:
             i = opcode - MIX_OP_ADRA;
             switch (f) {
                 case 0: /* INCi */

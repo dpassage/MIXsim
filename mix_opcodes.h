@@ -10,6 +10,7 @@
 #ifndef MIX_OPCODES_H
 #define MIX_OPCODES_H
 
+#define MIX_OP_DIV   4
 #define MIX_OP_05    5
 #define MIX_OP_LDA   8
 #define MIX_OP_LD1   9
@@ -43,5 +44,6 @@
 #define MIX_OP_ADR4 52
 #define MIX_OP_ADR5 53
 #define MIX_OP_ADR6 54
+#define MIX_OP_ADRX 55
 
 #endif

@@ -26,11 +26,13 @@ static const char regtrans[] = {
 
 static char *opcode_05(char *, int, int);
 static char *opcode_addr_trans(char *, int, int);
+static char *opcode_arith(char *, int f, int c);
 static char *opcode_jreg_trans(char *, int, int);
 
+static char *field_arith(char *, int f, int c); /* field for arith ops */
+static char *field_decimal(char *, int, int); /* field in decimal notation */
 static char *field_omitted(char *, int, int); /* field is usually omitted */
 static char *field_standard(char *, int, int); /* field in standard (l:r) notation */
-static char *field_decimal(char *, int, int); /* field in decimal notation */
 
 static char *opcode_05(char *buf, int f, int c) {
     char *ans;
@@ -97,6 +99,18 @@ static char *opcode_addr_trans(char *buf, int f, int c) {
     return buf;
 }
 
+static char *opcode_arith(char *buf, int f, int c) {
+    switch (c) {
+        case MIX_OP_DIV:
+            strncpy(buf, "DIV  ", (size_t)6);
+            break;
+        default:
+            return NULL;
+            break;
+    }
+    return buf;
+}
+
 static char *opcode_jreg_trans(char *buf, int f, int c) {
     buf[0] = 'J';
     buf[1] = regtrans[c - MIX_OP_JA];
@@ -118,6 +132,14 @@ static char *opcode_jreg_trans(char *buf, int f, int c) {
     return buf;
 }
 
+static char *field_arith(char *buf, int f, int c) {
+    if (f == 6 || f == MIX_F(0, 5)) {
+        buf[0] = '\0';
+        return buf;
+    }
+    return field_standard(buf, f, c);
+}
+    
 static char* field_omitted(char *buf, int f, int c) {
     buf[0] = '\0';
     return buf;
@@ -148,7 +170,7 @@ struct mix_decoding_struct {
     /*01*/  { 0, 0, 0, 0},
     /*02*/  { 0, 0, 0, 0 },
     /*03*/  { 0, 0, 0, 0 },
-    /*04*/  { 0, 0, 0, 0 },
+    /*04*/  { 0, opcode_arith, field_arith, 1 },
     /*05*/  { 0, opcode_05, field_omitted, 0 },
     /*06*/  { 0, 0, 0, 0 },
     /*07*/  { 0, 0, 0, 0 },
