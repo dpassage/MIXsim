@@ -62,7 +62,7 @@ int mix_machine_get_time(mix_machine *m) {
 	return m->time;
 }
 
-void mix_machine_load_ra(mix_machine *m, mix_word *w) {
+void mix_machine_load_ra(mix_machine *m, const mix_word *w) {
     m->ri[0] = *w;
 }
 
