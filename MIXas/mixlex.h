@@ -14,6 +14,7 @@
 
 void mixlex_input(FILE *);
 void mixlex_set_getchar(int (*nextchar)(void));
+void mixlex_set_ungetchar(int (*ungetchar)(int));
 void mixlex_reset(void);
 char *mixlex_get_token(void);
 

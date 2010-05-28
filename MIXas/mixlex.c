@@ -18,8 +18,13 @@ static int mixlex_default_getnextchar(void) {
     return fgetc(inputfile);
 }
 
+static int mixlex_default_ungetchar(int ch) {
+    return ungetc(ch, inputfile);
+}
+
 static int lex_column = 0; /* column of character just read */
 static int (*getnextchar)(void) = mixlex_default_getnextchar;
+static int (*ungetchar)(int) = mixlex_default_ungetchar;
 static char tokenbuffer[11];
 
 void mixlex_input(FILE *f) {
@@ -28,23 +33,26 @@ void mixlex_input(FILE *f) {
 void mixlex_set_getchar(int (*nextchar)(void)) {
     getnextchar = nextchar;
 }
+void mixlex_set_ungetchar(int (*ungetcharfn)(int)) {
+    ungetchar = ungetcharfn;
+}
+
 char *mixlex_get_token() {
     return &tokenbuffer[0];
 }
 
 static enum lexstate {
-    LINESTART,
-    LOC_INTOKEN,
-    LOC_AFTERTOKEN,
-    OPCODE_INTOKEN,
-    OPCODE_AFTERTOKEN,
-    LINEEND
-} lexstate = LINESTART;
+    INSPACE,
+    INSYMBOL,
+    INNUMBER,
+    NOTOKEN
+} lexstate = NOTOKEN;
 
 void mixlex_reset(void) {
     lex_column = 0;
     getnextchar = mixlex_default_getnextchar;
-    lexstate = LINESTART;
+    ungetchar = mixlex_default_ungetchar;
+    lexstate = NOTOKEN;
 }
 
     
@@ -53,10 +61,6 @@ int yylex (void) {
     int ch;
     char *buf = &tokenbuffer[0];
     
-    if (lexstate == LINEEND) {
-        lexstate = LINESTART;
-        return '\n';
-    }
     while ((ch = (getnextchar)()) != EOF) {
         lex_column++;
         if (lex_column == 1 && ch == '*') {
@@ -68,97 +72,78 @@ int yylex (void) {
                 }
             } while (ch != '\n');
             lex_column = 0;
-            return COMMENT;
-        }
-        if (lex_column == 11) {
-            switch (ch) {
-                case '\n':
-                    lex_column = 0;
-                    lexstate = LINEEND;
-                    /* fallthrough */
-                case ' ':
-                    if (lexstate == LOC_INTOKEN) {
-                        *buf = '\0';
-                        buf = &tokenbuffer[0];
-                        return SYMBOL;
-                    }
-                    lexstate = OPCODE_INTOKEN;
-                    continue;
-                    break;
-                default:
-                    return -1;
-                    break;
-            }
+            return MIXAL_COMMENT;
         }
         switch (lexstate) {
-            case LINESTART:
+            case NOTOKEN:
                 switch (ch) {
                     case ' ':
-                        lexstate = LOC_AFTERTOKEN;
+                    case '\t':
+                        lexstate = INSPACE;
                         break;
                     case '\n':
-                        lexstate = LINEEND;
                         lex_column = 0;
+                        return ch;
+                        break;
                     default:
-                        if (isupper(ch) || isdigit(ch)) {
+                        if (isupper(ch)) {
+                            lexstate = INSYMBOL;
+                            *buf = ch;
+                            buf++;
+                        } else if (isdigit(ch)) {
+                            lexstate = INNUMBER;
                             *buf = ch;
                             buf++;
                         } else {
                             return -1;
                         }
-                        break;
                 }
                 break;
-            case LOC_INTOKEN:
+            case INSPACE:
                 switch (ch) {
-                    case '\n':
-                        lexstate = LINEEND;
-                        lex_column = 0;
-                        *buf = '\0';
-                        buf = &tokenbuffer[0];
-                        return SYMBOL;
                     case ' ':
-                        lexstate = LOC_AFTERTOKEN;
-                        *buf = '\0';
-                        buf = &tokenbuffer[0];
-                        return SYMBOL;                        
+                    case '\t':
+                        break;
                     default:
-                        if (isupper(ch) || isdigit(ch)) {
-                            *buf = ch;
-                            buf++;
-                        }
+                        (ungetchar)(ch);
+                        lex_column--;
+                        lexstate = NOTOKEN;
+                        return MIXAL_WHITESPACE;
                         break;
                 }
-            case OPCODE_INTOKEN:
-                    switch (ch) {
-                        case '\n':
-                            lexstate = LINEEND;
-                            lex_column = 0;
-                            *buf = '\0';
-                            buf = &tokenbuffer[0];
-                            return OPCODE;
-                            break;
-                        case ' ':
-                            lexstate = OPCODE_AFTERTOKEN;
-                            *buf = '\0';
-                            buf = &tokenbuffer[0];
-                            return OPCODE;
-                            break;                            
-                        default:
-                            if (isupper(ch) || isdigit(ch)) {
-                                *buf = ch;
-                                buf++;
-                            }
-                            break;
-                    }
-                    break;
-
-            default:
-                if (ch == '\n') {
-                    lexstate = LINEEND;
-                    lex_column = 0;
+                break;
+            case INSYMBOL:
+                if (isupper(ch) || isdigit(ch)) {
+                    *buf = ch;
+                    buf++;
+                } else {
+                    *buf = '\0';
+                    buf = &tokenbuffer[0];
+                    lexstate = NOTOKEN;
+                    (ungetchar)(ch);
+                    lex_column--;
+                    return MIXAL_SYMBOL;
                 }
                 break;
+            case INNUMBER:
+                if (isupper(ch)) {
+                    *buf = ch;
+                    buf++;
+                    lexstate = INSYMBOL;
+                } else if (isdigit(ch)) {
+                    *buf = ch;
+                    buf++;
+                } else {
+                    *buf = '\0';
+                    buf = &tokenbuffer[0];
+                    lexstate = NOTOKEN;
+                    (ungetchar)(ch);
+                    lex_column--;
+                    return MIXAL_NUMBER;                    
+                }
+
+                break;
+
         }
     }
     return 0;

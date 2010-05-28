@@ -5,10 +5,10 @@ int yylex (void);
 void yyerror (char const *);
 %}
 
-%token SYMBOL
-%token OPCODE 
-%token NUMBER
-%token COMMENT
+%token MIXAL_WHITESPACE;
+%token MIXAL_SYMBOL;
+%token MIXAL_NUMBER;
+%token MIXAL_COMMENT;
 
 %%
 
@@ -16,19 +16,21 @@ program:  /* empty */
     | program card
 ;
 
-card:   COMMENT  { fprintf(stderr, "Comment!\n"); }
+card:  MIXAL_COMMENT  { fprintf(stderr, "Comment!\n"); }
     | line
 ;
 
-line: loc OPCODE address '\n' { fprintf(stderr, "Line o' code!\n"); }
+line: loc MIXAL_SYMBOL address '\n' { fprintf(stderr, "Line o' code!\n"); }
 ;
 
-loc: /* empty */
-    | SYMBOL
+loc: MIXAL_WHITESPACE
+    | MIXAL_SYMBOL MIXAL_WHITESPACE
 ;
 
 address: /* empty */ 
-    | NUMBER
+    | MIXAL_WHITESPACE
+    | MIXAL_WHITESPACE MIXAL_NUMBER
+    | MIXAL_WHITESPACE MIXAL_NUMBER MIXAL_WHITESPACE
 ;
 
 %%
