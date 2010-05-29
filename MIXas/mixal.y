@@ -69,11 +69,11 @@ index: /* empty */ { $$ = 0; }
 
 field: /* empty */ { $$ = 0; }
     | '(' expression ')' { $$ = $2; }
-    | '(' expression ':' expression ')' { $$ = ($2 * 8) + $4; }
 ;
 
 expression: atomicexpression
     | '-' atomicexpression { $$ = -$2; } 
+    | expression ':' expression { $$ = ($1 * 8) + $3; }
 ;
 
 atomicexpression: MIXAL_NUMBER

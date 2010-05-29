@@ -25,21 +25,29 @@ static void test_address_callback(int i) {
 static int instrfound;
 static char const *instrop;
 static int instraddress;
+static int instrindex;
+static int instrfield;
 
-static void test_instruction_callback(const char *op, int a) {
+static void test_instruction_callback(const char *op, int a, int i, int f) {
     instrfound++;
     instrop = op;
     instraddress = a;
+    instrindex = i;
+    instrfield = f;
 }
+static void test_instruction_reset(void) {
+    instrfound = 0;
+    instrop = 0;
+    instraddress = 0;
+    instrindex = 0;
+    instrfield = 0;
+}    
 
 static void setup(void) {
     mixparse_reset();
     commentsfound = 0;
     addressfound = 0;
     addressvalue = 0;
-    instrfound = 0;
-    instrop = 0;
-    instraddress = 0;
     mixparse_debug();
 }
 
@@ -106,22 +114,42 @@ START_TEST(test_parse_badcolumns)
 }
 END_TEST
 
+static struct instr_test_str {
+    char *instr;
+    char *op;
+    int a;
+    int i;
+    int f;
+} inst_test_str[] = {
+    { "           LDA  300\n", "LDA", 300, 0, 0 },
+    { "           LDA  3000,4\n", "LDA", 3000, 4, 0 },
+    { "           LDA  3000,4(37)\n", "LDA", 3000, 4, 37 },
+    { "           LDA  3000,4(0:5)\n", "LDA", 3000, 4, 5 },
+    { "           LDA  4:3\n", "LDA", 35, 0, 0 },
+    { NULL, NULL, 0, 0, 0 }
+};
+
 START_TEST(test_parse_instruction_callback)
 {
-    char *instr = "           LDA  300\n";
-    mixparse_set_input_string(instr);
-    
     mixparse_setcallback_instruction(test_instruction_callback);
-    int ret = mixparse();
+
+    for (int i = 0; inst_test_str[i].instr != NULL; i++) {
+        test_instruction_reset();
+        mixparse_set_input_string(inst_test_str[i].instr);
     
-    fail_unless(ret == 0, "parser failed");
-    fail_unless(instrfound == 1, "instruction callback not called");
-    if (instrop == NULL) {
-        fail("instrop wasn't set");
-    } else {
-        fail_unless(strcmp(instrop, "LDA") == 0, "op not set");
+        int ret = mixparse();
+    
+        fail_unless(ret == 0, "%d: parser failed", i);
+        fail_unless(instrfound == 1, "%d: instruction callback not called", i);
+        if (instrop == NULL) {
+            fail("%d: instrop wasn't set", i);
+        } else {
+            fail_unless(strcmp(instrop, inst_test_str[i].op) == 0, "%d: op not set", i);
+    }   
+        fail_unless(instraddress == inst_test_str[i].a, "%d: address not set", i);
+        fail_unless(instrindex == inst_test_str[i].i, "%d: index not set", i);
+        fail_unless(instrfield == inst_test_str[i].f, "%d: field not set", i);
     }
-    fail_unless(instraddress == 300, "address not set");
 }
 END_TEST
 

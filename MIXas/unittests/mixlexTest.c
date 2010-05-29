@@ -83,6 +83,42 @@ START_TEST(test_lex_negative_number)
 }
 END_TEST
 
+START_TEST(test_lex_commas)
+{
+    mixlex_input_string("12,43");
+    int nexttoken = yylex();
+    fail_unless(nexttoken == MIXAL_NUMBER);
+    nexttoken = yylex();
+    fail_unless(nexttoken == ',');
+    nexttoken = yylex();
+    fail_unless(nexttoken == MIXAL_NUMBER);
+    nexttoken = yylex();
+    fail_unless(nexttoken == 0);
+}
+END_TEST
+
+START_TEST(test_lex_parens)
+{
+    mixlex_input_string("(1:2),43");
+    int nexttoken = yylex();
+    fail_unless(nexttoken == '(');
+    nexttoken = yylex();
+    fail_unless(nexttoken == MIXAL_NUMBER);
+    nexttoken = yylex();
+    fail_unless(nexttoken == ':');
+    nexttoken = yylex();
+    fail_unless(nexttoken == MIXAL_NUMBER);
+    nexttoken = yylex();
+    fail_unless(nexttoken == ')');
+    nexttoken = yylex();
+    fail_unless(nexttoken == ',');
+    nexttoken = yylex();
+    fail_unless(nexttoken == MIXAL_NUMBER);
+    nexttoken = yylex();
+    fail_unless(nexttoken == 0);
+}
+END_TEST
+
 Suite *mixlex_suite(void)
 {
 	Suite *s = suite_create("mixlex");
@@ -93,6 +129,8 @@ Suite *mixlex_suite(void)
 	tcase_add_test (tc_core, test_lex_halt);
 	tcase_add_test (tc_core, test_lex_orig);
     tcase_add_test (tc_core, test_lex_negative_number);
+    tcase_add_test (tc_core, test_lex_commas);
+    tcase_add_test (tc_core, test_lex_parens);
 	suite_add_tcase (s, tc_core);
 	
 	return s;
