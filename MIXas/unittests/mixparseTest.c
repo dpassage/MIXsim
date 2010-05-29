@@ -70,7 +70,7 @@ END_TEST
 
 START_TEST(test_parse_negnum)
 {
-    char *equ = "FOO EQU -50\n";
+    char *equ = "FOO        EQU -50\n";
     mixparse_set_input_string(equ);
     
     mixparse_setcallback_address(test_address_callback);
@@ -79,6 +79,17 @@ START_TEST(test_parse_negnum)
     fail_unless(ret == 0, "parser failed");
     fail_unless(addressfound == 1, "parser didn't find an address");
     fail_unless(addressvalue == -50, "address should have been -50");
+}
+END_TEST
+
+START_TEST(test_parse_badcolumns)
+{
+    char *equ = "FOO   EQU  -50\n";
+    mixparse_set_input_string(equ);
+    
+    int ret = mixparse();
+    
+    fail_unless(ret == 1, "parser should have failed");
 }
 END_TEST
 
@@ -91,6 +102,7 @@ Suite *mixparse_suite(void)
     tcase_add_test(tc_core, test_parse_comment);
     tcase_add_test(tc_core, test_parse_address);
     tcase_add_test(tc_core, test_parse_negnum);
+    tcase_add_test(tc_core, test_parse_badcolumns);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

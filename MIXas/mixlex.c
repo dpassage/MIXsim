@@ -115,8 +115,9 @@ int yylex (void) {
                         return 0;
                         break;
                     case ' ':
-                    case '\t':
                         lexstate = INSPACE;
+                        *buf = ch;
+                        buf++;
                         break;
                     case '\n':
                         lex_column = 0;
@@ -141,12 +142,16 @@ int yylex (void) {
             case INSPACE:
                 switch (ch) {
                     case ' ':
-                    case '\t':
+                        *buf = ch;
+                        buf++;
                         break;
                     default:
                         (ungetchar)(ch);
                         lex_column--;
                         lexstate = NOTOKEN;
+                        *buf = '\0';
+                        buf = &tokenbuffer[0];
+                        yylval.string = strdup(buf);
                         return MIXAL_WHITESPACE;
                         break;
                 }

@@ -1,9 +1,13 @@
 %{
 #define YYDEBUG 1
 #include <stdio.h>
+#include <string.h>
+    
 #include "mixparse.h"
+
 int yylex (void);
 void yyerror (char const *);
+
 %}
 %union {
     int val;
@@ -31,8 +35,20 @@ line:  MIXAL_COMMENT  { fprintf(stderr, "Comment!\n"); mixparse_comment(); }
 instruction: loc MIXAL_SYMBOL address '\n' { fprintf(stderr, "Symbol is %s\n", $2); }
 ;
 
-loc: MIXAL_WHITESPACE
+loc: MIXAL_WHITESPACE 
+        { 
+            if (strlen($1) != 11) {
+                yyerror("improper whitespace at start of line");
+                YYERROR;
+            }                      
+        }
     | MIXAL_SYMBOL MIXAL_WHITESPACE
+        { 
+            if ((strlen($1) + strlen($2)) != 11) {
+                yyerror("improper whitespace at start of line");
+                YYERROR;
+            }                      
+        }
 ;
 
 address: /* empty */ 

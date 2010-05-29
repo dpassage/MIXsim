@@ -50,6 +50,10 @@ START_TEST(test_lex_orig)
     mixlex_input_string("           ORIG 3000\n");
     int nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_WHITESPACE, "token should be whitespace");
+    fail_unless(yylval.string != NULL, "should have returned the whitespace");
+    if (yylval.string != NULL) {
+        fail_unless(strlen(yylval.string) == 11, "should be 11 chars whitespace");
+    }
     nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_SYMBOL, "token should be a symbol");
     fail_unless(yylval.string != NULL, "should have set symbol value");
