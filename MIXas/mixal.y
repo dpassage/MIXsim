@@ -21,6 +21,8 @@ void yyerror (char const *);
 %type <val> address;
 %type <val> expression;
 %type <val> atomicexpression;
+%type <val> index;
+%type <val> field;
 
 %%
 
@@ -32,10 +34,10 @@ line:  MIXAL_COMMENT  { fprintf(stderr, "Comment!\n"); mixparse_comment(); }
     | instruction
 ;
 
-instruction: loc MIXAL_SYMBOL address '\n' 
+instruction: loc MIXAL_SYMBOL address index field '\n' 
     { 
         fprintf(stderr, "Symbol is %s\n", $2);
-        mixparse_instruction($2, $3);
+        mixparse_instruction($2, $3, $4, $5);
     }
 ;
 
@@ -55,10 +57,19 @@ loc: MIXAL_WHITESPACE
         }
 ;
 
-address: /* empty */ 
-    | MIXAL_WHITESPACE
+address: /* empty */ { $$ = 0; mixparse_address($$); }
+    | MIXAL_WHITESPACE { $$ = 0; mixparse_address($$); }
     | MIXAL_WHITESPACE expression  { $$ = $2; mixparse_address($$); }
     | MIXAL_WHITESPACE expression MIXAL_WHITESPACE { $$ = $2; mixparse_address($$); }
+;
+
+index: /* empty */ { $$ = 0; }
+    | ',' expression { $$ = $2; }
+;
+
+field: /* empty */ { $$ = 0; }
+    | '(' expression ')' { $$ = $2; }
+    | '(' expression ':' expression ')' { $$ = ($2 * 8) + $4; }
 ;
 
 expression: atomicexpression
@@ -66,7 +77,7 @@ expression: atomicexpression
 ;
 
 atomicexpression: MIXAL_NUMBER
-    | MIXAL_SYMBOL
+    | MIXAL_SYMBOL { $$ = -1; }
 ;
 
 %%

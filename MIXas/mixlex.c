@@ -123,6 +123,10 @@ int yylex (void) {
                         lex_column = 0;
                         /* fallthrough */
                     case '-':
+                    case ',':
+                    case ')':
+                    case '(':
+                    case ':':
                         return ch;
                         break;
                     default:

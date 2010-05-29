@@ -21,8 +21,8 @@ static void (*address_callback)(int);
 static void address_callback_null(int i) {
 }
 
-static void (*instruction_callback)(const char *, int);
-static void instruction_callback_null(const char *s, int i) {
+static void (*instruction_callback)(const char *, int, int, int);
+static void instruction_callback_null(const char *s, int a, int i, int f) {
 }
 
 void mixparse_reset(void) {
@@ -40,7 +40,7 @@ void mixparse_setcallback_address(void (*callback)(int)) {
     address_callback = callback;
 }
 
-void mixparse_setcallback_instruction(void (*callback)(const char *, int)) {
+void mixparse_setcallback_instruction(void (*callback)(const char *, int, int, int)) {
     instruction_callback = callback;
 }
 
@@ -64,8 +64,8 @@ void mixparse_address(int i) {
     (*address_callback)(i);
 }
 
-void mixparse_instruction(const char *s, int i) {
-    (*instruction_callback)(s, i);
+void mixparse_instruction(const char *s, int a, int i, int f) {
+    (*instruction_callback)(s, a, i, f);
 }
 
 int mixparse(void) {
