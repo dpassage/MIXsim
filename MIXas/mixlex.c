@@ -8,6 +8,8 @@
  */
 
 #include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "mixlex.h"
 
@@ -122,6 +124,7 @@ int yylex (void) {
                     lexstate = NOTOKEN;
                     (ungetchar)(ch);
                     lex_column--;
+                    yylval.symbol = strdup(buf);
                     return MIXAL_SYMBOL;
                 }
                 break;
@@ -139,6 +142,7 @@ int yylex (void) {
                     lexstate = NOTOKEN;
                     (ungetchar)(ch);
                     lex_column--;
+                    yylval.val = atoi(buf);
                     return MIXAL_NUMBER;                    
                 }
 
