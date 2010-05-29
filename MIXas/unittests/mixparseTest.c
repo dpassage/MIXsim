@@ -8,11 +8,22 @@
  */
 
 #include "mixparseTest.h"
+#include "mixtest_lexer_helper.h"
 
 #include "mixlex.h"
+#include "mixparse.h"
 #include "y.tab.h"
 
+static int commentsfound;
+static void test_comment_callback(void) {
+    commentsfound++;
+}
+
 static void setup(void) {
+    mixlex_set_getchar(string_nextchar);
+    mixlex_set_ungetchar(string_ungetchar);
+    mixparse_reset();
+    commentsfound = 0;
 }
 
 static void teardown(void) {
@@ -21,11 +32,18 @@ static void teardown(void) {
 START_TEST(test_parse_comment)
 {
     /* set the lexer to use a string as input */
-    char *comment = "* FOO";
-    
+    char *comment = "* FOO\n";
+    string_setup(comment);
+
     /* set the parser to use the comment testing callback */
+    mixparse_setcallback_comment(test_comment_callback);
+    
     /* run the parser */
+    int ret = mixparse();
+
     /* ensure the comment callback was called once */
+    fail_unless(ret == 0, "parser failed");
+    fail_unless(commentsfound == 1, "parser didn't find a comment");
 }
 END_TEST
 

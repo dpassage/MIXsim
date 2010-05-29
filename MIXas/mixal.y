@@ -1,6 +1,7 @@
 %{
 #define YYDEBUG 1
 #include <stdio.h>
+#include "mixparse.h"
 int yylex (void);
 void yyerror (char const *);
 %}
@@ -20,7 +21,7 @@ program:  /* empty */
     | program line
 ;
 
-line:  MIXAL_COMMENT  { fprintf(stderr, "Comment!\n"); }
+line:  MIXAL_COMMENT  { fprintf(stderr, "Comment!\n"); mixparse_comment(); }
     | instruction
 ;
 

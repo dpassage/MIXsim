@@ -12,9 +12,7 @@
 #include <unistd.h>
 
 #include "mixlex.h"
-#include "y.tab.h"
-
-extern int yyparse(void);
+#include "mixparse.h"
 
 int main (int argc, char * const argv[]) {
     FILE *input;
@@ -47,6 +45,7 @@ int main (int argc, char * const argv[]) {
     }
     
     mixlex_input(input);
-    return yyparse();
+    mixparse_reset();
+    return mixparse();
     
 }
