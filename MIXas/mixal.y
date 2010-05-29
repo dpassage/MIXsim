@@ -32,7 +32,11 @@ line:  MIXAL_COMMENT  { fprintf(stderr, "Comment!\n"); mixparse_comment(); }
     | instruction
 ;
 
-instruction: loc MIXAL_SYMBOL address '\n' { fprintf(stderr, "Symbol is %s\n", $2); }
+instruction: loc MIXAL_SYMBOL address '\n' 
+    { 
+        fprintf(stderr, "Symbol is %s\n", $2);
+        mixparse_instruction($2, $3);
+    }
 ;
 
 loc: MIXAL_WHITESPACE 

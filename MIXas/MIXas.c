@@ -15,7 +15,7 @@
 #include "mixparse.h"
 
 int main (int argc, char * const argv[]) {
-    FILE *input;
+    FILE *input = stdin;
     FILE *output = stdout;
     
     int ch;
@@ -33,7 +33,6 @@ int main (int argc, char * const argv[]) {
                 break;
         }
     }
-    argc -= optind;
     argv += optind;
     
     if (argv[0] != NULL) {

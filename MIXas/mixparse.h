@@ -19,6 +19,7 @@ void mixparse_set_input_string(const char *);
 
 void mixparse_setcallback_comment(void (*callback)(void));
 void mixparse_setcallback_address(void (*callback)(int));
+void mixparse_setcallback_instruction(void (*callback)(const char *, int));
 
 void mixparse_debug(void);
 
@@ -26,5 +27,6 @@ int mixparse(void);
 
 void mixparse_comment(void);
 void mixparse_address(int);
+void mixparse_instruction(const char *, int);
 
 #endif

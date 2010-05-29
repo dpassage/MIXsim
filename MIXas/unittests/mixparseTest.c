@@ -22,11 +22,24 @@ static void test_address_callback(int i) {
     addressfound++;
     addressvalue = i;
 }
+static int instrfound;
+static char const *instrop;
+static int instraddress;
+
+static void test_instruction_callback(const char *op, int a) {
+    instrfound++;
+    instrop = op;
+    instraddress = a;
+}
 
 static void setup(void) {
     mixparse_reset();
     commentsfound = 0;
     addressfound = 0;
+    addressvalue = 0;
+    instrfound = 0;
+    instrop = 0;
+    instraddress = 0;
     mixparse_debug();
 }
 
@@ -93,6 +106,25 @@ START_TEST(test_parse_badcolumns)
 }
 END_TEST
 
+START_TEST(test_parse_instruction_callback)
+{
+    char *instr = "           LDA  300\n";
+    mixparse_set_input_string(instr);
+    
+    mixparse_setcallback_instruction(test_instruction_callback);
+    int ret = mixparse();
+    
+    fail_unless(ret == 0, "parser failed");
+    fail_unless(instrfound == 1, "instruction callback not called");
+    if (instrop == NULL) {
+        fail("instrop wasn't set");
+    } else {
+        fail_unless(strcmp(instrop, "LDA") == 0, "op not set");
+    }
+    fail_unless(instraddress == 300, "address not set");
+}
+END_TEST
+
 Suite *mixparse_suite(void)
 {
 	Suite *s = suite_create("mixparse");
@@ -103,6 +135,7 @@ Suite *mixparse_suite(void)
     tcase_add_test(tc_core, test_parse_address);
     tcase_add_test(tc_core, test_parse_negnum);
     tcase_add_test(tc_core, test_parse_badcolumns);
+    tcase_add_test(tc_core, test_parse_instruction_callback);
 	suite_add_tcase (s, tc_core);
 	
 	return s;
