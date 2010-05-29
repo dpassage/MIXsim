@@ -9,42 +9,14 @@
 
 #include "mixlex.h"
 #include "y.tab.h"
+
+#include "mixtest_lexer_helper.h"
 #include "mixlexTest.h"
-
-static int cur = 0;
-static char const *testcomment;
-static char ungetbuffer[10];
-static int ungetcur = 0;
-
-static int nextchar(void) {
-    if (ungetcur > 0) {
-        return ungetbuffer[--ungetcur];
-    }
-    if (testcomment[cur] == '\0') {
-        return -1;
-    }
-    return testcomment[cur++];
-}
-
-static int ungetchar(int ch) {
-    if (ungetcur == 10) {
-        return -1;
-    }
-    ungetbuffer[ungetcur] = ch;
-    ungetcur++;
-    return ch;
-}
-
-static void set_test_string(const char *s) {
-    testcomment = s;
-    cur = 0;
-}
-
 
 static void setup(void) {
     mixlex_reset();
-    mixlex_set_getchar(nextchar);
-    mixlex_set_ungetchar(ungetchar);
+    mixlex_set_getchar(string_nextchar);
+    mixlex_set_ungetchar(string_ungetchar);
 }
 
 static void teardown(void) {
@@ -52,7 +24,7 @@ static void teardown(void) {
 
 START_TEST(test_lex_comment)
 {
-    set_test_string("* THIS IS A COMMENT\n");
+    string_setup("* THIS IS A COMMENT\n");
     int nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_COMMENT, "token should be a comment");
 }
@@ -60,7 +32,7 @@ END_TEST
     
 START_TEST(test_lex_halt)
 {
-    set_test_string(" HLT\n");
+    string_setup(" HLT\n");
     int nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_WHITESPACE, "token should be whitespace");
     nexttoken = yylex();
@@ -78,7 +50,7 @@ END_TEST
 
 START_TEST(test_lex_orig)
 {
-    set_test_string("           ORIG 3000\n");
+    string_setup("           ORIG 3000\n");
     int nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_WHITESPACE, "token should be whitespace");
     nexttoken = yylex();
