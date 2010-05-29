@@ -1,5 +1,6 @@
 %{
 #define YYSTYPE char *
+#define YYDEBUG 1
 #include <stdio.h>
 int yylex (void);
 void yyerror (char const *);
@@ -31,6 +32,8 @@ address: /* empty */
     | MIXAL_WHITESPACE
     | MIXAL_WHITESPACE MIXAL_NUMBER
     | MIXAL_WHITESPACE MIXAL_NUMBER MIXAL_WHITESPACE
+    | MIXAL_WHITESPACE MIXAL_SYMBOL MIXAL_WHITESPACE
+    | MIXAL_WHITESPACE MIXAL_SYMBOL 
 ;
 
 %%
