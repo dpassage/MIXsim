@@ -161,7 +161,7 @@ int yylex (void) {
                     lexstate = NOTOKEN;
                     (ungetchar)(ch);
                     lex_column--;
-                    yylval.symbol = strdup(buf);
+                    yylval.string = strdup(buf);
                     return MIXAL_SYMBOL;
                 }
                 break;

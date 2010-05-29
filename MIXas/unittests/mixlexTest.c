@@ -34,9 +34,9 @@ START_TEST(test_lex_halt)
     fail_unless(nexttoken == MIXAL_WHITESPACE, "token should be whitespace");
     nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_SYMBOL, "token should be a symbol");
-    fail_unless(yylval.symbol != NULL, "should have set symbol value");
-    if (yylval.symbol != NULL) {
-        fail_unless(strcmp(yylval.symbol, "HLT") == 0, "token should be HLT");
+    fail_unless(yylval.string != NULL, "should have set symbol value");
+    if (yylval.string != NULL) {
+        fail_unless(strcmp(yylval.string, "HLT") == 0, "token should be HLT");
     }
     nexttoken = yylex();
     fail_unless(nexttoken == '\n', "token should be newline");
@@ -52,9 +52,9 @@ START_TEST(test_lex_orig)
     fail_unless(nexttoken == MIXAL_WHITESPACE, "token should be whitespace");
     nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_SYMBOL, "token should be a symbol");
-    fail_unless(yylval.symbol != NULL, "should have set symbol value");
-    if (yylval.symbol != NULL) {
-        fail_unless(strcmp(yylval.symbol, "ORIG") == 0, "token should be ORIG");
+    fail_unless(yylval.string != NULL, "should have set symbol value");
+    if (yylval.string != NULL) {
+        fail_unless(strcmp(yylval.string, "ORIG") == 0, "token should be ORIG");
     }
     nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_WHITESPACE, "token should be whitespace");

@@ -7,11 +7,11 @@ void yyerror (char const *);
 %}
 %union {
     int val;
-    char *symbol;
+    char *string;
 }
 
-%token MIXAL_WHITESPACE;
-%token <symbol> MIXAL_SYMBOL;
+%token <string> MIXAL_WHITESPACE;
+%token <string> MIXAL_SYMBOL;
 %token <val> MIXAL_NUMBER;
 %token MIXAL_COMMENT;
 %type <val> address;
