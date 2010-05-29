@@ -63,6 +63,7 @@ void mixlex_input(FILE *f) {
 void mixlex_input_string(const char *s) {
     inputstring = s;
     cur = 0;
+    ungetcur = 0;
     getnextchar = string_nextchar;
     ungetchar = string_ungetchar;
 }
@@ -93,7 +94,8 @@ int yylex (void) {
     int ch;
     char *buf = &tokenbuffer[0];
     
-    while ((ch = (getnextchar)()) != EOF) {
+    while (1) {
+        ch = (getnextchar)();
         lex_column++;
         if (lex_column == 1 && ch == '*') {
             /* this is a comment line */
@@ -109,12 +111,17 @@ int yylex (void) {
         switch (lexstate) {
             case NOTOKEN:
                 switch (ch) {
+                    case -1:
+                        return 0;
+                        break;
                     case ' ':
                     case '\t':
                         lexstate = INSPACE;
                         break;
                     case '\n':
                         lex_column = 0;
+                        /* fallthrough */
+                    case '-':
                         return ch;
                         break;
                     default:

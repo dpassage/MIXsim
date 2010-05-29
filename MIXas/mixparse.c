@@ -11,13 +11,19 @@
 #include "mixparse.h"
 
 extern int yyparse();
+extern int yydebug;
 
 static void (*comment_callback)(void);
 static void comment_callback_null(void) {
 }
 
+static void (*address_callback)(int);
+static void address_callback_null(int i) {
+}
+
 void mixparse_reset(void) {
     comment_callback = comment_callback_null;
+    address_callback = address_callback_null;
     mixlex_reset();
 }
 
@@ -25,18 +31,30 @@ void mixparse_setcallback_comment(void (*callback)(void)) {
     comment_callback = callback;
 }
 
+void mixparse_setcallback_address(void (*callback)(int)) {
+    address_callback = callback;
+}
+
 void mixparse_set_input_file(FILE *f) {
     mixlex_input(f);
 }
 
-void mixparse_set_input_string(char *s) {
+void mixparse_set_input_string(const char *s) {
     mixlex_input_string(s);
+}
+
+void mixparse_debug(void) {
+    yydebug = 1;
 }
 
 void mixparse_comment(void) {
     (*comment_callback)();
 }
     
+void mixparse_address(int i) {
+    (*address_callback)(i);
+}
+
 int mixparse(void) {
     return yyparse();
 }

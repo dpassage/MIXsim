@@ -68,6 +68,17 @@ START_TEST(test_lex_orig)
 }    
 END_TEST
 
+START_TEST(test_lex_negative_number) 
+{
+    mixlex_input_string("-40");
+    int nexttoken = yylex();
+    fail_unless(nexttoken == '-', "token should be -");
+    nexttoken = yylex();
+    fail_unless(nexttoken == MIXAL_NUMBER, "token should be a number");
+    fail_unless(yylval.val == 40, "number should be 40");
+}
+END_TEST
+
 Suite *mixlex_suite(void)
 {
 	Suite *s = suite_create("mixlex");
@@ -77,6 +88,7 @@ Suite *mixlex_suite(void)
 	tcase_add_test (tc_core, test_lex_comment);
 	tcase_add_test (tc_core, test_lex_halt);
 	tcase_add_test (tc_core, test_lex_orig);
+    tcase_add_test (tc_core, test_lex_negative_number);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

@@ -14,6 +14,9 @@ void yyerror (char const *);
 %token <symbol> MIXAL_SYMBOL;
 %token <val> MIXAL_NUMBER;
 %token MIXAL_COMMENT;
+%type <val> address;
+%type <val> expression;
+%type <val> atomicexpression;
 
 %%
 
@@ -34,11 +37,15 @@ loc: MIXAL_WHITESPACE
 
 address: /* empty */ 
     | MIXAL_WHITESPACE
-    | MIXAL_WHITESPACE expr
-    | MIXAL_WHITESPACE expr MIXAL_WHITESPACE
+    | MIXAL_WHITESPACE expression  { $$ = $2; mixparse_address($$); }
+    | MIXAL_WHITESPACE expression MIXAL_WHITESPACE { $$ = $2; mixparse_address($$); }
 ;
 
-expr: MIXAL_NUMBER
+expression: atomicexpression
+    | '-' atomicexpression { $$ = -$2; } 
+;
+
+atomicexpression: MIXAL_NUMBER
     | MIXAL_SYMBOL
 ;
 
