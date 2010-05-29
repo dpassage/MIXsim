@@ -127,6 +127,9 @@ int yylex (void) {
                     case ')':
                     case '(':
                     case ':':
+                    case '+':
+                    case '*':
+                    case '/':
                         return ch;
                         break;
                     default:

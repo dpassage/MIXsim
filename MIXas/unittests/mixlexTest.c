@@ -99,7 +99,7 @@ END_TEST
 
 START_TEST(test_lex_parens)
 {
-    mixlex_input_string("(1:2),43");
+    mixlex_input_string("(1:2),43+*/");
     int nexttoken = yylex();
     fail_unless(nexttoken == '(');
     nexttoken = yylex();
@@ -114,6 +114,12 @@ START_TEST(test_lex_parens)
     fail_unless(nexttoken == ',');
     nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_NUMBER);
+    nexttoken = yylex();
+    fail_unless(nexttoken == '+');
+    nexttoken = yylex();
+    fail_unless(nexttoken == '*');
+    nexttoken = yylex();
+    fail_unless(nexttoken == '/');
     nexttoken = yylex();
     fail_unless(nexttoken == 0);
 }

@@ -23,6 +23,7 @@ void yyerror (char const *);
 %type <val> atomicexpression;
 %type <val> index;
 %type <val> field;
+%left ':' '+' '*' '/' '-'
 
 %%
 
@@ -74,6 +75,10 @@ field: /* empty */ { $$ = 0; }
 expression: atomicexpression
     | '-' atomicexpression { $$ = -$2; } 
     | expression ':' expression { $$ = ($1 * 8) + $3; }
+    | expression '+' expression { $$ = $1 + $3; }
+    | expression '*' expression { $$ = $1 * $3; }
+    | expression '/' expression { $$ = $1 / $3; }
+    | expression '-' expression { $$ = $1 - $3; }
 ;
 
 atomicexpression: MIXAL_NUMBER

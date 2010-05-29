@@ -126,6 +126,11 @@ static struct instr_test_str {
     { "           LDA  3000,4(37)\n", "LDA", 3000, 4, 37 },
     { "           LDA  3000,4(0:5)\n", "LDA", 3000, 4, 5 },
     { "           LDA  4:3\n", "LDA", 35, 0, 0 },
+    { "           LDA  -1\n", "LDA", -1, 0, 0 },
+    { "           LDA  -1+5\n", "LDA", 4, 0, 0 },
+    { "           LDA  -1+5*20\n", "LDA", 80, 0, 0 },
+    { "           LDA  -1+5*20/6\n", "LDA", 13, 0, 0 },
+    { "           LDA  -1-4\n", "LDA", -5, 0, 0 },
     { NULL, NULL, 0, 0, 0 }
 };
 
@@ -146,9 +151,15 @@ START_TEST(test_parse_instruction_callback)
         } else {
             fail_unless(strcmp(instrop, inst_test_str[i].op) == 0, "%d: op not set", i);
     }   
-        fail_unless(instraddress == inst_test_str[i].a, "%d: address not set", i);
-        fail_unless(instrindex == inst_test_str[i].i, "%d: index not set", i);
-        fail_unless(instrfield == inst_test_str[i].f, "%d: field not set", i);
+        fail_unless(instraddress == inst_test_str[i].a, 
+                    "%d: address should be %d was %d", 
+                    i, inst_test_str[i].a, instraddress);
+        fail_unless(instrindex == inst_test_str[i].i, 
+                    "%d: index should be %d was %d", 
+                    i, inst_test_str[i].i, instrindex);
+        fail_unless(instrfield == inst_test_str[i].f, 
+                    "%d: field should be %d was %d", 
+                    i, inst_test_str[i].f, instrfield);
     }
 }
 END_TEST
