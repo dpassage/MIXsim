@@ -16,27 +16,55 @@
 #include "y.tab.h"
 
 static FILE *inputfile;
-static int mixlex_default_getnextchar(void) {
+
+static int mixlex_file_getnextchar(void) {
     return fgetc(inputfile);
 }
 
-static int mixlex_default_ungetchar(int ch) {
+static int mixlex_file_ungetchar(int ch) {
     return ungetc(ch, inputfile);
 }
 
+static int cur = 0;
+static char const *inputstring;
+static char ungetbuffer[10];
+static int ungetcur = 0;
+
+static int string_nextchar(void) {
+    if (ungetcur > 0) {
+        return ungetbuffer[--ungetcur];
+    }
+    if (inputstring[cur] == '\0') {
+        return -1;
+    }
+    return inputstring[cur++];
+}
+
+static int string_ungetchar(int ch) {
+    if (ungetcur == 10) {
+        return -1;
+    }
+    ungetbuffer[ungetcur] = ch;
+    ungetcur++;
+    return ch;
+}
+
 static int lex_column = 0; /* column of character just read */
-static int (*getnextchar)(void) = mixlex_default_getnextchar;
-static int (*ungetchar)(int) = mixlex_default_ungetchar;
+static int (*getnextchar)(void);
+static int (*ungetchar)(int);
 static char tokenbuffer[11];
 
 void mixlex_input(FILE *f) {
     inputfile = f;
+    getnextchar = mixlex_file_getnextchar;
+    ungetchar = mixlex_file_ungetchar;
 }
-void mixlex_set_getchar(int (*nextchar)(void)) {
-    getnextchar = nextchar;
-}
-void mixlex_set_ungetchar(int (*ungetcharfn)(int)) {
-    ungetchar = ungetcharfn;
+
+void mixlex_input_string(const char *s) {
+    inputstring = s;
+    cur = 0;
+    getnextchar = string_nextchar;
+    ungetchar = string_ungetchar;
 }
 
 char *mixlex_get_token() {
@@ -52,8 +80,10 @@ static enum lexstate {
 
 void mixlex_reset(void) {
     lex_column = 0;
-    getnextchar = mixlex_default_getnextchar;
-    ungetchar = mixlex_default_ungetchar;
+    inputfile = NULL;
+    inputstring = NULL;
+    getnextchar = NULL;
+    ungetchar = NULL;
     lexstate = NOTOKEN;
 }
 

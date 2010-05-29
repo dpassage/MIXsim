@@ -44,8 +44,8 @@ int main (int argc, char * const argv[]) {
         }
     }
     
-    mixlex_input(input);
     mixparse_reset();
+    mixparse_set_input_file(input);
     return mixparse();
     
 }

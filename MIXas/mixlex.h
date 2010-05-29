@@ -12,12 +12,13 @@
 
 #include <stdio.h>
 
-void mixlex_input(FILE *);
-void mixlex_set_getchar(int (*nextchar)(void));
-void mixlex_set_ungetchar(int (*ungetchar)(int));
 void mixlex_reset(void);
-char *mixlex_get_token(void);
+
+void mixlex_input(FILE *);
+void mixlex_input_string(const char *s);
 
 int yylex(void);
+
+char *mixlex_get_token(void);
 
 #endif /* MIXLEX_H */

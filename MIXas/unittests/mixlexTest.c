@@ -10,13 +10,10 @@
 #include "mixlex.h"
 #include "y.tab.h"
 
-#include "mixtest_lexer_helper.h"
 #include "mixlexTest.h"
 
 static void setup(void) {
     mixlex_reset();
-    mixlex_set_getchar(string_nextchar);
-    mixlex_set_ungetchar(string_ungetchar);
 }
 
 static void teardown(void) {
@@ -24,7 +21,7 @@ static void teardown(void) {
 
 START_TEST(test_lex_comment)
 {
-    string_setup("* THIS IS A COMMENT\n");
+    mixlex_input_string("* THIS IS A COMMENT\n");
     int nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_COMMENT, "token should be a comment");
 }
@@ -32,7 +29,7 @@ END_TEST
     
 START_TEST(test_lex_halt)
 {
-    string_setup(" HLT\n");
+    mixlex_input_string(" HLT\n");
     int nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_WHITESPACE, "token should be whitespace");
     nexttoken = yylex();
@@ -50,7 +47,7 @@ END_TEST
 
 START_TEST(test_lex_orig)
 {
-    string_setup("           ORIG 3000\n");
+    mixlex_input_string("           ORIG 3000\n");
     int nexttoken = yylex();
     fail_unless(nexttoken == MIXAL_WHITESPACE, "token should be whitespace");
     nexttoken = yylex();
