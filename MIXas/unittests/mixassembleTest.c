@@ -1,0 +1,51 @@
+/*
+ *  mixassembleTest.c
+ *  MIXsim
+ *
+ *  Created by David Paschich on 5/29/10.
+ *  Copyright 2010 __MyCompanyName__. All rights reserved.
+ *
+ */
+
+#include "mixassemble.h"
+
+#include "mixassembleTest.h"
+
+static ma_assembly *ma;
+
+static void setup(void) {
+    ma = ma_assembly_create();
+}
+
+static void teardown(void) {
+}
+
+START_TEST(test_assemble_orig) {
+}
+END_TEST
+
+START_TEST(test_translate_opcode) {
+    char *opcode = "IN";
+    int c;
+    int f;
+    int ret; 
+    
+    ret = mixas_encode(opcode, &c, &f);
+    fail_unless(ret == 1, "opcode not found!");
+    fail_unless(c == 36, "IN should be 36");
+    fail_unless(f == -1, "f should be -1, comes from instr");
+}
+END_TEST
+
+Suite *mixassemble_suite(void)
+{
+	Suite *s = suite_create("mixassemble");
+	
+	TCase *tc_core = tcase_create("Core");
+    tcase_add_checked_fixture (tc_core, setup, teardown);
+    tcase_add_test (tc_core, test_translate_opcode);
+    tcase_add_test (tc_core, test_assemble_orig);
+	suite_add_tcase (s, tc_core);
+	
+	return s;
+}

@@ -22,6 +22,9 @@
 		6BB5C92911B186FD00C3E59D /* mixparseTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5C92811B186FD00C3E59D /* mixparseTest.c */; };
 		6BB5C97211B1910400C3E59D /* mixparse.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5C97111B1910400C3E59D /* mixparse.c */; };
 		6BB5C97311B1910400C3E59D /* mixparse.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5C97111B1910400C3E59D /* mixparse.c */; };
+		6BB5CBF611B1E55300C3E59D /* mixassembleTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5CBF511B1E55300C3E59D /* mixassembleTest.c */; };
+		6BB5CC0511B1E6C900C3E59D /* mixassemble.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5CC0411B1E6C900C3E59D /* mixassemble.c */; };
+		6BB5CC0611B1E6C900C3E59D /* mixassemble.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5CC0411B1E6C900C3E59D /* mixassemble.c */; };
 		6BD1CFCB11ACCE6300838507 /* halt.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EC811A0689D00AAC892 /* halt.mix */; };
 		6BD1CFCC11ACCE6300838507 /* halt.mixal in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BD1CFC911ACCB2E00838507 /* halt.mixal */; };
 		6BD1CFF111ACD00200838507 /* MIXas.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1CFF011ACD00200838507 /* MIXas.c */; };
@@ -141,6 +144,10 @@
 		6BB5C92811B186FD00C3E59D /* mixparseTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mixparseTest.c; path = MIXas/unittests/mixparseTest.c; sourceTree = "<group>"; };
 		6BB5C97011B1910400C3E59D /* mixparse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mixparse.h; path = MIXas/mixparse.h; sourceTree = "<group>"; };
 		6BB5C97111B1910400C3E59D /* mixparse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mixparse.c; path = MIXas/mixparse.c; sourceTree = "<group>"; };
+		6BB5CBF411B1E55300C3E59D /* mixassembleTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mixassembleTest.h; path = MIXas/unittests/mixassembleTest.h; sourceTree = "<group>"; };
+		6BB5CBF511B1E55300C3E59D /* mixassembleTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mixassembleTest.c; path = MIXas/unittests/mixassembleTest.c; sourceTree = "<group>"; };
+		6BB5CC0311B1E6C900C3E59D /* mixassemble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mixassemble.h; path = MIXas/mixassemble.h; sourceTree = "<group>"; };
+		6BB5CC0411B1E6C900C3E59D /* mixassemble.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mixassemble.c; path = MIXas/mixassemble.c; sourceTree = "<group>"; };
 		6BD1CFC911ACCB2E00838507 /* halt.mixal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = halt.mixal; path = testdata/halt.mixal; sourceTree = "<group>"; };
 		6BD1CFF011ACD00200838507 /* MIXas.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXas.c; path = MIXas/MIXas.c; sourceTree = "<group>"; };
 		6BD1D35111AE37C200838507 /* mixal.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; name = mixal.y; path = MIXas/mixal.y; sourceTree = "<group>"; };
@@ -310,6 +317,8 @@
 				6BD1D38811AE45AB00838507 /* mixlex.c */,
 				6BB5C97011B1910400C3E59D /* mixparse.h */,
 				6BB5C97111B1910400C3E59D /* mixparse.c */,
+				6BB5CC0311B1E6C900C3E59D /* mixassemble.h */,
+				6BB5CC0411B1E6C900C3E59D /* mixassemble.c */,
 			);
 			name = MIXas;
 			sourceTree = "<group>";
@@ -322,6 +331,8 @@
 				6BD1D3B011AE4BAF00838507 /* mixlexTest.c */,
 				6BB5C92711B186FD00C3E59D /* mixparseTest.h */,
 				6BB5C92811B186FD00C3E59D /* mixparseTest.c */,
+				6BB5CBF411B1E55300C3E59D /* mixassembleTest.h */,
+				6BB5CBF511B1E55300C3E59D /* mixassembleTest.c */,
 			);
 			name = MIXasTest;
 			sourceTree = "<group>";
@@ -575,6 +586,8 @@
 				6BD1D3B111AE4BAF00838507 /* mixlexTest.c in Sources */,
 				6BB5C92911B186FD00C3E59D /* mixparseTest.c in Sources */,
 				6BB5C97311B1910400C3E59D /* mixparse.c in Sources */,
+				6BB5CBF611B1E55300C3E59D /* mixassembleTest.c in Sources */,
+				6BB5CC0511B1E6C900C3E59D /* mixassemble.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +599,7 @@
 				6BD1D35211AE37C200838507 /* mixal.y in Sources */,
 				6BD1D38911AE45AB00838507 /* mixlex.c in Sources */,
 				6BB5C97211B1910400C3E59D /* mixparse.c in Sources */,
+				6BB5CC0611B1E6C900C3E59D /* mixassemble.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -114,6 +114,18 @@ START_TEST(test_parse_badcolumns)
 }
 END_TEST
 
+START_TEST(test_illegal_operator)
+{
+    char *ill = "           ZZZ  -50\n";
+    mixparse_set_input_string(ill);
+    
+    int ret = mixparse();
+    
+    fail_unless(ret == 1, "parser should have failed");
+    
+}
+END_TEST
+
 static struct instr_test_str {
     char *instr;
     char *op;
@@ -175,6 +187,7 @@ Suite *mixparse_suite(void)
     tcase_add_test(tc_core, test_parse_negnum);
     tcase_add_test(tc_core, test_parse_badcolumns);
     tcase_add_test(tc_core, test_parse_instruction_callback);
+    tcase_add_test(tc_core, test_illegal_operator);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

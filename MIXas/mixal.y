@@ -2,7 +2,8 @@
 #define YYDEBUG 1
 #include <stdio.h>
 #include <string.h>
-    
+
+#include "mixassemble.h"
 #include "mixparse.h"
 
 int yylex (void);
@@ -37,7 +38,12 @@ line:  MIXAL_COMMENT  { fprintf(stderr, "Comment!\n"); mixparse_comment(); }
 
 instruction: loc MIXAL_SYMBOL address index field '\n' 
     { 
+        int c, f;
         fprintf(stderr, "Symbol is %s\n", $2);
+        if (mixas_encode($2, &c, &f) == 0) {
+            yyerror("opcode not a legal instruction");
+            YYERROR;
+        }
         mixparse_instruction($2, $3, $4, $5);
     }
 ;
