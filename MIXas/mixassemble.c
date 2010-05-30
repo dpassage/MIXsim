@@ -122,6 +122,9 @@ int ma_process_line(ma_assembly *ma, const char *l) {
     char loc[11];
     char opcode[5];
     
+    if (l[0] == '*') {
+        return 1;
+    }
     if (strlen(l) < 15) {
         return 0;
     }

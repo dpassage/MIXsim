@@ -43,6 +43,16 @@ START_TEST(test_assemble_equ) {
 }
 END_TEST
 
+START_TEST(test_assemble_comment) {
+    char *line = "*HELLO\n";
+    
+    int cur = ma_get_current(ma);
+    int ret = ma_process_line(ma, line);
+    fail_unless(ret == 1, "processor should succeed");
+    fail_unless(ma_get_current(ma) == cur, "current should not advance");
+}
+END_TEST
+
 START_TEST(test_translate_opcode) {
     char *opcode = "IN";
     int c;
@@ -65,6 +75,7 @@ Suite *mixassemble_suite(void)
     tcase_add_test(tc_core, test_translate_opcode);
     tcase_add_test(tc_core, test_assemble_orig);
     tcase_add_test(tc_core, test_assemble_equ);
+    tcase_add_test(tc_core, test_assemble_comment);
 	suite_add_tcase (s, tc_core);
 	
 	return s;
