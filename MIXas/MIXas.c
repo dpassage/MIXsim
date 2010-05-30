@@ -11,8 +11,25 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "mixassemble.h"
 #include "mixlex.h"
 #include "mixparse.h"
+
+static int mix_assemble(FILE *input, FILE *output) {
+    char buf[100];
+    int line = 1;
+    ma_assembly *ma = ma_assembly_create();
+    
+    while (fgets(buf, 100, input)) {
+        if (!ma_process_line(ma, buf)) {
+            fprintf(stderr, "%d: could not process line\n", line);
+            return -1;
+        }
+        line++;
+    }
+    
+    return -1;
+}
 
 int main (int argc, char * const argv[]) {
     FILE *input = stdin;
@@ -43,8 +60,6 @@ int main (int argc, char * const argv[]) {
         }
     }
     
-    mixparse_reset();
-    mixparse_set_input_file(input);
-    return mixparse();
-    
+    return mix_assemble(input, output);
 }
+

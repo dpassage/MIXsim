@@ -13,16 +13,12 @@
 #include <check.h>
 
 #include "mixassembleTest.h"
-#include "mixlexTest.h"
-#include "mixparseTest.h"
 
 int main(int argc, char *argv[])
 {
 	int number_failed;
 	
-	SRunner *sr = srunner_create(mixlex_suite());
-    srunner_add_suite(sr, mixparse_suite());
-    srunner_add_suite(sr, mixassemble_suite());
+	SRunner *sr = srunner_create(mixassemble_suite());
     srunner_set_fork_status (sr, CK_NOFORK);
 
 	srunner_run_all(sr, CK_NORMAL);
