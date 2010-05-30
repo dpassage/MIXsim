@@ -16,8 +16,10 @@ typedef struct ma_assembly ma_assembly;
 
 ma_assembly *ma_assembly_create(void);
 
-void ma_process_line(ma_assembly *, const char *);
+int ma_process_line(ma_assembly *, const char *);
 
 int ma_get_current(ma_assembly *);
+int ma_get_symbol(ma_assembly *, int *, const char *);
+int ma_set_symbol(ma_assembly *, const char *, int);
 
 #endif

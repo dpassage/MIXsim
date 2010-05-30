@@ -21,6 +21,25 @@ static void teardown(void) {
 }
 
 START_TEST(test_assemble_orig) {
+    char *line = "           ORIG 400\n";
+    
+    int ret = ma_process_line(ma, line);
+    fail_unless(ret == 1, "processor should succeed");
+    fail_unless(ma_get_current(ma) == 400, "current should be 400");
+}
+END_TEST
+
+START_TEST(test_assemble_equ) {
+    char *line = "FOO        EQU  500\n";
+    int value;
+    
+    int cur = ma_get_current(ma);
+    int ret = ma_process_line(ma, line);
+    fail_unless(ret == 1, "processor should succeed");
+    fail_unless(ma_get_current(ma) == cur, "current should not advance");
+    ret = ma_get_symbol(ma, &value, "FOO");
+    fail_unless(ret == 1, "value should be set");
+    fail_unless(value == 500, "should have set value");
 }
 END_TEST
 
@@ -43,8 +62,9 @@ Suite *mixassemble_suite(void)
 	
 	TCase *tc_core = tcase_create("Core");
     tcase_add_checked_fixture (tc_core, setup, teardown);
-    tcase_add_test (tc_core, test_translate_opcode);
-    tcase_add_test (tc_core, test_assemble_orig);
+    tcase_add_test(tc_core, test_translate_opcode);
+    tcase_add_test(tc_core, test_assemble_orig);
+    tcase_add_test(tc_core, test_assemble_equ);
 	suite_add_tcase (s, tc_core);
 	
 	return s;
