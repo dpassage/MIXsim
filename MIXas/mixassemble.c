@@ -20,6 +20,7 @@ struct opcode_lookup {
 } opcode_lookup[] = {
     { "EQU",  -1, -1 },
     { "IN",   36, -1 },
+    { "HLT",   0,  0 },
     { "LDA",   8, -1 },
     { "NOP",   0,  0 },
     { "ORIG", -1, -1 },
@@ -39,11 +40,11 @@ int mixas_encode(const char *opcode, int *c, int *f) {
 
 struct ma_assembly {
     int current;
+    mix_word *words[4000];
 };
 
 ma_assembly *ma_assembly_create(void) {
-    ma_assembly *ma = (ma_assembly *)malloc(sizeof (ma_assembly));
-    ma->current = 0;
+    ma_assembly *ma = (ma_assembly *)calloc((size_t)1, sizeof (ma_assembly));
     return ma;
 }
 
@@ -58,7 +59,7 @@ static int ma_parse_opcode(char *opcode, const char *l) {
     for (i = 0; i <= 5; i++) {
         if (isupper(codestart[i]) || isdigit(codestart[i])) {
             opcode[i] = codestart[i];
-        } else if (codestart[i] == ' ') {
+        } else if (codestart[i] == ' ' || codestart[i] == '\n') {
             opcode[i] = '\0';
             return 1;
         } else {
@@ -118,6 +119,22 @@ int ma_set_symbol(ma_assembly *ma, const char *symbol, int value) {
     return 1;
 }
 
+int ma_get_word(ma_assembly *ma, mix_word *word, int loc) {
+    if (ma->words[loc] == NULL) {
+        return 0;
+    }
+    *word = *(ma->words[loc]);
+    return 1;
+}
+
+int ma_set_word(ma_assembly *ma, const mix_word *word, int loc) {
+    if (ma->words[loc] == NULL) {
+        ma->words[loc] = mix_word_create();
+    }
+    *(ma->words[loc]) = *word;
+    return 1;
+}
+    
 int ma_process_line(ma_assembly *ma, const char *l) {
     char loc[11];
     char opcode[5];
@@ -125,7 +142,7 @@ int ma_process_line(ma_assembly *ma, const char *l) {
     if (l[0] == '*') {
         return 1;
     }
-    if (strlen(l) < 15) {
+    if (strlen(l) < 14) {
         return 0;
     }
     int ret = ma_parse_opcode(&opcode[0], l);
@@ -146,6 +163,23 @@ int ma_process_line(ma_assembly *ma, const char *l) {
         }
         int value = atoi(l + 16);
         return ma_set_symbol(ma, loc, value);
+    }
+    
+    int f, c;
+    ret = mixas_encode(opcode, &c, &f);
+    if (ret != 0) {
+        if (loc[0] != '\0') {
+            if (ma_set_symbol(ma, loc, ma->current) == 0) {
+                return 0;
+            }
+        }
+        mix_word *w = mix_word_create();
+        w->bytes[4] = f;
+        w->bytes[5] = c;
+        ma_set_word(ma, w, ma->current);
+        mix_word_destroy(w);
+        ma->current++;
+        return 1;
     }
     return 0;
 }

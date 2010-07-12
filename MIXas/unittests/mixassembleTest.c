@@ -8,6 +8,7 @@
  */
 
 #include "mixassemble.h"
+#include "mix_word.h"
 
 #include "mixassembleTest.h"
 
@@ -43,6 +44,28 @@ START_TEST(test_assemble_equ) {
 }
 END_TEST
 
+START_TEST(test_assemble_with_label) {
+    char *line = "START      HLT\n";
+    int value;
+    mix_word word;
+    
+    int cur = ma_get_current(ma);
+    int ret = ma_process_line(ma, line);
+    
+    fail_unless(ret == 1, "processor should succeed");
+    fail_unless(ma_get_current(ma) == cur + 1, "current should advance");
+    ret = ma_get_symbol(ma, &value, "START");
+    fail_unless(ret == 1, "value should have been set");
+    fail_unless(value == cur, "value should have been taken from assembly");
+    
+    ret = ma_get_word(ma, &word, cur);
+    fail_unless(word.bytes[0] == MIX_WORD_PLUS);
+    for (int i = 1; i <- 5; i++) {
+        fail_unless(word.bytes[i] == 0, "word %d should have been 0", i);
+    }
+}
+END_TEST
+    
 START_TEST(test_assemble_comment) {
     char *line = "*HELLO\n";
     
@@ -66,6 +89,7 @@ START_TEST(test_translate_opcode) {
 }
 END_TEST
 
+
 Suite *mixassemble_suite(void)
 {
 	Suite *s = suite_create("mixassemble");
@@ -76,6 +100,7 @@ Suite *mixassemble_suite(void)
     tcase_add_test(tc_core, test_assemble_orig);
     tcase_add_test(tc_core, test_assemble_equ);
     tcase_add_test(tc_core, test_assemble_comment);
+    tcase_add_test(tc_core, test_assemble_with_label);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

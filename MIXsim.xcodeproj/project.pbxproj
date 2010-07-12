@@ -19,6 +19,8 @@
 		6B69D76A11AA41E9007D5BA8 /* MIXsimTestMain.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D76911AA41E9007D5BA8 /* MIXsimTestMain.c */; };
 		6B69D77311AA4233007D5BA8 /* MIXwordTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D76F11AA4233007D5BA8 /* MIXwordTest.c */; };
 		6B69D77411AA4233007D5BA8 /* MIXassemblerTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D77011AA4233007D5BA8 /* MIXassemblerTest.c */; };
+		6BA9C60A11EAE0FD002D61B7 /* mix_word.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B74AE119E795D0045C0B7 /* mix_word.c */; };
+		6BA9C60B11EAE105002D61B7 /* mix_word.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B74AE119E795D0045C0B7 /* mix_word.c */; };
 		6BB5CBF611B1E55300C3E59D /* mixassembleTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5CBF511B1E55300C3E59D /* mixassembleTest.c */; };
 		6BB5CC0511B1E6C900C3E59D /* mixassemble.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5CC0411B1E6C900C3E59D /* mixassemble.c */; };
 		6BB5CC0611B1E6C900C3E59D /* mixassemble.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5CC0411B1E6C900C3E59D /* mixassemble.c */; };
@@ -554,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA9C60A11EAE0FD002D61B7 /* mix_word.c in Sources */,
 				6BD1D3AE11AE4B4C00838507 /* MIXasTest.c in Sources */,
 				6BB5CBF611B1E55300C3E59D /* mixassembleTest.c in Sources */,
 				6BB5CC0511B1E6C900C3E59D /* mixassemble.c in Sources */,
@@ -564,6 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA9C60B11EAE105002D61B7 /* mix_word.c in Sources */,
 				6BD1CFF111ACD00200838507 /* MIXas.c in Sources */,
 				6BB5CC0611B1E6C900C3E59D /* mixassemble.c in Sources */,
 			);

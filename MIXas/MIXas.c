@@ -12,8 +12,6 @@
 #include <unistd.h>
 
 #include "mixassemble.h"
-#include "mixlex.h"
-#include "mixparse.h"
 
 static int mix_assemble(FILE *input, FILE *output) {
     char buf[100];
