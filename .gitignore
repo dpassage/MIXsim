@@ -1,4 +1,5 @@
-build/ # xcode build directory
-build
 *.xcodeproj/*.mode1v3
 *.xcodeproj/*.pbxuser
+*.xcodeproj/project.xcworkspace/*
+*.xcodeproj/xcuserdata/*
+
