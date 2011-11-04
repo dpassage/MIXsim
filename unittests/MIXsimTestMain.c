@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
     srunner_add_suite(sr, mix_instructions_suite());
 	srunner_add_suite(sr, mix_device_suite());
     srunner_add_suite(sr, mix_instr_decode_suite());
-    srunner_add_suite(sr, mix_machine_callbacks_suite());
     srunner_set_fork_status(sr, CK_NOFORK);
 	srunner_run_all(sr, CK_NORMAL);
 	number_failed = srunner_ntests_failed(sr);
