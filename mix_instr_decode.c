@@ -261,7 +261,7 @@ char *mix_instr_decode(const mix_word *w, char *buffer) {
     char instrbuf[6];
     char addrbuf[5];
     char idxbuf[5];
-    char fieldbuf[5]; 
+    char fieldbuf[6]; 
     int a = mix_word_value(w, MIX_F(0,2));
     int i = mix_word_value(w, MIX_F(3,3));
     int f = mix_word_value(w, MIX_F(4,4));
