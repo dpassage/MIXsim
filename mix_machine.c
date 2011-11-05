@@ -372,6 +372,7 @@ int mix_machine_execute(mix_machine *mix)
         case MIX_OP_J4:
         case MIX_OP_J5:
         case MIX_OP_J6:
+        case MIX_OP_JX:
             i = opcode - MIX_OP_JA;
             return mix_machine_instr_Ji(mix, f, m, i);
             break;

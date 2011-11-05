@@ -213,7 +213,7 @@ struct mix_decoding_struct {
     /*44*/  { 0, 0, 0 },
     /*45*/  { 0, 0, 0 },
     /*46*/  { 0, 0, 0 },
-    /*47*/  { 0, 0, 0 },
+    /*47*/  { 0, opcode_jreg_trans, field_omitted },
     /*48*/  { 0, opcode_addr_trans, field_omitted, 1 },
     /*49*/  { 0, opcode_addr_trans, field_omitted, 1 },
     /*50*/  { 0, opcode_addr_trans, field_omitted, 1 },
