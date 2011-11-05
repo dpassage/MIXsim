@@ -59,6 +59,7 @@ START_TEST(test_assemble_with_label) {
     fail_unless(value == cur, "value should have been taken from assembly");
     
     ret = ma_get_word(ma, &word, cur);
+    fail_unless(ret == 1, "word should have been returned");
     fail_unless(word.bytes[0] == MIX_WORD_PLUS);
     for (int i = 1; i <- 5; i++) {
         fail_unless(word.bytes[i] == 0, "word %d should have been 0", i);
