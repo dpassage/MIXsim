@@ -318,6 +318,9 @@ int mix_machine_execute(mix_machine *mix)
     }
 	
 	switch (opcode) {
+        case MIX_OP_DIV:
+            return mix_machine_instr_DIV(mix, f, m);
+            break;
         case MIX_OP_05:
             switch (f) {
                 case 2: /* HLT */
