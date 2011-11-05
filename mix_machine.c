@@ -18,6 +18,7 @@
 struct mix_machine {
 	int ip;
 	unsigned int time;
+    int overflow;
     mix_word ri[9]; /* 0 is ra; 7 is rx; 8 is rj */
 	mix_word words[4000];
     mix_device *devices[20];
@@ -68,6 +69,11 @@ int mix_machine_get_ip(mix_machine *m)
 	return m->ip;
 }
 
+int mix_machine_get_overflow(mix_machine *m)
+{
+    return m->overflow;
+}
+
 int mix_machine_get_time(mix_machine *m) {
 	return m->time;
 }
@@ -81,6 +87,10 @@ void mix_machine_load_ri(mix_machine *m, const mix_word *w, int i) {
     m->ri[i].bytes[1] = 0;
     m->ri[i].bytes[2] = 0;
     m->ri[i].bytes[3] = 0;
+}
+
+void mix_machine_load_rx(mix_machine *m, const mix_word *w) {
+    m->ri[7] = *w;
 }
 
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w) {
@@ -137,6 +147,27 @@ void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit) {
 int mix_machine_instr_HLT(mix_machine *mix, int f, int m) {
     mix->time++;
     return MIX_M_HALT;
+}
+
+int mix_machine_instr_DIV(mix_machine *mix, int f, int m) {
+    long dividend;
+    long divisor = m;
+    
+    dividend = mix_word_value(&(mix->ri[0]), MIX_F(0,5));
+    dividend = (dividend * 10000000000L) + 
+        (long)(mix_word_value(&(mix->ri[7]), MIX_F(1,5)));
+    divisor = (long)mix_word_value(&(mix->words[m]), MIX_F(0, 5));
+    
+    long quotient = dividend / divisor;
+    long remainder = dividend % divisor;
+    
+    mix_word_set_value(&(mix->ri[0]), MIX_F(0,5), (int)quotient);
+    mix_word_set_value(&(mix->ri[7]), MIX_F(0,5), (int)remainder);
+    mix->overflow = 0;
+    
+    mix->time += 12;
+    mix->ip++;
+    return MIX_M_OK;
 }
 
 int mix_machine_instr_IOC(mix_machine *mix, int unit, int m) {

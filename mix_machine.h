@@ -25,7 +25,6 @@ void mix_machine_destroy(mix_machine *m);
 
 /* memory management */
 void mix_machine_load_mem(mix_machine *m, const mix_word *w, int loc);
-void mix_machine_load_mem(mix_machine *m, const mix_word *w, int loc);
 mix_word *mix_machine_read_mem(mix_machine *m, mix_word *w, int loc);
 
 /* machine state */
@@ -33,6 +32,8 @@ int mix_machine_get_time(mix_machine *m);
 
 void mix_machine_set_ip(mix_machine *m, int loc);
 int mix_machine_get_ip(mix_machine *m);
+
+int mix_machine_get_overflow(mix_machine *m);
 
 /* register management */
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w);
@@ -55,6 +56,7 @@ void mix_machine_set_callback_exec(mix_machine *m, void (*callback_exec)(int ip,
 int mix_machine_execute(mix_machine *m);
 
 /* instructions in alpha order by mixal symbol */
+int mix_machine_instr_DIV (mix_machine *mix, int f, int m);
 int mix_machine_instr_ENTi(mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_HLT (mix_machine *mix, int f, int m);
 int mix_machine_instr_IOC (mix_machine *mix, int f, int m);

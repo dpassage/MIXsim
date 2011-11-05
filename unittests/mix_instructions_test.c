@@ -52,6 +52,40 @@ static struct load_reg_case load_largereg_cases[]  = {
 	{ -1, NULL}
 };
 
+START_TEST(test_DIV_instruction)
+{
+	mix_word *w = mix_word_create();
+    
+    int time;
+    int ret;
+
+    mix_word_set_value(w, MIX_F(0,5), 0);
+    mix_machine_load_ra(mix, w);
+    
+    mix_word_set_value(w, MIX_F(0,5), 17);
+    mix_machine_load_rx(mix, w);
+    
+    mix_word_set_value(w, MIX_F(0,5), 3);
+    mix_machine_load_mem(mix, w, 1000);
+    
+    time = mix_machine_get_time(mix);
+    mix_machine_set_ip(mix, 3000);
+    
+    ret = mix_machine_instr_DIV(mix, MIX_F(0,5), 1000);
+    
+    fail_unless(ret == MIX_M_OK, "machine returned error");
+    fail_unless(mix_machine_get_time(mix) - time == 12, 
+                "Instruction did not take right amount of time");
+    fail_unless(mix_machine_get_ip(mix) == 3001, "Instruction did not execute");
+    
+    mix_machine_read_ra(mix, w);
+    fail_unless(mix_word_value(w, MIX_F(0,5)) == 5, "Quotient incorrect");
+    mix_machine_read_rx(mix, w);
+    fail_unless(mix_word_value(w, MIX_F(0,5)) == 2, "Remainder incorrect");
+    fail_unless(mix_machine_get_overflow(mix) == 0, "Overflow incorrect");
+}
+END_TEST
+
 START_TEST(test_LDA_instruction)
 {
 	mix_word *w = mix_word_create();
@@ -475,6 +509,7 @@ Suite *mix_instructions_suite(void)
     tcase_add_test (tc_core, test_J1Z_instruction);
     tcase_add_test (tc_core, test_ENTi_instructions);
     tcase_add_test (tc_core, test_ENTA_instruction);
+    tcase_add_test (tc_core, test_DIV_instruction);
 	suite_add_tcase (s, tc_core);
 	
 	return s;
