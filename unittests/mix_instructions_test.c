@@ -86,6 +86,16 @@ START_TEST(test_DIV_instruction)
 }
 END_TEST
 
+START_TEST(test_DIV_instruction_FDIV_unimplemented)
+{
+    int ret;
+    
+    ret = mix_machine_instr_DIV(mix, 6, 1000);
+    
+    fail_unless(ret == MIX_M_UNIMPLEMENTED, "should have returned unimplemented");
+}
+END_TEST
+
 START_TEST(test_LDA_instruction)
 {
 	mix_word *w = mix_word_create();
@@ -510,6 +520,7 @@ Suite *mix_instructions_suite(void)
     tcase_add_test (tc_core, test_ENTi_instructions);
     tcase_add_test (tc_core, test_ENTA_instruction);
     tcase_add_test (tc_core, test_DIV_instruction);
+    tcase_add_test (tc_core, test_DIV_instruction_FDIV_unimplemented);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

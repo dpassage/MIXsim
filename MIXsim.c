@@ -66,11 +66,17 @@ int main (int argc, const char * argv[]) {
     
     if (ret == MIX_M_HALT) {
         printf("Program halted!\n");
-        printf("Time elapsed = %d\n", mix_machine_get_time(m));               
-    } else {
-        printf("Machine aborted!\n");
+    } else { 
+        switch (ret) {
+            case MIX_M_UNIMPLEMENTED:
+                printf("Unimplemented instruction!\n");
+                break;
+            default:
+                printf("Machine aborted!\n");
+        }
         printf("Instruction was %s\n", mix_word_tostring(mix_machine_read_mem(m, &w, mix_machine_get_ip(m))));
     }
-                   
+
+    printf("Time elapsed = %d\n", mix_machine_get_time(m));               
     return 0;
 }

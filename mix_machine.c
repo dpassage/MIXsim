@@ -153,6 +153,10 @@ int mix_machine_instr_DIV(mix_machine *mix, int f, int m) {
     long dividend;
     long divisor = m;
     
+    if (f == 6) {
+        return MIX_M_UNIMPLEMENTED;
+    }
+    
     dividend = mix_word_value(&(mix->ri[0]), MIX_F(0,5));
     dividend = (dividend * 10000000000L) + 
         (long)(mix_word_value(&(mix->ri[7]), MIX_F(1,5)));
@@ -388,7 +392,7 @@ int mix_machine_execute(mix_machine *mix)
                     break;
             }
 		default:
-            return -1;
+            return MIX_M_UNIMPLEMENTED;
 			break;
 	}
 	return 0;

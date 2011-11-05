@@ -16,6 +16,7 @@
 #define MIX_M_OK     0
 #define MIX_M_HALT   1
 #define MIX_M_ERROR -1
+#define MIX_M_UNIMPLEMENTED -30
 #define MIX_M_UNDEF -42
 
 typedef struct mix_machine mix_machine;
