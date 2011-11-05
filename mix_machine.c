@@ -327,11 +327,15 @@ int mix_machine_execute(mix_machine *mix)
             break;
         case MIX_OP_05:
             switch (f) {
+                case 0: /* NUM */
+                case 1: /* CHAR */
+                    return MIX_M_UNIMPLEMENTED;
+                    break;
                 case 2: /* HLT */
                     return mix_machine_instr_HLT(mix, f, m);
                     break;
                 default:
-                    return -1;
+                    return MIX_M_ERROR;
                     break;
             }
             break;
@@ -384,8 +388,14 @@ int mix_machine_execute(mix_machine *mix)
                 case 0: /* INCi */
                     return mix_machine_instr_INCi(mix, f, m, i);
                     break;
+                case 1: /* DECi */
+                    return MIX_M_UNIMPLEMENTED;
+                    break;
                 case 2: /* ENTi */
                     return mix_machine_instr_ENTi(mix, f, m, i);
+                    break;
+                case 3: /* ENNi */
+                    return MIX_M_UNIMPLEMENTED;
                     break;
                 default:
                     return MIX_M_ERROR;
@@ -395,7 +405,6 @@ int mix_machine_execute(mix_machine *mix)
             return MIX_M_UNIMPLEMENTED;
 			break;
 	}
-	return 0;
 }
 
 
