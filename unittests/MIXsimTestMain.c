@@ -10,7 +10,6 @@
 #include <stdlib.h>
 #include <check.h>
 
-#include "MIXassemblerTest.h"
 #include "mix_device_test.h"
 #include "mix_instructions_test.h"
 #include "mix_instr_decode_test.h"
@@ -23,7 +22,6 @@ int main(int argc, char *argv[])
 	int number_failed;
 	
 	SRunner *sr = srunner_create(mix_word_suite());
-	srunner_add_suite(sr, mix_assembler_suite());
 	srunner_add_suite(sr, mix_machine_suite());
     srunner_add_suite(sr, mix_instructions_suite());
 	srunner_add_suite(sr, mix_device_suite());
