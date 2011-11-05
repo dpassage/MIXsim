@@ -151,7 +151,11 @@ static char* field_standard(char *buf, int f, int c) {
     if (l > 5 || r > 5) {
         return NULL;
     }
-    sprintf(buf, "(%d:%d)", l, r);
+    if (l == 0 && r == 5) {
+        buf[0] = '\0';
+    } else {
+        sprintf(buf, "(%d:%d)", l, r);
+    }
     return buf;
 }
 
@@ -222,16 +226,14 @@ struct mix_decoding_struct {
     /*53*/  { 0, opcode_addr_trans, field_omitted, 1 },
     /*54*/  { 0, opcode_addr_trans, field_omitted, 1 },
     /*55*/  { 0, opcode_addr_trans, field_omitted, 1 },
-    /*04*/  { 0, 0, 0 },
-    /*04*/  { 0, 0, 0 },
-    /*04*/  { 0, 0, 0 },
-    /*04*/  { 0, 0, 0 },
-    /*04*/  { 0, 0, 0 },
-    /*04*/  { 0, 0, 0 },
-    /*04*/  { 0, 0, 0 },
-    /*04*/  { 0, 0, 0 },
-    /*04*/  { 0, 0, 0 },
-    
+    /*56*/  { "CMPA ", 0, field_standard },
+    /*57*/  { 0, 0, 0 },
+    /*58*/  { 0, 0, 0 },
+    /*59*/  { 0, 0, 0 },
+    /*60*/  { 0, 0, 0 },
+    /*61*/  { 0, 0, 0 },
+    /*62*/  { 0, 0, 0 },
+    /*63*/  { 0, 0, 0 }
 };
 
 #define is_valid_field(f)   (((f) / 8 <= 5) && ((f) % 8 <= 5))
