@@ -34,6 +34,7 @@
 		6BD1CFF111ACD00200838507 /* MIXas.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1CFF011ACD00200838507 /* MIXas.c */; };
 		6BD1D3AB11AE4AD900838507 /* libcheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B7454119E6B260045C0B7 /* libcheck.a */; };
 		6BD1D3AE11AE4B4C00838507 /* MIXasTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D3AD11AE4B4C00838507 /* MIXasTest.c */; };
+		6BE02B3A1466776C00655FD8 /* mix_instr_jumps_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BE02B381466776C00655FD8 /* mix_instr_jumps_test.c */; };
 		6BF32EA411A0615600AAC892 /* program_p.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA111A05F4900AAC892 /* program_p.mix */; };
 		6BF32EA511A0615600AAC892 /* program_p.loadtest_output in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA311A0610100AAC892 /* program_p.loadtest_output */; };
 		6BF32ECB11A0699000AAC892 /* halt.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EC811A0689D00AAC892 /* halt.mix */; };
@@ -134,6 +135,8 @@
 		6BD1CFF011ACD00200838507 /* MIXas.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXas.c; path = MIXas/MIXas.c; sourceTree = "<group>"; };
 		6BD1D3A611AE4AB300838507 /* MIXasTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIXasTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD1D3AD11AE4B4C00838507 /* MIXasTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXasTest.c; path = MIXas/unittests/MIXasTest.c; sourceTree = "<group>"; };
+		6BE02B381466776C00655FD8 /* mix_instr_jumps_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_instr_jumps_test.c; path = unittests/mix_instr_jumps_test.c; sourceTree = "<group>"; };
+		6BE02B391466776C00655FD8 /* mix_instr_jumps_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_instr_jumps_test.h; path = unittests/mix_instr_jumps_test.h; sourceTree = "<group>"; };
 		6BF32D19119F8CD900AAC892 /* MIXmachineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIXmachineTest.h; path = unittests/MIXmachineTest.h; sourceTree = "<group>"; };
 		6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXmachineTest.c; path = unittests/MIXmachineTest.c; sourceTree = "<group>"; };
 		6BF32D26119F8FA700AAC892 /* mix_machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_machine.h; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 		6B5B7417119E32D00045C0B7 /* libMIXsimTest */ = {
 			isa = PBXGroup;
 			children = (
+				6BE02B381466776C00655FD8 /* mix_instr_jumps_test.c */,
+				6BE02B391466776C00655FD8 /* mix_instr_jumps_test.h */,
 				6B69D76F11AA4233007D5BA8 /* MIXwordTest.c */,
 				6B69D77211AA4233007D5BA8 /* MIXwordTest.h */,
 				6B69D76911AA41E9007D5BA8 /* MIXsimTestMain.c */,
@@ -477,7 +482,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$BUILT_PRODUCTS_DIR/MIXsim < $BUILT_PRODUCTS_DIR/program_p.mix > $BUILT_PRODUCTS_DIR/program_p.testout\ndiff $BUILT_PRODUCTS_DIR/program_p.loadtest_output $BUILT_PRODUCTS_DIR/program_p.testout\nexit 0\n";
+			shellScript = "#$BUILT_PRODUCTS_DIR/MIXsim < $BUILT_PRODUCTS_DIR/program_p.mix > $BUILT_PRODUCTS_DIR/program_p.testout\n#diff $BUILT_PRODUCTS_DIR/program_p.loadtest_output $BUILT_PRODUCTS_DIR/program_p.testout\nexit 0\n";
 		};
 		6BD1CFCE11ACCE6D00838507 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -544,6 +549,7 @@
 				6B0ECA4F145FC65500BA7DEE /* mix_instr_decode_test.c in Sources */,
 				6B0ECA49145FC62600BA7DEE /* MIXwordTest.c in Sources */,
 				6B0ECA48145FC5BA00BA7DEE /* MIXsimTestMain.c in Sources */,
+				6BE02B3A1466776C00655FD8 /* mix_instr_jumps_test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
