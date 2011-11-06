@@ -15,7 +15,6 @@
 #include "mix_opcodes.h"
 #include "mix_word.h"
 
-
 static void null_callback_exec(int ip, const mix_word *w) {
     return;
 }
@@ -144,11 +143,8 @@ void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit) {
     m->devices[unit] = d;
 }
 
-
-
-
-
-void mix_machine_set_callback_exec(mix_machine *mix, void (*callback_exec)(int ip, const mix_word *instr)) {
+void mix_machine_set_callback_exec(mix_machine *mix, 
+                                   void (*callback_exec)(int ip, const mix_word *instr)) {
     mix->callback_exec = callback_exec;
 }
 
@@ -171,48 +167,13 @@ int mix_machine_execute(mix_machine *mix)
     }
 	
     mix_instruction instruction_pointer;
-	switch (opcode) {
-        case MIX_OP_DIV:
-        case MIX_OP_05:
-        case MIX_OP_LDA:
-        case MIX_OP_LD1:
-        case MIX_OP_LD2:
-        case MIX_OP_LD3:
-        case MIX_OP_LD4:
-        case MIX_OP_LD5:
-        case MIX_OP_LD6:
-        case MIX_OP_LDX:
-        case MIX_OP_ST1:
-        case MIX_OP_ST2:
-        case MIX_OP_ST3:
-        case MIX_OP_ST4:
-        case MIX_OP_ST5:
-        case MIX_OP_ST6:
-        case MIX_OP_IOC:
-        case MIX_OP_JUMPS:
-        case MIX_OP_J1:
-        case MIX_OP_J2:
-        case MIX_OP_J3:
-        case MIX_OP_J4:
-        case MIX_OP_J5:
-        case MIX_OP_J6:
-        case MIX_OP_JX:
-        case MIX_OP_ADRA:
-        case MIX_OP_ADR1:
-        case MIX_OP_ADR2:
-        case MIX_OP_ADR3:
-        case MIX_OP_ADR4:
-        case MIX_OP_ADR5:
-        case MIX_OP_ADR6:
-        case MIX_OP_ADRX:
-        case MIX_OP_CMPA:
-            instruction_pointer = mix_instruction_lookup(opcode);
-            return (*instruction_pointer)(mix, f, m, opcode);
-            break;
-		default:
-            return MIX_M_UNIMPLEMENTED;
-			break;
-	}
+    instruction_pointer = mix_instruction_lookup(opcode);
+
+    if (instruction_pointer == NULL) {
+        return MIX_M_UNIMPLEMENTED;
+    } else {
+        return (*instruction_pointer)(mix, f, m, opcode);
+    }
 }
 
 
