@@ -11,7 +11,7 @@
 
 #include "mix_machine.h"
 
-int mix_machine_instr_jumps(mix_machine *mix, int f, int m);
+int mix_machine_instr_jumps(mix_machine *mix, int f, int m, int c);
 int mix_machine_instr_JG  (mix_machine *mix, int f, int m);
 int mix_machine_instr_JMP (mix_machine *mix, int f, int m);
 

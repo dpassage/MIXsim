@@ -10,7 +10,7 @@
 
 #include "mix_instr_jumps.h"
 
-int mix_machine_instr_jumps(mix_machine *mix, int f, int m) {
+int mix_machine_instr_jumps(mix_machine *mix, int f, int m, int c) {
     switch (f) {
         case 0:
             return mix_machine_instr_JMP(mix, f, m);

@@ -332,6 +332,7 @@ int mix_machine_execute(mix_machine *mix)
     mix_instruction instruction_pointer;
 	switch (opcode) {
         case MIX_OP_05:
+        case MIX_OP_JUMPS:
             instruction_pointer = mix_instruction_lookup(opcode);
             return (*instruction_pointer)(mix, f, m, opcode);
             break;
@@ -364,9 +365,6 @@ int mix_machine_execute(mix_machine *mix)
             break;
         case MIX_OP_IOC:
             return mix_machine_instr_IOC(mix, f, m);
-            break;
-        case MIX_OP_JUMPS:
-            return mix_machine_instr_jumps(mix, f, m);
             break;
         case MIX_OP_J1:
         case MIX_OP_J2:
