@@ -162,30 +162,6 @@ int mix_machine_instr_CMPA(mix_machine *mix, int f, int m) {
     return MIX_M_OK;
 }
 
-int mix_machine_instr_DIV(mix_machine *mix, int f, int m) {
-    long dividend;
-    long divisor = m;
-    
-    if (f == 6) {
-        return MIX_M_UNIMPLEMENTED;
-    }
-    
-    dividend = mix_word_value(&(mix->ri[0]), MIX_F(0,5));
-    dividend = (dividend * 10000000000L) + 
-        (long)(mix_word_value(&(mix->ri[7]), MIX_F(1,5)));
-    divisor = (long)mix_word_value(&(mix->words[m]), MIX_F(0, 5));
-    
-    long quotient = dividend / divisor;
-    long remainder = dividend % divisor;
-    
-    mix_word_set_value(&(mix->ri[0]), MIX_F(0,5), (int)quotient);
-    mix_word_set_value(&(mix->ri[7]), MIX_F(0,5), (int)remainder);
-    mix->overflow = 0;
-    
-    mix->time += 12;
-    mix->ip++;
-    return MIX_M_OK;
-}
 
 int mix_machine_instr_IOC(mix_machine *mix, int unit, int m) {
     if (mix->devices[unit] == NULL) {
@@ -331,13 +307,11 @@ int mix_machine_execute(mix_machine *mix)
 	
     mix_instruction instruction_pointer;
 	switch (opcode) {
+        case MIX_OP_DIV:
         case MIX_OP_05:
         case MIX_OP_JUMPS:
             instruction_pointer = mix_instruction_lookup(opcode);
             return (*instruction_pointer)(mix, f, m, opcode);
-            break;
-        case MIX_OP_DIV:
-            return mix_machine_instr_DIV(mix, f, m);
             break;
 		case MIX_OP_LDA:
             return mix_machine_instr_LDA(mix, f, m);

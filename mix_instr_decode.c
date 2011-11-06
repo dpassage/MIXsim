@@ -14,6 +14,7 @@
 #include "mix_instr_decode.h"
 
 #include "mix_instr_jumps.h"
+#include "mix_instr_math.h"
 #include "mix_instr_specials.h"
 
 static const char regtrans[] = {
@@ -240,7 +241,7 @@ struct mix_decoding_struct {
     /*01*/  { 0, 0, 0, 0},
     /*02*/  { 0, 0, 0, 0 },
     /*03*/  { 0, 0, 0, 0 },
-    /*04*/  { 0, opcode_arith, field_arith, 1 },
+    /*04*/  { 0, opcode_arith, field_arith, 1, mix_machine_instr_DIV },
     /*05*/  { 0, opcode_05, field_omitted, 0, mix_machine_instr_specials },
     /*06*/  { 0, 0, 0, 0 },
     /*07*/  { 0, 0, 0, 0 },
