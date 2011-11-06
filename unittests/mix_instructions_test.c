@@ -24,7 +24,6 @@
 #include "mix_machine.h"
 #include "mix_word.h"
 #include "mix_instr_jumps.h"
-#include "mix_instr_specials.h"
 
 mix_machine *mix;
 
@@ -225,21 +224,6 @@ START_TEST(test_STi_instructions)
 }
 END_TEST
 
-START_TEST(test_HLT_instruction)
-{
-	int time;
-    int ret;
-
-    time = mix_machine_get_time(mix);
-    mix_machine_set_ip(mix, 3000);
-    
-    ret = mix_machine_instr_HLT(mix, 2, 0);
-
-    fail_unless (ret == MIX_M_HALT, "machine should have halted execution");
-    fail_unless(mix_machine_get_time(mix) - time == 1, 
-                "Instruction did not take right amount of time");
-}
-END_TEST
 
 START_TEST(test_IOC_instruction)
 {
@@ -475,7 +459,6 @@ Suite *mix_instructions_suite(void)
 	tcase_add_test (tc_core, test_LDA_instruction);
 	tcase_add_test (tc_core, test_LDX_instruction);
     tcase_add_test (tc_core, test_STi_instructions);
-    tcase_add_test (tc_core, test_HLT_instruction);
     tcase_add_test (tc_core, test_IOC_instruction);
     tcase_add_test (tc_core, test_IOC_unknown_device);
     tcase_add_test (tc_core, test_INCi_instructions);
