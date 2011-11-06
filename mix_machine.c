@@ -12,7 +12,6 @@
 
 #include "mix_instr_decode.h"
 #include "mix_instr_jumps.h"
-#include "mix_instr_specials.h"
 #include "mix_machine.h"
 #include "mix_opcodes.h"
 #include "mix_word.h"
@@ -330,12 +329,14 @@ int mix_machine_execute(mix_machine *mix)
         m += mix_word_value(&(mix->ri[i]), 5 /* (0:5) */);
     }
 	
+    mix_instruction instruction_pointer;
 	switch (opcode) {
+        case MIX_OP_05:
+            instruction_pointer = mix_instruction_lookup(opcode);
+            return (*instruction_pointer)(mix, f, m, opcode);
+            break;
         case MIX_OP_DIV:
             return mix_machine_instr_DIV(mix, f, m);
-            break;
-        case MIX_OP_05:
-            return mix_machine_instr_specials(mix, f, m);
             break;
 		case MIX_OP_LDA:
             return mix_machine_instr_LDA(mix, f, m);

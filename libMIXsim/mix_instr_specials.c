@@ -10,9 +10,9 @@
 
 #include "mix_instr_specials.h"
 
-int mix_machine_instr_specials(mix_machine *mix, int f, int m) {
+int mix_machine_instr_specials(mix_machine *mix, int f, int m, int c) {
     switch (f) {
-        case 0:
+        case 2:
             return mix_machine_instr_HLT(mix, f, m);
             break;
         default:
