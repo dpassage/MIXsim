@@ -13,6 +13,7 @@
 #include "mix_opcodes.h"
 #include "mix_instr_decode.h"
 
+#include "mix_instr_io.h"
 #include "mix_instr_jumps.h"
 #include "mix_instr_load.h"
 #include "mix_instr_math.h"
@@ -274,7 +275,7 @@ struct mix_decoding_struct {
     /*32*/  { 0, 0, 0 },
     /*33*/  { 0, 0, 0 },
     /*34*/  { 0, 0, 0 },
-    /*35*/  { "IOC  ", 0, field_decimal },
+    /*35*/  { "IOC  ", 0, field_decimal, 0, mix_machine_instr_IOC },
     /*36*/  { 0, 0, 0 },
     /*37*/  { 0, 0, 0 },
     /*38*/  { 0, 0, 0 },

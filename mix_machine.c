@@ -163,16 +163,6 @@ int mix_machine_instr_CMPA(mix_machine *mix, int f, int m) {
 }
 
 
-int mix_machine_instr_IOC(mix_machine *mix, int unit, int m) {
-    if (mix->devices[unit] == NULL) {
-        return MIX_M_ERROR;
-    }
-    mix_device_control(mix->devices[unit], m);
-    mix->time++;
-    mix->ip++;
-    return MIX_M_OK;
-}
-
 
 int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i) {
     mix_word *reg = &(mix->ri[i]);
@@ -280,12 +270,10 @@ int mix_machine_execute(mix_machine *mix)
         case MIX_OP_ST4:
         case MIX_OP_ST5:
         case MIX_OP_ST6:
+        case MIX_OP_IOC:
         case MIX_OP_JUMPS:
             instruction_pointer = mix_instruction_lookup(opcode);
             return (*instruction_pointer)(mix, f, m, opcode);
-            break;
-        case MIX_OP_IOC:
-            return mix_machine_instr_IOC(mix, f, m);
             break;
         case MIX_OP_J1:
         case MIX_OP_J2:
