@@ -62,7 +62,7 @@ START_TEST(test_LDA_instruction)
 		time = mix_machine_get_time(mix);
 		mix_machine_set_ip(mix, 3000);
         
-		ret = mix_machine_instr_LDA(mix, load_largereg_cases[i].f, 2000, MIX_OP_LDA);
+		ret = mix_machine_instr_LDi(mix, load_largereg_cases[i].f, 2000, MIX_OP_LDA);
         
         fail_unless(ret == MIX_M_OK, "machine returned error");
 		
@@ -97,7 +97,7 @@ START_TEST(test_LDX_instruction)
 		time = mix_machine_get_time(mix);
 		mix_machine_set_ip(mix, 3000);
         
-		ret = mix_machine_instr_LDX(mix, load_largereg_cases[i].f, 2000, 15);
+		ret = mix_machine_instr_LDi(mix, load_largereg_cases[i].f, 2000, MIX_OP_LDX);
         
         fail_unless(ret == MIX_M_OK, "machine returned error");
         

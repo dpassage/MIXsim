@@ -11,8 +11,6 @@
 
 #include "mix_machine.h"
 
-int mix_machine_instr_LDA (mix_machine *mix, int f, int m, int c);
-int mix_machine_instr_LDX (mix_machine *mix, int f, int m, int c);
 int mix_machine_instr_LDi (mix_machine *mix, int f, int m, int c);
 
 #endif
