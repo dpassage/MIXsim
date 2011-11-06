@@ -79,8 +79,6 @@ typedef int(*mix_instruction)(mix_machine *mix, int f, int m, int c);
 
 /* instructions in alpha order by mixal symbol */
 int mix_machine_instr_CMPA(mix_machine *mix, int f, int m);
-int mix_machine_instr_ENTi(mix_machine *mix, int f, int m, int i);
-int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i);
 
 /* helper functions */
 void mix_load_reg(mix_word *reg, const mix_word *mem, int f);

@@ -13,6 +13,7 @@
 #include "mix_opcodes.h"
 #include "mix_instr_decode.h"
 
+#include "mix_instr_addr_xfer.h"
 #include "mix_instr_io.h"
 #include "mix_instr_jumps.h"
 #include "mix_instr_load.h"
@@ -288,14 +289,14 @@ struct mix_decoding_struct {
     /*45*/  { 0, opcode_jreg_trans, field_omitted, 1, mix_machine_instr_Ji },
     /*46*/  { 0, opcode_jreg_trans, field_omitted, 1, mix_machine_instr_Ji },
     /*47*/  { 0, opcode_jreg_trans, field_omitted, 1, mix_machine_instr_Ji },
-    /*48*/  { 0, opcode_addr_trans, field_omitted, 1 },
-    /*49*/  { 0, opcode_addr_trans, field_omitted, 1 },
-    /*50*/  { 0, opcode_addr_trans, field_omitted, 1 },
-    /*51*/  { 0, opcode_addr_trans, field_omitted, 1 },
-    /*52*/  { 0, opcode_addr_trans, field_omitted, 1 },
-    /*53*/  { 0, opcode_addr_trans, field_omitted, 1 },
-    /*54*/  { 0, opcode_addr_trans, field_omitted, 1 },
-    /*55*/  { 0, opcode_addr_trans, field_omitted, 1 },
+    /*48*/  { 0, opcode_addr_trans, field_omitted, 1, mix_machine_instr_addr_xfer },
+    /*49*/  { 0, opcode_addr_trans, field_omitted, 1, mix_machine_instr_addr_xfer },
+    /*50*/  { 0, opcode_addr_trans, field_omitted, 1, mix_machine_instr_addr_xfer },
+    /*51*/  { 0, opcode_addr_trans, field_omitted, 1, mix_machine_instr_addr_xfer },
+    /*52*/  { 0, opcode_addr_trans, field_omitted, 1, mix_machine_instr_addr_xfer },
+    /*53*/  { 0, opcode_addr_trans, field_omitted, 1, mix_machine_instr_addr_xfer },
+    /*54*/  { 0, opcode_addr_trans, field_omitted, 1, mix_machine_instr_addr_xfer },
+    /*55*/  { 0, opcode_addr_trans, field_omitted, 1, mix_machine_instr_addr_xfer },
     /*56*/  { "CMPA ", 0, field_standard },
     /*57*/  { 0, 0, 0 },
     /*58*/  { 0, 0, 0 },
