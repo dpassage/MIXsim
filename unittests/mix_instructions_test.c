@@ -23,6 +23,7 @@
 #include "mix_device.h"
 #include "mix_machine.h"
 #include "mix_word.h"
+#include "mix_instr_jumps.h"
 
 mix_machine *mix;
 

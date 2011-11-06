@@ -19,6 +19,18 @@
 #define MIX_M_UNIMPLEMENTED -30
 #define MIX_M_UNDEF -42
 
+struct mix_machine {
+	int ip;
+	unsigned int time;
+    int overflow;
+    int comparison;
+    mix_word ri[9]; /* 0 is ra; 7 is rx; 8 is rj */
+	mix_word words[4000];
+    mix_device *devices[20];
+    
+    void (*callback_exec)(int ip, const mix_word *w);
+};
+
 typedef struct mix_machine mix_machine;
 
 mix_machine *mix_machine_create(void);
@@ -71,8 +83,6 @@ int mix_machine_instr_HLT (mix_machine *mix, int f, int m);
 int mix_machine_instr_IOC (mix_machine *mix, int f, int m);
 int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_Ji  (mix_machine *mix, int f, int m, int i);
-int mix_machine_instr_JG  (mix_machine *mix, int f, int m);
-int mix_machine_instr_JMP (mix_machine *mix, int f, int m);
 int mix_machine_instr_LDi (mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_LDA (mix_machine *mix, int f, int m);
 int mix_machine_instr_LDX (mix_machine *mix, int f, int m);

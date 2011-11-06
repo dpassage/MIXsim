@@ -11,21 +11,11 @@
 #include <stdlib.h>
 
 #include "mix_instr_decode.h"
+#include "mix_instr_jumps.h"
 #include "mix_machine.h"
 #include "mix_opcodes.h"
 #include "mix_word.h"
 
-struct mix_machine {
-	int ip;
-	unsigned int time;
-    int overflow;
-    int comparison;
-    mix_word ri[9]; /* 0 is ra; 7 is rx; 8 is rj */
-	mix_word words[4000];
-    mix_device *devices[20];
-    
-    void (*callback_exec)(int ip, const mix_word *w);
-};
 
 static void null_callback_exec(int ip, const mix_word *w) {
     return;
@@ -268,22 +258,7 @@ int mix_machine_instr_STi (mix_machine *mix, int f, int m, int i) {
     return MIX_M_OK;
 }
 
-int mix_machine_instr_JMP (mix_machine *mix, int f, int m) {
-    mix_word_set_value(&(mix->ri[8]), MIX_F(0, 2), mix->ip + 1);
-    mix->ip = m;
-    mix->time++;
-    return MIX_M_OK;
-}
 
-int mix_machine_instr_JG (mix_machine *mix, int f, int m) {
-    if (mix->comparison == MIX_M_GREATER) {
-        mix->ip = m;
-    } else {
-        mix->ip++;
-    }
-    mix->time++;
-    return MIX_M_OK;
-}
 
 int mix_machine_instr_Ji (mix_machine *mix, int f, int m, int i) {
     switch (f) {
@@ -404,17 +379,7 @@ int mix_machine_execute(mix_machine *mix)
             return mix_machine_instr_IOC(mix, f, m);
             break;
         case MIX_OP_JUMPS:
-            switch (f) {
-                case 0:
-                    return mix_machine_instr_JMP(mix, f, m);
-                    break;
-                case 6:
-                    return mix_machine_instr_JG(mix, f, m);
-                    break;
-                default:
-                    return MIX_M_UNIMPLEMENTED;
-                    break;
-            }
+            return mix_machine_instr_jumps(mix, f, m);
             break;
         case MIX_OP_J1:
         case MIX_OP_J2:
