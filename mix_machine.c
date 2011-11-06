@@ -187,26 +187,6 @@ int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i) {
     return MIX_M_OK;
 }
 
-int mix_machine_instr_STi (mix_machine *mix, int f, int m, int i) {
-    mix_word *reg = &(mix->ri[i]);
-    mix_word *mem = &(mix->words[m]);
-    int left = f / 8;
-    int right = f % 8;
-    
-    if (left == 0) {
-        mem->bytes[0] = reg->bytes[0];
-        left++;
-    }
-    
-    for (int j = 5; right >= left; j--, right--) {
-        mem->bytes[right] = reg->bytes[j];
-    }
-    
-    mix->ip++;
-    mix->time += 2;
-    return MIX_M_OK;
-}
-
 
 
 int mix_machine_instr_Ji (mix_machine *mix, int f, int m, int i) {
@@ -294,18 +274,15 @@ int mix_machine_execute(mix_machine *mix)
         case MIX_OP_LD5:
         case MIX_OP_LD6:
         case MIX_OP_LDX:
-        case MIX_OP_JUMPS:
-            instruction_pointer = mix_instruction_lookup(opcode);
-            return (*instruction_pointer)(mix, f, m, opcode);
-            break;
         case MIX_OP_ST1:
         case MIX_OP_ST2:
         case MIX_OP_ST3:
         case MIX_OP_ST4:
         case MIX_OP_ST5:
         case MIX_OP_ST6:
-            i = opcode - MIX_OP_STA;
-            return mix_machine_instr_STi(mix, f, m, i);
+        case MIX_OP_JUMPS:
+            instruction_pointer = mix_instruction_lookup(opcode);
+            return (*instruction_pointer)(mix, f, m, opcode);
             break;
         case MIX_OP_IOC:
             return mix_machine_instr_IOC(mix, f, m);

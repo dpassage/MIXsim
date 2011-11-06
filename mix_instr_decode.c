@@ -17,6 +17,7 @@
 #include "mix_instr_load.h"
 #include "mix_instr_math.h"
 #include "mix_instr_specials.h"
+#include "mix_instr_store.h"
 
 static const char regtrans[] = {
     'A',
@@ -263,12 +264,12 @@ struct mix_decoding_struct {
     /*22*/  { 0, 0, 0 },
     /*23*/  { 0, 0, 0 },
     /*24*/  { 0, 0, 0 },
-    /*25*/  { 0, 0, 0 },
-    /*26*/  { "ST2  ", 0, field_standard },
-    /*27*/  { 0, 0, 0 },
-    /*28*/  { 0, 0, 0 },
-    /*29*/  { 0, 0, 0 },
-    /*30*/  { 0, 0, 0 },
+    /*25*/  { "ST1  ", 0, field_standard, 1, mix_machine_instr_STi },
+    /*26*/  { "ST2  ", 0, field_standard, 1, mix_machine_instr_STi },
+    /*27*/  { "ST3  ", 0, field_standard, 1, mix_machine_instr_STi },
+    /*28*/  { "ST4  ", 0, field_standard, 1, mix_machine_instr_STi },
+    /*29*/  { "ST5  ", 0, field_standard, 1, mix_machine_instr_STi },
+    /*30*/  { "ST6  ", 0, field_standard, 1, mix_machine_instr_STi },
     /*31*/  { 0, 0, 0 },
     /*32*/  { 0, 0, 0 },
     /*33*/  { 0, 0, 0 },
