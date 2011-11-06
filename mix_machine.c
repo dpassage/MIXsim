@@ -179,46 +179,6 @@ int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i) {
 
 
 
-int mix_machine_instr_Ji (mix_machine *mix, int f, int m, int i) {
-    switch (f) {
-        case 0: /* N */
-            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) < 0) {
-                return mix_machine_instr_JMP(mix, f, m);
-            }
-            break;
-        case 1: /* Z */
-            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) == 0) {
-                return mix_machine_instr_JMP(mix, f, m);
-            }
-            break;
-        case 2: /* P */
-            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) > 0) {
-                return mix_machine_instr_JMP(mix, f, m);
-            }
-            break;
-        case 3: /* NN */
-            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) >= 0) {
-                return mix_machine_instr_JMP(mix, f, m);
-            }
-            break;
-        case 4: /* NZ */
-            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) != 0) {
-                return mix_machine_instr_JMP(mix, f, m);
-            }
-            break;
-        case 5: /* NP */
-            if (mix_word_value(&(mix->ri[i]), MIX_F(0, 5)) <= 0) {
-                return mix_machine_instr_JMP(mix, f, m);
-            }
-            break;
-        default:
-            return MIX_M_ERROR;
-            break;
-    }
-    mix->ip++;
-    mix->time++;
-    return MIX_M_OK;
-}
 
 int mix_machine_instr_ENTi(mix_machine *mix, int f, int m, int i) {
     mix_word_set_value(&(mix->ri[i]), MIX_F(0,5), m);
@@ -272,9 +232,6 @@ int mix_machine_execute(mix_machine *mix)
         case MIX_OP_ST6:
         case MIX_OP_IOC:
         case MIX_OP_JUMPS:
-            instruction_pointer = mix_instruction_lookup(opcode);
-            return (*instruction_pointer)(mix, f, m, opcode);
-            break;
         case MIX_OP_J1:
         case MIX_OP_J2:
         case MIX_OP_J3:
@@ -282,8 +239,8 @@ int mix_machine_execute(mix_machine *mix)
         case MIX_OP_J5:
         case MIX_OP_J6:
         case MIX_OP_JX:
-            i = opcode - MIX_OP_JA;
-            return mix_machine_instr_Ji(mix, f, m, i);
+            instruction_pointer = mix_instruction_lookup(opcode);
+            return (*instruction_pointer)(mix, f, m, opcode);
             break;
         case MIX_OP_ADRA:
         case MIX_OP_ADR1:
