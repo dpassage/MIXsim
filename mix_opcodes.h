@@ -29,6 +29,7 @@
 #define MIX_OP_ST6  30
 #define MIX_OP_STX  31
 #define MIX_OP_IOC  35
+#define MIX_OP_JUMPS 39
 #define MIX_OP_JA   40
 #define MIX_OP_J1   41
 #define MIX_OP_J2   42
@@ -45,5 +46,14 @@
 #define MIX_OP_ADR5 53
 #define MIX_OP_ADR6 54
 #define MIX_OP_ADRX 55
+#define MIX_OP_CMPA 56
+#define MIX_OP_CMP1 57
+#define MIX_OP_CMP2 58
+#define MIX_OP_CMP3 59
+#define MIX_OP_CMP4 60
+#define MIX_OP_CMP5 61
+#define MIX_OP_CMP6 62
+#define MIX_OP_CMPX 63
+
 
 #endif

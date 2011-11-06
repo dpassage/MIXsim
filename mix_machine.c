@@ -19,6 +19,7 @@ struct mix_machine {
 	int ip;
 	unsigned int time;
     int overflow;
+    int comparison;
     mix_word ri[9]; /* 0 is ra; 7 is rx; 8 is rj */
 	mix_word words[4000];
     mix_device *devices[20];
@@ -72,6 +73,16 @@ int mix_machine_get_ip(mix_machine *m)
 int mix_machine_get_overflow(mix_machine *m)
 {
     return m->overflow;
+}
+
+void mix_machine_set_comparison(mix_machine *m, int i) 
+{
+    m->comparison = i;
+}
+
+int mix_machine_get_comparison(mix_machine *m)
+{
+    return m->comparison;
 }
 
 int mix_machine_get_time(mix_machine *m) {
@@ -147,6 +158,22 @@ void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit) {
 int mix_machine_instr_HLT(mix_machine *mix, int f, int m) {
     mix->time++;
     return MIX_M_HALT;
+}
+
+int mix_machine_instr_CMPA(mix_machine *mix, int f, int m) {
+    int left = mix_word_value(&(mix->ri[0]), f);
+    int right = mix_word_value(&(mix->words[m]), f);
+    
+    if (left < right)
+        mix->comparison = MIX_M_LESS;
+    else if (left == right)
+        mix->comparison = MIX_M_EQUAL;
+    else 
+        mix->comparison = MIX_M_GREATER;
+    
+    mix->ip++;
+    mix->time += 2;
+    return MIX_M_OK;
 }
 
 int mix_machine_instr_DIV(mix_machine *mix, int f, int m) {
@@ -244,6 +271,16 @@ int mix_machine_instr_STi (mix_machine *mix, int f, int m, int i) {
 int mix_machine_instr_JMP (mix_machine *mix, int f, int m) {
     mix_word_set_value(&(mix->ri[8]), MIX_F(0, 2), mix->ip + 1);
     mix->ip = m;
+    mix->time++;
+    return MIX_M_OK;
+}
+
+int mix_machine_instr_JG (mix_machine *mix, int f, int m) {
+    if (mix->comparison == MIX_M_GREATER) {
+        mix->ip = m;
+    } else {
+        mix->ip++;
+    }
     mix->time++;
     return MIX_M_OK;
 }
@@ -366,6 +403,19 @@ int mix_machine_execute(mix_machine *mix)
         case MIX_OP_IOC:
             return mix_machine_instr_IOC(mix, f, m);
             break;
+        case MIX_OP_JUMPS:
+            switch (f) {
+                case 0:
+                    return mix_machine_instr_JMP(mix, f, m);
+                    break;
+                case 6:
+                    return mix_machine_instr_JG(mix, f, m);
+                    break;
+                default:
+                    return MIX_M_UNIMPLEMENTED;
+                    break;
+            }
+            break;
         case MIX_OP_J1:
         case MIX_OP_J2:
         case MIX_OP_J3:
@@ -402,6 +452,9 @@ int mix_machine_execute(mix_machine *mix)
                     return MIX_M_ERROR;
                     break;
             }
+        case MIX_OP_CMPA:
+            return mix_machine_instr_CMPA(mix, f, m);
+            break;
 		default:
             return MIX_M_UNIMPLEMENTED;
 			break;

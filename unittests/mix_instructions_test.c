@@ -500,6 +500,47 @@ START_TEST(test_J1Z_instruction)
 }
 END_TEST
 
+START_TEST(test_CMPA_instruction)
+{
+    mix_word w;
+    int ret;
+    int time;
+    int ip;
+    
+    mix_word_set_value(&w, MIX_F(0,5), 300);
+    mix_machine_load_ra(mix, &w);
+    
+    mix_word_set_value(&w, MIX_F(0,5), 200);
+    mix_machine_load_mem(mix, &w, 3000);
+    
+    time = mix_machine_get_time(mix);
+    ip = mix_machine_get_ip(mix);
+    
+    ret = mix_machine_instr_CMPA(mix, MIX_F(0,5), 3000);
+    
+    fail_unless(ret == MIX_M_OK, "CMPA should have executed");
+    fail_unless((mix_machine_get_time(mix) - time) == 2, "CMPA should have taken 2 ticks");
+    fail_unless((mix_machine_get_ip(mix) - ip) == 1, "CMPA should advances ip");
+    fail_unless(mix_machine_get_comparison(mix) == MIX_M_GREATER);
+}
+END_TEST
+
+START_TEST(test_JG_instruction)
+{
+    int time;
+    int ret;
+    
+    time = mix_machine_get_time(mix);
+    mix_machine_set_comparison(mix, MIX_M_GREATER);
+    
+    ret = mix_machine_instr_JG(mix, 6, 2137);
+
+    fail_unless(ret == MIX_M_OK);
+    fail_unless((mix_machine_get_time(mix) - time) == 1);
+    fail_unless(mix_machine_get_ip(mix) == 2137);
+}
+END_TEST
+
 Suite *mix_instructions_suite(void)
 {
 	Suite *s = suite_create("mix_instructions");
@@ -521,6 +562,8 @@ Suite *mix_instructions_suite(void)
     tcase_add_test (tc_core, test_ENTA_instruction);
     tcase_add_test (tc_core, test_DIV_instruction);
     tcase_add_test (tc_core, test_DIV_instruction_FDIV_unimplemented);
+    tcase_add_test (tc_core, test_CMPA_instruction);
+    tcase_add_test (tc_core, test_JG_instruction);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

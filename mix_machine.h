@@ -36,6 +36,13 @@ int mix_machine_get_ip(mix_machine *m);
 
 int mix_machine_get_overflow(mix_machine *m);
 
+#define MIX_M_LESS -1
+#define MIX_M_EQUAL 0
+#define MIX_M_GREATER 1
+
+void mix_machine_set_comparison(mix_machine *m, int comp);
+int mix_machine_get_comparison(mix_machine *m);
+
 /* register management */
 mix_word *mix_machine_read_ra(mix_machine *m, mix_word *w);
 mix_word *mix_machine_read_ri(mix_machine *m, mix_word *w, int i);
@@ -57,12 +64,14 @@ void mix_machine_set_callback_exec(mix_machine *m, void (*callback_exec)(int ip,
 int mix_machine_execute(mix_machine *m);
 
 /* instructions in alpha order by mixal symbol */
+int mix_machine_instr_CMPA(mix_machine *mix, int f, int m);
 int mix_machine_instr_DIV (mix_machine *mix, int f, int m);
 int mix_machine_instr_ENTi(mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_HLT (mix_machine *mix, int f, int m);
 int mix_machine_instr_IOC (mix_machine *mix, int f, int m);
 int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_Ji  (mix_machine *mix, int f, int m, int i);
+int mix_machine_instr_JG  (mix_machine *mix, int f, int m);
 int mix_machine_instr_JMP (mix_machine *mix, int f, int m);
 int mix_machine_instr_LDi (mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_LDA (mix_machine *mix, int f, int m);

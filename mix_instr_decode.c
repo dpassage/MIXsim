@@ -111,6 +111,68 @@ static char *opcode_arith(char *buf, int f, int c) {
     return buf;
 }
 
+static char *opcode_jumps_trans(char * buf, int f, int c) {
+    buf[0] = 'J';
+    switch (f) {
+        case 0:
+            buf[1] = 'M';
+            buf[2] = 'P';
+            buf[3] = ' ';
+            break;
+        case 1:
+            buf[1] = 'S';
+            buf[2] = 'J';
+            buf[3] = ' ';
+            break;
+        case 2:
+            buf[1] = 'O';
+            buf[2] = 'V';
+            buf[3] = ' ';
+            break;
+        case 3:
+            buf[1] = 'N';
+            buf[2] = 'O';
+            buf[3] = 'V';
+            break;
+        case 4:
+            buf[1] = 'L';
+            buf[2] = ' ';
+            buf[3] = ' ';
+            break;
+        case 5:
+            buf[1] = 'E';
+            buf[2] = ' ';
+            buf[3] = ' ';
+            break;
+        case 6:
+            buf[1] = 'G';
+            buf[2] = ' ';
+            buf[3] = ' ';
+            break;
+        case 7:
+            buf[1] = 'G';
+            buf[2] = 'E';
+            buf[3] = ' ';
+            break;
+        case 8:
+            buf[1] = 'N';
+            buf[2] = 'E';
+            buf[3] = ' ';
+            break;
+        case 9:
+            buf[1] = 'L';
+            buf[2] = 'E';
+            buf[3] = ' ';
+            break;
+        default:
+            return NULL;
+            break;
+    }
+    buf[4] = ' ';
+    buf[5] = '\0';
+    return buf;
+}
+
 static char *opcode_jreg_trans(char *buf, int f, int c) {
     buf[0] = 'J';
     buf[1] = regtrans[c - MIX_OP_JA];
@@ -209,7 +271,7 @@ struct mix_decoding_struct {
     /*36*/  { 0, 0, 0 },
     /*37*/  { 0, 0, 0 },
     /*38*/  { 0, 0, 0 },
-    /*39*/  { 0, 0, 0 },
+    /*39*/  { 0, opcode_jumps_trans, field_omitted, 1 },
     /*40*/  { 0, 0, 0 },
     /*41*/  { 0, opcode_jreg_trans, field_omitted },
     /*42*/  { 0, 0, 0 },
