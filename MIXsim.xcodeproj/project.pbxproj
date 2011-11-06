@@ -17,7 +17,6 @@
 		6B0ECA49145FC62600BA7DEE /* MIXwordTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D76F11AA4233007D5BA8 /* MIXwordTest.c */; };
 		6B0ECA4C145FC65500BA7DEE /* MIXmachineTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */; };
 		6B0ECA4D145FC65500BA7DEE /* mix_device_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32FB111A09C4E00AAC892 /* mix_device_test.c */; };
-		6B0ECA4E145FC65500BA7DEE /* mix_instructions_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF3303811A0A92C00AAC892 /* mix_instructions_test.c */; };
 		6B0ECA4F145FC65500BA7DEE /* mix_instr_decode_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B2C4D2B11A209500051952E /* mix_instr_decode_test.c */; };
 		6B0ECA50145FC71C00BA7DEE /* liblibMIXsim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0ECA27145FC3B500BA7DEE /* liblibMIXsim.a */; };
 		6B936DAB146662A800823AC8 /* mix_instr_jumps.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B936DAA146662A800823AC8 /* mix_instr_jumps.c */; };
@@ -50,6 +49,9 @@
 		6BE02B5D1467500900655FD8 /* mix_instr_addr_xfer.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BE02B5B1467500800655FD8 /* mix_instr_addr_xfer.c */; };
 		6BE02B5E1467500900655FD8 /* mix_instr_addr_xfer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE02B5C1467500800655FD8 /* mix_instr_addr_xfer.h */; };
 		6BE02B611467502600655FD8 /* mix_instr_addr_xfer_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BE02B5F1467502500655FD8 /* mix_instr_addr_xfer_test.c */; };
+		6BE02B641467534800655FD8 /* mix_instr_comp.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BE02B621467534700655FD8 /* mix_instr_comp.c */; };
+		6BE02B651467534800655FD8 /* mix_instr_comp.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE02B631467534700655FD8 /* mix_instr_comp.h */; };
+		6BE02B681467535F00655FD8 /* mix_instr_comp_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BE02B661467535E00655FD8 /* mix_instr_comp_test.c */; };
 		6BF32EA411A0615600AAC892 /* program_p.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA111A05F4900AAC892 /* program_p.mix */; };
 		6BF32EA511A0615600AAC892 /* program_p.loadtest_output in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA311A0610100AAC892 /* program_p.loadtest_output */; };
 		6BF32ECB11A0699000AAC892 /* halt.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EC811A0689D00AAC892 /* halt.mix */; };
@@ -174,6 +176,10 @@
 		6BE02B5C1467500800655FD8 /* mix_instr_addr_xfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_instr_addr_xfer.h; path = libMIXsim/mix_instr_addr_xfer.h; sourceTree = "<group>"; };
 		6BE02B5F1467502500655FD8 /* mix_instr_addr_xfer_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_instr_addr_xfer_test.c; path = unittests/mix_instr_addr_xfer_test.c; sourceTree = "<group>"; };
 		6BE02B601467502500655FD8 /* mix_instr_addr_xfer_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_instr_addr_xfer_test.h; path = unittests/mix_instr_addr_xfer_test.h; sourceTree = "<group>"; };
+		6BE02B621467534700655FD8 /* mix_instr_comp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_instr_comp.c; path = libMIXsim/mix_instr_comp.c; sourceTree = "<group>"; };
+		6BE02B631467534700655FD8 /* mix_instr_comp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_instr_comp.h; path = libMIXsim/mix_instr_comp.h; sourceTree = "<group>"; };
+		6BE02B661467535E00655FD8 /* mix_instr_comp_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_instr_comp_test.c; path = unittests/mix_instr_comp_test.c; sourceTree = "<group>"; };
+		6BE02B671467535E00655FD8 /* mix_instr_comp_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_instr_comp_test.h; path = unittests/mix_instr_comp_test.h; sourceTree = "<group>"; };
 		6BF32D19119F8CD900AAC892 /* MIXmachineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIXmachineTest.h; path = unittests/MIXmachineTest.h; sourceTree = "<group>"; };
 		6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXmachineTest.c; path = unittests/MIXmachineTest.c; sourceTree = "<group>"; };
 		6BF32D26119F8FA700AAC892 /* mix_machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mix_machine.h; sourceTree = "<group>"; };
@@ -189,8 +195,6 @@
 		6BF32F0E11A077C700AAC892 /* mix_device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mix_device.c; sourceTree = "<group>"; };
 		6BF32FB011A09C4E00AAC892 /* mix_device_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_device_test.h; path = unittests/mix_device_test.h; sourceTree = "<group>"; };
 		6BF32FB111A09C4E00AAC892 /* mix_device_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_device_test.c; path = unittests/mix_device_test.c; sourceTree = "<group>"; };
-		6BF3303711A0A92C00AAC892 /* mix_instructions_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_instructions_test.h; path = unittests/mix_instructions_test.h; sourceTree = "<group>"; };
-		6BF3303811A0A92C00AAC892 /* mix_instructions_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_instructions_test.c; path = unittests/mix_instructions_test.c; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* MIXsim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIXsim; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* MIXsim.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MIXsim.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,6 +285,8 @@
 				6B2C4D3B11A20B4F0051952E /* mix_instr_decode.h */,
 				6BE02B5B1467500800655FD8 /* mix_instr_addr_xfer.c */,
 				6BE02B5C1467500800655FD8 /* mix_instr_addr_xfer.h */,
+				6BE02B621467534700655FD8 /* mix_instr_comp.c */,
+				6BE02B631467534700655FD8 /* mix_instr_comp.h */,
 				6BE02B54146747A200655FD8 /* mix_instr_io.c */,
 				6BE02B55146747A200655FD8 /* mix_instr_io.h */,
 				6B936DAA146662A800823AC8 /* mix_instr_jumps.c */,
@@ -314,12 +320,12 @@
 				6B69D77211AA4233007D5BA8 /* MIXwordTest.h */,
 				6BF32FB111A09C4E00AAC892 /* mix_device_test.c */,
 				6BF32FB011A09C4E00AAC892 /* mix_device_test.h */,
-				6BF3303711A0A92C00AAC892 /* mix_instructions_test.h */,
-				6BF3303811A0A92C00AAC892 /* mix_instructions_test.c */,
 				6B2C4D2B11A209500051952E /* mix_instr_decode_test.c */,
 				6B2C4D2A11A209500051952E /* mix_instr_decode_test.h */,
 				6BE02B5F1467502500655FD8 /* mix_instr_addr_xfer_test.c */,
 				6BE02B601467502500655FD8 /* mix_instr_addr_xfer_test.h */,
+				6BE02B661467535E00655FD8 /* mix_instr_comp_test.c */,
+				6BE02B671467535E00655FD8 /* mix_instr_comp_test.h */,
 				6BE02B58146747BA00655FD8 /* mix_instr_io_test.c */,
 				6BE02B59146747BA00655FD8 /* mix_instr_io_test.h */,
 				6BE02B381466776C00655FD8 /* mix_instr_jumps_test.c */,
@@ -393,6 +399,7 @@
 				6BE02B53146736B000655FD8 /* mix_instr_store.h in Headers */,
 				6BE02B57146747A200655FD8 /* mix_instr_io.h in Headers */,
 				6BE02B5E1467500900655FD8 /* mix_instr_addr_xfer.h in Headers */,
+				6BE02B651467534800655FD8 /* mix_instr_comp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +611,7 @@
 				6BE02B52146736B000655FD8 /* mix_instr_store.c in Sources */,
 				6BE02B56146747A200655FD8 /* mix_instr_io.c in Sources */,
 				6BE02B5D1467500900655FD8 /* mix_instr_addr_xfer.c in Sources */,
+				6BE02B641467534800655FD8 /* mix_instr_comp.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,7 +621,6 @@
 			files = (
 				6B0ECA4C145FC65500BA7DEE /* MIXmachineTest.c in Sources */,
 				6B0ECA4D145FC65500BA7DEE /* mix_device_test.c in Sources */,
-				6B0ECA4E145FC65500BA7DEE /* mix_instructions_test.c in Sources */,
 				6B0ECA4F145FC65500BA7DEE /* mix_instr_decode_test.c in Sources */,
 				6B0ECA49145FC62600BA7DEE /* MIXwordTest.c in Sources */,
 				6B0ECA48145FC5BA00BA7DEE /* MIXsimTestMain.c in Sources */,
@@ -624,6 +631,7 @@
 				6BE02B4F1467367D00655FD8 /* mix_instr_store_test.c in Sources */,
 				6BE02B5A146747BB00655FD8 /* mix_instr_io_test.c in Sources */,
 				6BE02B611467502600655FD8 /* mix_instr_addr_xfer_test.c in Sources */,
+				6BE02B681467535F00655FD8 /* mix_instr_comp_test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 /*
- *  mix_instructions_test.c
+ *  mix_instr_comp_test.c
  *  MIXsim
  *
  *  Created by David Paschich on 5/16/10.
@@ -7,16 +7,7 @@
  *
  */
 
-#include "mix_instructions_test.h"
-
-/*
- *  MIXmachineTest.c
- *  MIXsim
- *
- *  Created by David Paschich on 5/15/10.
- *  Copyright 2010 __MyCompanyName__. All rights reserved.
- *
- */
+#include "mix_instr_comp_test.h"
 
 #include "MIXmachineTest.h"
 
@@ -24,13 +15,12 @@
 #include "mix_machine.h"
 #include "mix_opcodes.h"
 #include "mix_word.h"
-#include "mix_instr_jumps.h"
-#include "mix_instr_load.h"
+#include "mix_instr_comp.h"
 
 mix_machine *mix;
 
-void setup (void);
-void teardown (void);
+static void setup (void);
+static void teardown (void);
 
 void setup (void) {
     mix = mix_machine_create();
@@ -39,7 +29,6 @@ void setup (void) {
 void teardown (void) {
     mix_machine_destroy(mix);
 }
-
 
 
 START_TEST(test_CMPA_instruction)
@@ -58,7 +47,7 @@ START_TEST(test_CMPA_instruction)
     time = mix_machine_get_time(mix);
     ip = mix_machine_get_ip(mix);
     
-    ret = mix_machine_instr_CMPA(mix, MIX_F(0,5), 3000);
+    ret = mix_machine_instr_CMPA(mix, MIX_F(0,5), 3000, MIX_OP_CMPA);
     
     fail_unless(ret == MIX_M_OK, "CMPA should have executed");
     fail_unless((mix_machine_get_time(mix) - time) == 2, "CMPA should have taken 2 ticks");
@@ -67,14 +56,14 @@ START_TEST(test_CMPA_instruction)
 }
 END_TEST
 
-Suite *mix_instructions_suite(void)
+Suite *mix_instr_comp_suite(void)
 {
-	Suite *s = suite_create("mix_instructions");
+	Suite *s = suite_create("mix_instr_comp");
 	
 	TCase *tc_core = tcase_create("Core");
     tcase_add_checked_fixture (tc_core, setup, teardown);
     tcase_add_test (tc_core, test_CMPA_instruction);
-	suite_add_tcase (s, tc_core);
+    suite_add_tcase (s, tc_core);
 	
 	return s;
 }

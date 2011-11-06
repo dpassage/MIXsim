@@ -11,7 +11,6 @@
 #include <stdlib.h>
 
 #include "mix_instr_decode.h"
-#include "mix_instr_jumps.h"
 #include "mix_machine.h"
 #include "mix_opcodes.h"
 #include "mix_word.h"
@@ -146,22 +145,6 @@ void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit) {
 }
 
 
-int mix_machine_instr_CMPA(mix_machine *mix, int f, int m) {
-    int left = mix_word_value(&(mix->ri[0]), f);
-    int right = mix_word_value(&(mix->words[m]), f);
-    
-    if (left < right)
-        mix->comparison = MIX_M_LESS;
-    else if (left == right)
-        mix->comparison = MIX_M_EQUAL;
-    else 
-        mix->comparison = MIX_M_GREATER;
-    
-    mix->ip++;
-    mix->time += 2;
-    return MIX_M_OK;
-}
-
 
 
 
@@ -222,11 +205,9 @@ int mix_machine_execute(mix_machine *mix)
         case MIX_OP_ADR5:
         case MIX_OP_ADR6:
         case MIX_OP_ADRX:
+        case MIX_OP_CMPA:
             instruction_pointer = mix_instruction_lookup(opcode);
             return (*instruction_pointer)(mix, f, m, opcode);
-            break;
-        case MIX_OP_CMPA:
-            return mix_machine_instr_CMPA(mix, f, m);
             break;
 		default:
             return MIX_M_UNIMPLEMENTED;

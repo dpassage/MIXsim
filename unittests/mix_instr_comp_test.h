@@ -1,5 +1,5 @@
 /*
- *  mix_instructions_test.h
+ *  mix_instr_comp_test.h
  *  MIXsim
  *
  *  Created by David Paschich on 5/16/10.
@@ -9,4 +9,4 @@
 
 #include <check.h>
 
-Suite *mix_instructions_suite(void);
+Suite *mix_instr_comp_suite(void);
