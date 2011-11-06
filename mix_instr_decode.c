@@ -14,6 +14,7 @@
 #include "mix_instr_decode.h"
 
 #include "mix_instr_jumps.h"
+#include "mix_instr_load.h"
 #include "mix_instr_math.h"
 #include "mix_instr_specials.h"
 
@@ -245,14 +246,14 @@ struct mix_decoding_struct {
     /*05*/  { 0, opcode_05, field_omitted, 0, mix_machine_instr_specials },
     /*06*/  { 0, 0, 0, 0 },
     /*07*/  { 0, 0, 0, 0 },
-    /*08*/  { "LDA  ", 0, field_standard, 0 },
-    /*09*/  { "LD1  ", 0, field_standard , 0},
-    /*10*/  { "LD2  ", 0, field_standard, 0 },
-    /*11*/  { 0, 0, 0, 0 },
-    /*12*/  { 0, 0, 0, 0 },
-    /*13*/  { 0, 0, 0, 0 },
-    /*14*/  { 0, 0, 0, 0 },
-    /*15*/  { 0, 0, 0, 0 },
+    /*08*/  { "LDA  ", 0, field_standard, 0, mix_machine_instr_LDA },
+    /*09*/  { "LD1  ", 0, field_standard, 0, mix_machine_instr_LDi },
+    /*10*/  { "LD2  ", 0, field_standard, 0, mix_machine_instr_LDi },
+    /*11*/  { "LD3  ", 0, field_standard, 0, mix_machine_instr_LDi },
+    /*12*/  { "LD4  ", 0, field_standard, 0, mix_machine_instr_LDi },
+    /*13*/  { "LD5  ", 0, field_standard, 0, mix_machine_instr_LDi },
+    /*14*/  { "LD6  ", 0, field_standard, 0, mix_machine_instr_LDi },
+    /*15*/  { "LDX  ", 0, field_standard, 0, mix_machine_instr_LDX },
     /*16*/  { 0, 0, 0, 0 },
     /*17*/  { 0, 0, 0, 0 },
     /*18*/  { 0, 0, 0, 0 },

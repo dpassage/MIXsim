@@ -173,29 +173,6 @@ int mix_machine_instr_IOC(mix_machine *mix, int unit, int m) {
     return MIX_M_OK;
 }
 
-int mix_machine_instr_LDi(mix_machine *mix, int f, int m, int i) {
-    mix_load_reg(&(mix->ri[i]), &(mix->words[m]), f);
-    mix->ri[i].bytes[1] = 0;
-    mix->ri[i].bytes[2] = 0;
-    mix->ri[i].bytes[3] = 0;    
-    mix->time = mix->time + 2;
-    mix->ip++;
-    return MIX_M_OK;    
-}
-
-int mix_machine_instr_LDA(mix_machine *mix, int f, int m) {
-    mix_load_reg(&(mix->ri[0]), &(mix->words[m]), f);
-    mix->time = mix->time + 2;
-    mix->ip++;
-    return MIX_M_OK;
-}
-
-int mix_machine_instr_LDX(mix_machine *mix, int f, int m) {
-    mix_load_reg(&(mix->ri[7]), &(mix->words[m]), f);
-    mix->time = mix->time + 2;
-    mix->ip++;
-    return MIX_M_OK;
-}
 
 int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i) {
     mix_word *reg = &(mix->ri[i]);
@@ -309,25 +286,18 @@ int mix_machine_execute(mix_machine *mix)
 	switch (opcode) {
         case MIX_OP_DIV:
         case MIX_OP_05:
-        case MIX_OP_JUMPS:
-            instruction_pointer = mix_instruction_lookup(opcode);
-            return (*instruction_pointer)(mix, f, m, opcode);
-            break;
-		case MIX_OP_LDA:
-            return mix_machine_instr_LDA(mix, f, m);
-			break;
+        case MIX_OP_LDA:
         case MIX_OP_LD1:
         case MIX_OP_LD2:
         case MIX_OP_LD3:
         case MIX_OP_LD4:
         case MIX_OP_LD5:
         case MIX_OP_LD6:
-            i = opcode - MIX_OP_LDA;
-            return mix_machine_instr_LDi(mix, f, m, i);
+        case MIX_OP_LDX:
+        case MIX_OP_JUMPS:
+            instruction_pointer = mix_instruction_lookup(opcode);
+            return (*instruction_pointer)(mix, f, m, opcode);
             break;
-		case MIX_OP_LDX:
-            return mix_machine_instr_LDX(mix, f, m);
-			break;
         case MIX_OP_ST1:
         case MIX_OP_ST2:
         case MIX_OP_ST3:

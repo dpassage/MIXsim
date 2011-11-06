@@ -13,7 +13,9 @@
 #include "mix_device_test.h"
 #include "mix_instructions_test.h"
 #include "mix_instr_decode_test.h"
+
 #include "mix_instr_jumps_test.h"
+#include "mix_instr_load_test.h"
 #include "mix_instr_math_test.h"
 #include "mix_instr_specials_test.h"
 
@@ -33,6 +35,7 @@ int main(int argc, char *argv[])
 
     srunner_add_suite(sr, mix_instructions_suite());
     srunner_add_suite(sr, mix_instr_jumps_suite());
+    srunner_add_suite(sr, mix_instr_load_suite());
     srunner_add_suite(sr, mix_instr_math_suite());
     srunner_add_suite(sr, mix_instr_specials_suite());
 
