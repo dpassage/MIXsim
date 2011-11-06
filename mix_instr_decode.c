@@ -231,6 +231,7 @@ struct mix_decoding_struct {
     char *(*opcode)(char *, int, int);
     char *(*field)(char *, int, int);
     int printaddr;
+    mix_instruction instruction;
 } mix_decoding_table[] = {
     /*00*/  { "NOP  ", 0, field_omitted, 0 },
     /*01*/  { 0, 0, 0, 0},
@@ -355,4 +356,8 @@ char *mix_instr_decode(const mix_word *w, char *buffer) {
 
     sprintf(buffer, "%s%s%s%s", instrbuf, addrbuf, idxbuf, fieldbuf);
     return buffer;
+}
+
+mix_instruction mix_instruction_lookup(int c) {
+    return mix_decoding_table[c].instruction;
 }

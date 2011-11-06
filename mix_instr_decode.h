@@ -10,8 +10,11 @@
 #ifndef MIX_INSTR_DECODE
 #define MIX_INSTR_DECODE
 
+#include "mix_machine.h"
 #include "mix_word.h"
 
 char *mix_instr_decode(const mix_word *w, char *buffer);
+
+mix_instruction mix_instruction_lookup(int c);
 
 #endif /* MIX_INSTR_DECODE */

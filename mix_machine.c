@@ -12,6 +12,7 @@
 
 #include "mix_instr_decode.h"
 #include "mix_instr_jumps.h"
+#include "mix_instr_specials.h"
 #include "mix_machine.h"
 #include "mix_opcodes.h"
 #include "mix_word.h"
@@ -145,10 +146,6 @@ void mix_machine_device_attach(mix_machine *m, mix_device *d, int unit) {
     m->devices[unit] = d;
 }
 
-int mix_machine_instr_HLT(mix_machine *mix, int f, int m) {
-    mix->time++;
-    return MIX_M_HALT;
-}
 
 int mix_machine_instr_CMPA(mix_machine *mix, int f, int m) {
     int left = mix_word_value(&(mix->ri[0]), f);
@@ -338,18 +335,7 @@ int mix_machine_execute(mix_machine *mix)
             return mix_machine_instr_DIV(mix, f, m);
             break;
         case MIX_OP_05:
-            switch (f) {
-                case 0: /* NUM */
-                case 1: /* CHAR */
-                    return MIX_M_UNIMPLEMENTED;
-                    break;
-                case 2: /* HLT */
-                    return mix_machine_instr_HLT(mix, f, m);
-                    break;
-                default:
-                    return MIX_M_ERROR;
-                    break;
-            }
+            return mix_machine_instr_specials(mix, f, m);
             break;
 		case MIX_OP_LDA:
             return mix_machine_instr_LDA(mix, f, m);

@@ -24,6 +24,7 @@
 #include "mix_machine.h"
 #include "mix_word.h"
 #include "mix_instr_jumps.h"
+#include "mix_instr_specials.h"
 
 mix_machine *mix;
 
