@@ -50,10 +50,28 @@ static char mix_char_table[] = {
 };
 
 void mix_device_printer_output(mix_device *d, const mix_word *wordbuf) {
-    d->last_op = MIX_D_P_OUTPUT;
-    for (int i = 0 ; i < 24; i++) {
-        for (int j = 1; j <= 5; j++) {
-            fputc(mix_char_table[wordbuf[i].bytes[j]], stdout);
-        }
+    char buffer[122];
+    buffer[121] = '\0';
+    buffer[120] = '\n';
+    int i;
+    int w;
+    int b;
+    char c;
+    
+    for (i = 119; i >= 0; i--) {
+        w = i / 5;
+        b = (i % 5) + 1; 
+        c = mix_char_table[wordbuf[w].bytes[b]];
+        if (c != ' ')
+            break;
+        buffer[i] = '\0';
     }
+    buffer[i+1] = '\n';
+    for (; i >= 0; i--) { 
+        w = i / 5;
+        b = (i % 5) + 1;
+        buffer[i] = mix_char_table[wordbuf[w].bytes[b]];
+    }
+    fputs(buffer, stdout);
+    d->last_op = MIX_D_P_OUTPUT;
 }
