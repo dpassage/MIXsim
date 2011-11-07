@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "mix_instr_decode.h"
 #include "mix_machine.h"
@@ -15,7 +16,7 @@ static void print_instr_callback(int ip, const mix_word *instr) {
     }
 }
 
-int main (int argc, const char * argv[]) {
+int main (int argc, char * argv[]) {
     mix_machine *m;
     char readbuf[500];
     int ip;
@@ -23,18 +24,32 @@ int main (int argc, const char * argv[]) {
     int loc;
 	mix_word w;
     int ret;    
-	FILE *infile;
-	
-	if (argc == 1) {
-		infile = stdin;
-	} else {
-		infile = fopen(argv[1], "r");
-	}
+	FILE *infile = stdin;
+	int debugflag = 0;
+    int ch;
     
+    while ((ch = getopt(argc, argv, "df:")) != -1) {
+        switch (ch) {
+            case 'd':
+                debugflag = 1;
+                break;
+            case 'f':
+                infile = fopen(optarg, "r");
+                break;
+            case '?':
+            default:
+                exit(EXIT_FAILURE);
+        }
+    }
+    argc -= optind;
+    argv += optind;
+
     /* create new machine */
     m = mix_machine_create();
     mix_machine_device_attach(m, mix_device_printer_create(), 18);
-    mix_machine_set_callback_exec(m, print_instr_callback);
+    
+    if (debugflag == 1)
+        mix_machine_set_callback_exec(m, print_instr_callback);
     
     /* read start line and set Ip */
     if (fgets(readbuf, 500, infile) != NULL) {
