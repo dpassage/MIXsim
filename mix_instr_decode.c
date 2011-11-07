@@ -273,7 +273,7 @@ struct mix_decoding_struct {
     /*28*/  { "ST4  ", 0, field_standard, 1, mix_machine_instr_STi },
     /*29*/  { "ST5  ", 0, field_standard, 1, mix_machine_instr_STi },
     /*30*/  { "ST6  ", 0, field_standard, 1, mix_machine_instr_STi },
-    /*31*/  { 0, 0, 0 },
+    /*31*/  { "STX  ", 0, field_standard, 1, mix_machine_instr_STi },
     /*32*/  { 0, 0, 0 },
     /*33*/  { 0, 0, 0 },
     /*34*/  { 0, 0, 0 },

@@ -18,7 +18,7 @@ int mix_machine_instr_addr_xfer(mix_machine *mix, int f, int m, int c) {
             return mix_machine_instr_INCi(mix, f, m, i);
             break;
         case 1: /* DECi */
-            return MIX_M_UNIMPLEMENTED;
+            return mix_machine_instr_DECi(mix, f, m, i);
             break;
         case 2: /* ENTi */
             return mix_machine_instr_ENTi(mix, f, m, i);
@@ -37,6 +37,19 @@ int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i) {
     mix_word *reg = &(mix->ri[i]);
     int accum = mix_word_value(reg, 5 /* (0:5) */);
     accum += m;
+    if (accum < -9999 || accum > 9999 ) {
+        return MIX_M_UNDEF;
+    }
+    mix_word_set_value(reg, 5 /* 0:5 */, accum);
+    mix->time++;
+    mix->ip++;
+    return MIX_M_OK;
+}
+
+int mix_machine_instr_DECi(mix_machine *mix, int f, int m, int i) {
+    mix_word *reg = &(mix->ri[i]);
+    int accum = mix_word_value(reg, 5 /* (0:5) */);
+    accum -= m;
     if (accum < -9999 || accum > 9999 ) {
         return MIX_M_UNDEF;
     }

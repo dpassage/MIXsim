@@ -14,5 +14,6 @@
 int mix_machine_instr_addr_xfer(mix_machine *mix, int f, int m, int c);
 int mix_machine_instr_ENTi(mix_machine *mix, int f, int m, int i);
 int mix_machine_instr_INCi(mix_machine *mix, int f, int m, int i);
+int mix_machine_instr_DECi(mix_machine *mix, int f, int m, int i);
 
 #endif

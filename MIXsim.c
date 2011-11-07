@@ -7,11 +7,11 @@
 
 static void print_instr_callback(int ip, const mix_word *instr) {
     char mix_instr_text[100];
-    printf("Running instr %d: ", ip);
+    fprintf(stderr, "Running instr %d: ", ip);
     if (mix_instr_decode(instr, mix_instr_text) == NULL) {
-        printf("Could not decode instruction %s\n", mix_word_tostring(instr)); 
+        fprintf(stderr, "Could not decode instruction %s\n", mix_word_tostring(instr)); 
     } else {
-        printf("%s\n", mix_instr_text); 
+        fprintf(stderr, "%s\n", mix_instr_text); 
     }
 }
 

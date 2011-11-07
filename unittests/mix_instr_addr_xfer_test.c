@@ -70,6 +70,48 @@ START_TEST(test_INCi_instructions)
 }
 END_TEST
 
+START_TEST(test_DECi_instructions) 
+{
+    mix_word *w = mix_word_create();
+    int ret;
+    int time = mix_machine_get_time(mix);
+    int ip = mix_machine_get_ip(mix);
+    
+    /* set ri to 2000 */
+    mix_word_set_value(w, MIX_F(0,5), 2000);
+    mix_machine_load_ri(mix, w, 1);
+    w = mix_machine_read_ri(mix, w, 1);
+    fail_unless(mix_word_value(w, MIX_F(0,5)) == 2000, 
+                "register didn't start out at 0");
+    
+    /* subtract 9; ensure result is 19991 */
+    ret = mix_machine_instr_DECi(mix, 0, 9, 1);
+    fail_unless(ret == MIX_M_OK, "instr should have succeeded");
+    fail_unless(mix_machine_get_time(mix) - time == 1, 
+                "instr took wrong amount of time");
+    fail_unless(mix_machine_get_ip(mix) - ip == 1, 
+                "instr should have advanced ip");
+    w = mix_machine_read_ri(mix, w, 1);
+    fail_unless(mix_word_value(w, 5) == 1991, "register should be 1991");
+    
+    /* subtract 247; ensure result is 1744 */
+    ret = mix_machine_instr_DECi(mix, 0, 247, 1);
+    fail_unless(ret == MIX_M_OK, "instr should have succeeded");
+    w = mix_machine_read_ri(mix, w, 1);
+    fail_unless(mix_word_value(w, 5) == 1744, "register should be 9");
+    
+    /* subtract -42; ensure result is 1786 */
+    ret = mix_machine_instr_DECi(mix, 0, -42, 1);
+    fail_unless(ret == MIX_M_OK, "instr should have succeeded");
+    w = mix_machine_read_ri(mix, w, 1);
+    fail_unless(mix_word_value(w, 5) == 1786, "register should be 9");
+    
+    /* subtract -9999; ensure result is MIX_M_UNDEF */
+    ret = mix_machine_instr_DECi(mix, 0, -9999, 1);
+    fail_unless(ret == MIX_M_UNDEF, "result should be undefined");
+}
+END_TEST
+
 START_TEST(test_ENTi_instructions) 
 {
     mix_word *w = mix_word_create();
@@ -126,6 +168,7 @@ Suite *mix_instr_addr_xfer_suite(void)
 	TCase *tc_core = tcase_create("Core");
     tcase_add_checked_fixture (tc_core, setup, teardown);
     tcase_add_test (tc_core, test_INCi_instructions);
+    tcase_add_test (tc_core, test_DECi_instructions);
     tcase_add_test (tc_core, test_ENTi_instructions);
     tcase_add_test (tc_core, test_ENTA_instruction);
 
