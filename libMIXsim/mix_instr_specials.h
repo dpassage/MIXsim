@@ -12,6 +12,7 @@
 #include "mix_machine.h"
 
 int mix_machine_instr_specials(mix_machine *mix, int f, int m, int c);
-int mix_machine_instr_HLT  (mix_machine *mix, int f, int m);
+int mix_machine_instr_HLT (mix_machine *mix, int f, int m);
+int mix_machine_instr_CHAR(mix_machine *mix, int f, int m);
 
 #endif
