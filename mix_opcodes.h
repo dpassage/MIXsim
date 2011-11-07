@@ -29,6 +29,7 @@
 #define MIX_OP_ST6  30
 #define MIX_OP_STX  31
 #define MIX_OP_IOC  35
+#define MIX_OP_OUT  37
 #define MIX_OP_JUMPS 39
 #define MIX_OP_JA   40
 #define MIX_OP_J1   41

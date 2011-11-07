@@ -12,5 +12,6 @@
 #include "mix_machine.h"
 
 int mix_machine_instr_IOC (mix_machine *mix, int f, int m, int c);
+int mix_machine_instr_OUT (mix_machine *mix, int f, int m, int c);
 
 #endif

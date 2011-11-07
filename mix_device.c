@@ -11,6 +11,7 @@
 #include <stdlib.h>
 
 #include "mix_device.h"
+#include "mix_word.h"
 
 struct mix_device {
     int last_op;
@@ -37,3 +38,22 @@ mix_device *mix_device_printer_create() {
     return d;
 }
 
+static char mix_char_table[] = {
+  /*00-07*/  ' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
+  /*08-15*/  'H', 'I', 't', 'J', 'K', 'L', 'M', 'N',
+  /*16-23*/  'O', 'P', 'Q', 'R', 'f', 'p', 'S', 'T',
+  /*24-31*/  'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1',
+  /*32-39*/  '2', '3', '4', '5', '6', '7', '8', '9',
+  /*40-47*/  '.', ',', '(', ')', '+', '-', '*', '/',
+  /*48-55*/  '=', '$', '<', '>', '@', ';', ':', '\'',
+             '\0'
+};
+
+void mix_device_printer_output(mix_device *d, const mix_word *wordbuf) {
+    d->last_op = MIX_D_P_OUTPUT;
+    for (int i = 0 ; i < 24; i++) {
+        for (int j = 1; j <= 5; j++) {
+            fputc(mix_char_table[wordbuf[i].bytes[j]], stdout);
+        }
+    }
+}

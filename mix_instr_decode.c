@@ -279,7 +279,7 @@ struct mix_decoding_struct {
     /*34*/  { 0, 0, 0 },
     /*35*/  { "IOC  ", 0, field_decimal, 0, mix_machine_instr_IOC },
     /*36*/  { 0, 0, 0 },
-    /*37*/  { 0, 0, 0 },
+    /*37*/  { "OUT  ", 0, field_decimal, 1, mix_machine_instr_OUT },
     /*38*/  { 0, 0, 0 },
     /*39*/  { 0, opcode_jumps_trans, field_omitted, 1, mix_machine_instr_jumps },
     /*40*/  { 0, opcode_jreg_trans, field_omitted, 1, mix_machine_instr_Ji },

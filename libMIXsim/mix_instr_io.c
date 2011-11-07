@@ -21,3 +21,13 @@ int mix_machine_instr_IOC(mix_machine *mix, int unit, int m, int c) {
     mix->ip++;
     return MIX_M_OK;
 }
+
+int mix_machine_instr_OUT(mix_machine *mix, int unit, int m, int c) {
+    if (mix->devices[unit] == NULL) {
+        return MIX_M_ERROR;
+    }
+    mix_device_printer_output(mix->devices[unit], &(mix->words[m]));
+    mix->ip++;
+    mix->time++;
+    return MIX_M_OK;
+}
