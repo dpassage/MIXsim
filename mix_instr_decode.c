@@ -194,6 +194,10 @@ static char *opcode_jreg_trans(char *buf, int f, int c) {
             buf[2] = 'Z';
             buf[3] = ' ';
             break;
+        case 2:
+            buf[2] = 'P';
+            buf[3] = ' ';
+            break;
         default:
             return NULL;
             break;
