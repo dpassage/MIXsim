@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B06ECA716B49EFD007A3B35 /* libcheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B06ECA616B49EFD007A3B35 /* libcheck.a */; };
+		6B06ECA816B49EFD007A3B35 /* libcheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B06ECA616B49EFD007A3B35 /* libcheck.a */; };
 		6B0ECA45145FC4B100BA7DEE /* liblibMIXsim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0ECA27145FC3B500BA7DEE /* liblibMIXsim.a */; };
-		6B0ECA46145FC52800BA7DEE /* libcheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B7454119E6B260045C0B7 /* libcheck.a */; };
 		6B0ECA48145FC5BA00BA7DEE /* MIXsimTestMain.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D76911AA41E9007D5BA8 /* MIXsimTestMain.c */; };
 		6B0ECA49145FC62600BA7DEE /* MIXwordTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D76F11AA4233007D5BA8 /* MIXwordTest.c */; };
 		6B0ECA4C145FC65500BA7DEE /* MIXmachineTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF32D1A119F8CD900AAC892 /* MIXmachineTest.c */; };
@@ -24,7 +25,6 @@
 		6BD1CFCB11ACCE6300838507 /* halt.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EC811A0689D00AAC892 /* halt.mix */; };
 		6BD1CFCC11ACCE6300838507 /* halt.mixal in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BD1CFC911ACCB2E00838507 /* halt.mixal */; };
 		6BD1CFF111ACD00200838507 /* MIXas.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1CFF011ACD00200838507 /* MIXas.c */; };
-		6BD1D3AB11AE4AD900838507 /* libcheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B7454119E6B260045C0B7 /* libcheck.a */; };
 		6BD1D3AE11AE4B4C00838507 /* MIXasTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1D3AD11AE4B4C00838507 /* MIXasTest.c */; };
 		6BE02B3A1466776C00655FD8 /* mix_instr_jumps_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BE02B381466776C00655FD8 /* mix_instr_jumps_test.c */; };
 		6BE02B3E1467261B00655FD8 /* mix_instr_math.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BE02B3C1467261A00655FD8 /* mix_instr_math.c */; };
@@ -55,6 +55,8 @@
 		6BE02B781467998B00655FD8 /* mix_device.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BE02B751467998B00655FD8 /* mix_device.c */; };
 		6BE02B791467998B00655FD8 /* mix_instr_decode.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BE02B761467998B00655FD8 /* mix_instr_decode.c */; };
 		6BE02B7A1467998B00655FD8 /* mix_instr_decode.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE02B771467998B00655FD8 /* mix_instr_decode.h */; };
+		6BE02BA11467A11800655FD8 /* liblibMIXsim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0ECA27145FC3B500BA7DEE /* liblibMIXsim.a */; };
+		6BE02BA21467A1C800655FD8 /* liblibMIXsim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0ECA27145FC3B500BA7DEE /* liblibMIXsim.a */; };
 		6BF32EA411A0615600AAC892 /* program_p.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA111A05F4900AAC892 /* program_p.mix */; };
 		6BF32EA511A0615600AAC892 /* program_p.loadtest_output in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA311A0610100AAC892 /* program_p.loadtest_output */; };
 		6BF32ECB11A0699000AAC892 /* halt.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EC811A0689D00AAC892 /* halt.mix */; };
@@ -128,13 +130,13 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* MIXsim.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MIXsim.c; sourceTree = "<group>"; };
+		6B06ECA616B49EFD007A3B35 /* libcheck.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcheck.a; path = ../../../../usr/local/lib/libcheck.a; sourceTree = "<group>"; };
 		6B0ECA27145FC3B500BA7DEE /* liblibMIXsim.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibMIXsim.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0ECA3B145FC49A00BA7DEE /* libMIXsimTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libMIXsimTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2C4D2A11A209500051952E /* mix_instr_decode_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mix_instr_decode_test.h; path = unittests/mix_instr_decode_test.h; sourceTree = "<group>"; };
 		6B2C4D2B11A209500051952E /* mix_instr_decode_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mix_instr_decode_test.c; path = unittests/mix_instr_decode_test.c; sourceTree = "<group>"; };
 		6B2C4E6E11A2345F0051952E /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		6B2C4E7111A237E10051952E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		6B5B7454119E6B260045C0B7 /* libcheck.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcheck.a; path = /opt/local/lib/libcheck.a; sourceTree = "<absolute>"; };
 		6B5B7499119E77120045C0B7 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		6B69D76911AA41E9007D5BA8 /* MIXsimTestMain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXsimTestMain.c; path = unittests/MIXsimTestMain.c; sourceTree = "<group>"; };
 		6B69D76F11AA4233007D5BA8 /* MIXwordTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MIXwordTest.c; path = unittests/MIXwordTest.c; sourceTree = "<group>"; };
@@ -215,7 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B0ECA45145FC4B100BA7DEE /* liblibMIXsim.a in Frameworks */,
-				6B0ECA46145FC52800BA7DEE /* libcheck.a in Frameworks */,
+				6B06ECA816B49EFD007A3B35 /* libcheck.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +225,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BD1D3AB11AE4AD900838507 /* libcheck.a in Frameworks */,
+				6BE02BA21467A1C800655FD8 /* liblibMIXsim.a in Frameworks */,
+				6B06ECA716B49EFD007A3B35 /* libcheck.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BE02BA11467A11800655FD8 /* liblibMIXsim.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +260,6 @@
 				08FB7795FE84155DC02AAC07 /* Source */,
 				C6A0FF2B0290797F04C91782 /* Documentation */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
-				6B5B7454119E6B260045C0B7 /* libcheck.a */,
 			);
 			name = MIXsim;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 		C6A0FF2B0290797F04C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
+				6B06ECA616B49EFD007A3B35 /* libcheck.a */,
 				6B2C4E6E11A2345F0051952E /* README */,
 				6B2C4E7111A237E10051952E /* LICENSE */,
 				C6A0FF2C0290799A04C91782 /* MIXsim.1 */,
@@ -513,7 +517,7 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "MIXsim" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -751,6 +755,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = lib;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -771,6 +776,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_PREFIX = lib;
@@ -797,10 +803,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = /opt/local/include;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/opt/local/lib,
+					/usr/local/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -818,10 +824,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				HEADER_SEARCH_PATHS = /opt/local/include;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/opt/local/lib,
+					/usr/local/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -836,11 +842,11 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = /opt/local/include;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
 					"$(inherited)",
-					/opt/local/lib,
 				);
 				PRODUCT_NAME = MIXasTest;
 			};
@@ -853,10 +859,11 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
 					"$(inherited)",
-					/opt/local/lib,
 				);
 				PRODUCT_NAME = MIXasTest;
 				ZERO_LINK = NO;
@@ -873,6 +880,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_NAME = MIXas;
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = libMIXsim;
 			};
 			name = Debug;
 		};
