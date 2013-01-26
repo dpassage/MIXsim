@@ -48,6 +48,7 @@ START_TEST (test_instr_decoder)
         }
         fail_unless(strcmp(result, testcases[i][1]) == 0, "test %d: Expected %s got %s", i, testcases[i][1], result);
     }
+    free(resultbuffer);
 }
 END_TEST
 
