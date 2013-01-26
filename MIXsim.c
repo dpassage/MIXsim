@@ -41,8 +41,8 @@ int main (int argc, char * argv[]) {
                 exit(EXIT_FAILURE);
         }
     }
-    argc -= optind;
-    argv += optind;
+//    argc -= optind;
+//    argv += optind;
 
     /* create new machine */
     m = mix_machine_create();
