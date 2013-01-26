@@ -140,26 +140,26 @@ int ma_process_line(ma_assembly *ma, const char *l) {
     char opcode[5];
     
     if (l[0] == '*') {
-        return 1;
+        return MA_OK;
     }
     if (strlen(l) < 14) {
-        return 0;
+        return MA_ERROR;
     }
     int ret = ma_parse_opcode(&opcode[0], l);
-    if (ret == 0) {
-        return 0;
+    if (ret == MA_ERROR) {
+        return MA_ERROR;
     }
     ret = ma_parse_loc(&loc[0], l);
-    if (ret == 0) {
-        return 0;
+    if (ret == MA_ERROR) {
+        return MA_ERROR;
     }
     
     if (strcmp(opcode, "ORIG") == 0) {
         ma->current = atoi(l + 16);
-        return 1;
+        return MA_OK;
     } else if (strcmp(opcode, "EQU") == 0) {
         if (loc[0] == '\0') {
-            return 0;
+            return MA_ERROR;
         }
         int value = atoi(l + 16);
         return ma_set_symbol(ma, loc, value);

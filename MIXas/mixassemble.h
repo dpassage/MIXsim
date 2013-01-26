@@ -26,4 +26,8 @@ int ma_set_symbol(ma_assembly *, const char *, int);
 int ma_get_word(ma_assembly *, mix_word *, int);
 int ma_set_word(ma_assembly *, const mix_word *, int);
 
+#define MA_OK 1
+#define MA_ERROR -1
+#define MA_DONE 2
+
 #endif
