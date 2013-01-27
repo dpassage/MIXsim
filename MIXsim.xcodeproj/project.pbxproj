@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6B06ECA716B49EFD007A3B35 /* libcheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B06ECA616B49EFD007A3B35 /* libcheck.a */; };
 		6B06ECA816B49EFD007A3B35 /* libcheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B06ECA616B49EFD007A3B35 /* libcheck.a */; };
+		6B06ECA916B4ABED007A3B35 /* program_p.mix in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32EA111A05F4900AAC892 /* program_p.mix */; };
+		6B06ECAA16B4ABF5007A3B35 /* program_p.mixal in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6BF32E9811A057B000AAC892 /* program_p.mixal */; };
 		6B0ECA45145FC4B100BA7DEE /* liblibMIXsim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0ECA27145FC3B500BA7DEE /* liblibMIXsim.a */; };
 		6B0ECA48145FC5BA00BA7DEE /* MIXsimTestMain.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D76911AA41E9007D5BA8 /* MIXsimTestMain.c */; };
 		6B0ECA49145FC62600BA7DEE /* MIXwordTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B69D76F11AA4233007D5BA8 /* MIXwordTest.c */; };
@@ -111,6 +113,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				6B06ECAA16B4ABF5007A3B35 /* program_p.mixal in CopyFiles */,
+				6B06ECA916B4ABED007A3B35 /* program_p.mix in CopyFiles */,
 				6BD1CFCB11ACCE6300838507 /* halt.mix in CopyFiles */,
 				6BD1CFCC11ACCE6300838507 /* halt.mixal in CopyFiles */,
 			);
@@ -477,6 +481,7 @@
 				6BF32E6D11A0554800AAC892 /* Frameworks */,
 				6BD1CFCF11ACCE8B00838507 /* CopyFiles */,
 				6BD1CFCE11ACCE6D00838507 /* ShellScript */,
+				6B06ECAB16B4AC0D007A3B35 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -540,6 +545,19 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6B06ECAB16B4AC0D007A3B35 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$BUILT_PRODUCTS_DIR/MIXas -o $BUILT_PRODUCTS_DIR/program_p.out.mix $BUILT_PRODUCTS_DIR/program_p.mixal\ndiff $BUILT_PRODUCTS_DIR/program_p.out.mix $BUILT_PRODUCTS_DIR/program_p.mix\nexit 0";
+		};
 		6B5B7482119E70390045C0B7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
