@@ -21,6 +21,15 @@ static void setup(void) {
 static void teardown(void) {
 }
 
+START_TEST(test_loc_is_garbage) {
+    char line[] = "           ORIG 400\n";
+    line[0] = -1;
+
+    int ret = ma_process_line(ma, line);
+    fail_unless(ret == MA_ERROR, "processor should fail");
+}
+END_TEST
+
 START_TEST(test_assemble_orig) {
     char *line = "           ORIG 400\n";
     
@@ -36,10 +45,10 @@ START_TEST(test_assemble_equ) {
     
     int cur = ma_get_current(ma);
     int ret = ma_process_line(ma, line);
-    fail_unless(ret == 1, "processor should succeed");
+    fail_unless(ret == MA_OK, "processor should succeed");
     fail_unless(ma_get_current(ma) == cur, "current should not advance");
     ret = ma_get_symbol(ma, &value, "FOO");
-    fail_unless(ret == 1, "value should be set");
+    fail_unless(ret == MA_OK, "value should be set");
     fail_unless(value == 500, "should have set value");
 }
 END_TEST
@@ -52,14 +61,14 @@ START_TEST(test_assemble_with_label) {
     int cur = ma_get_current(ma);
     int ret = ma_process_line(ma, line);
     
-    fail_unless(ret == 1, "processor should succeed");
+    fail_unless(ret == MA_OK, "processor should succeed");
     fail_unless(ma_get_current(ma) == cur + 1, "current should advance");
     ret = ma_get_symbol(ma, &value, "START");
-    fail_unless(ret == 1, "value should have been set");
+    fail_unless(ret == MA_OK, "value should have been set");
     fail_unless(value == cur, "value should have been taken from assembly");
     
     ret = ma_get_word(ma, &word, cur);
-    fail_unless(ret == 1, "word should have been returned");
+    fail_unless(ret == MA_OK, "word should have been returned");
     fail_unless(word.bytes[0] == MIX_WORD_PLUS);
     for (int i = 1; i <- 5; i++) {
         fail_unless(word.bytes[i] == 0, "word %d should have been 0", i);
@@ -72,7 +81,7 @@ START_TEST(test_assemble_comment) {
     
     int cur = ma_get_current(ma);
     int ret = ma_process_line(ma, line);
-    fail_unless(ret == 1, "processor should succeed");
+    fail_unless(ret == MA_OK, "processor should succeed");
     fail_unless(ma_get_current(ma) == cur, "current should not advance");
 }
 END_TEST
@@ -84,7 +93,7 @@ START_TEST(test_translate_opcode) {
     int ret; 
     
     ret = mixas_encode(opcode, &c, &f);
-    fail_unless(ret == 1, "opcode not found!");
+    fail_unless(ret == MA_OK, "opcode not found!");
     fail_unless(c == 36, "IN should be 36");
     fail_unless(f == -1, "f should be -1, comes from instr");
 }
@@ -102,6 +111,7 @@ Suite *mixassemble_suite(void)
     tcase_add_test(tc_core, test_assemble_equ);
     tcase_add_test(tc_core, test_assemble_comment);
     tcase_add_test(tc_core, test_assemble_with_label);
+    tcase_add_test(tc_core, test_loc_is_garbage);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

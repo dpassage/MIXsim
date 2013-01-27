@@ -32,10 +32,10 @@ int mixas_encode(const char *opcode, int *c, int *f) {
         if (strcmp(opcode, opcode_lookup[i].opcode) == 0) {
             *c = opcode_lookup[i].c;
             *f = opcode_lookup[i].f;
-            return 1;
+            return MA_OK;
         }
     }
-    return 0;
+    return MA_ERROR;
 }
 
 struct ma_assembly {
@@ -61,12 +61,12 @@ static int ma_parse_opcode(char *opcode, const char *l) {
             opcode[i] = codestart[i];
         } else if (codestart[i] == ' ' || codestart[i] == '\n') {
             opcode[i] = '\0';
-            return 1;
+            return MA_OK;
         } else {
-            return 0;
+            return MA_ERROR;
         }
     }
-    return 0;
+    return MA_ERROR;
 }
 
 static int ma_parse_loc(char *loc, const char *l) {
@@ -78,12 +78,12 @@ static int ma_parse_loc(char *loc, const char *l) {
             loc[i] = codestart[i];
         } else if (codestart[i] == ' ') {
             loc[i] = '\0';
-            return 1;
+            return MA_OK;
         } else {
-            return 0;
+            return MA_ERROR;
         }
     }
-    return 0;    
+    return MA_ERROR;
 }
 
 typedef struct symbol_entry {
@@ -99,32 +99,33 @@ int ma_get_symbol(ma_assembly *ma, int *val, const char *symbol) {
     for (next = symbol_table; next != NULL; next = next->next) {
         if (strcmp(next->symbol, symbol) == 0) {
             *val = next->val;
-            return 1;
+            return MA_OK;
         }
     }
-    return 0;
+    return MA_ERROR;
 }
 
 int ma_set_symbol(ma_assembly *ma, const char *symbol, int value) {
     int throwaway;
     symbol_entry *new;
-    if (ma_get_symbol(ma, &throwaway, symbol)) {
-        return 0;
+    /* if symbol already exists, throw an error - symbols can't be redefined */
+    if (ma_get_symbol(ma, &throwaway, symbol) == MA_OK) {
+        return MA_ERROR;
     }
     new = (symbol_entry *)malloc(sizeof(symbol_entry));
     new->val = value;
     strncpy(new->symbol, symbol, (size_t)11);
     new->next = symbol_table;
     symbol_table = new;
-    return 1;
+    return MA_OK;
 }
 
 int ma_get_word(ma_assembly *ma, mix_word *word, int loc) {
     if (ma->words[loc] == NULL) {
-        return 0;
+        return MA_ERROR;
     }
     *word = *(ma->words[loc]);
-    return 1;
+    return MA_OK;
 }
 
 int ma_set_word(ma_assembly *ma, const mix_word *word, int loc) {
@@ -132,7 +133,7 @@ int ma_set_word(ma_assembly *ma, const mix_word *word, int loc) {
         ma->words[loc] = mix_word_create();
     }
     *(ma->words[loc]) = *word;
-    return 1;
+    return MA_OK;
 }
     
 int ma_process_line(ma_assembly *ma, const char *l) {
@@ -167,10 +168,10 @@ int ma_process_line(ma_assembly *ma, const char *l) {
     
     int f, c;
     ret = mixas_encode(opcode, &c, &f);
-    if (ret != 0) {
+    if (ret == MA_OK) {
         if (loc[0] != '\0') {
-            if (ma_set_symbol(ma, loc, ma->current) == 0) {
-                return 0;
+            if (ma_set_symbol(ma, loc, ma->current) == MA_ERROR) {
+                return MA_ERROR;
             }
         }
         mix_word *w = mix_word_create();
@@ -179,7 +180,7 @@ int ma_process_line(ma_assembly *ma, const char *l) {
         ma_set_word(ma, w, ma->current);
         mix_word_destroy(w);
         ma->current++;
-        return 1;
+        return MA_OK;
     }
-    return 0;
+    return MA_ERROR;
 }
