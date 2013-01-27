@@ -19,7 +19,7 @@ static int mix_assemble(FILE *input, FILE *output) {
     ma_assembly *ma = ma_assembly_create();
     
     while (fgets(buf, 100, input)) {
-        if (!ma_process_line(ma, buf)) {
+        if (ma_process_line(ma, buf) == MA_ERROR) {
             fprintf(stderr, "%d: could not process line\n", line);
             return -1;
         }
