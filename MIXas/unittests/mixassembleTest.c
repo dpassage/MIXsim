@@ -99,6 +99,20 @@ START_TEST(test_translate_opcode) {
 }
 END_TEST
 
+START_TEST(test_end_with_symbol) {
+    // set up dummy sumbol
+    char *line = "           END  FIN\n";
+    char *symbol = "FIN";
+    ma_set_symbol(ma, symbol, 1347);
+
+    int ret = ma_process_line(ma, line);
+    // assemble/process end line
+    // return value should be completed
+    fail_unless(ret == MA_DONE, "processor should say assembly done");
+    // starting pointer should be equal to value of symbol
+    fail_unless(ma_get_start(ma) == 1347);
+}
+END_TEST
 
 Suite *mixassemble_suite(void)
 {
@@ -112,6 +126,7 @@ Suite *mixassemble_suite(void)
     tcase_add_test(tc_core, test_assemble_comment);
     tcase_add_test(tc_core, test_assemble_with_label);
     tcase_add_test(tc_core, test_loc_is_garbage);
+    tcase_add_test(tc_core, test_end_with_symbol);
 	suite_add_tcase (s, tc_core);
 	
 	return s;

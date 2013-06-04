@@ -40,6 +40,7 @@ int mixas_encode(const char *opcode, int *c, int *f) {
 
 struct ma_assembly {
     int current;
+    int start;
     mix_word *words[4000];
 };
 
@@ -50,6 +51,10 @@ ma_assembly *ma_assembly_create(void) {
 
 int ma_get_current(ma_assembly *ma) {
     return ma->current;
+}
+
+int ma_get_start(ma_assembly *ma) {
+    return ma->start;
 }
 
 static int ma_parse_opcode(char *opcode, const char *l) {   
@@ -81,6 +86,21 @@ static int ma_parse_loc(char *loc, const char *l) {
             return MA_OK;
         } else {
             return MA_ERROR;
+        }
+    }
+    return MA_ERROR;
+}
+
+static int ma_parse_arg(char*arg, const char *l) {
+    char const *argstart = &l[16];
+    int i;
+
+    for (i = 0; i <= 10; i++) {
+        if (isspace(argstart[i])) {
+            arg[i] = '\0';
+            return MA_OK;
+        } else {
+            arg[i] = argstart[i];
         }
     }
     return MA_ERROR;
@@ -164,6 +184,13 @@ int ma_process_line(ma_assembly *ma, const char *l) {
         }
         int value = atoi(l + 16);
         return ma_set_symbol(ma, loc, value);
+    } else if (strcmp(opcode, "END") == 0) {
+        char arg[11];
+        ma_parse_arg(&arg[0], l);
+        int start;
+        ma_get_symbol(ma, &start, arg);
+        ma->start = start;
+        return MA_DONE;
     }
     
     int f, c;
