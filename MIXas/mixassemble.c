@@ -20,7 +20,7 @@ struct opcode_lookup {
 } opcode_lookup[] = {
     { "EQU",  -1, -1 },
     { "IN",   36, -1 },
-    { "HLT",   0,  0 },
+    { "HLT",   5,  2 },
     { "LDA",   8, -1 },
     { "NOP",   0,  0 },
     { "ORIG", -1, -1 },

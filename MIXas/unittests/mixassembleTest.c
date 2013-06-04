@@ -70,8 +70,9 @@ START_TEST(test_assemble_with_label) {
     ret = ma_get_word(ma, &word, cur);
     fail_unless(ret == MA_OK, "word should have been returned");
     fail_unless(word.bytes[0] == MIX_WORD_PLUS);
-    for (int i = 1; i <- 5; i++) {
-        fail_unless(word.bytes[i] == 0, "word %d should have been 0", i);
+    int test_bytes[] = {0, 0, 0, 0, 2, 5};
+    for (int i = 1; i <= 5; i++) {
+        fail_unless(word.bytes[i] == test_bytes[i], "word %d should have been %d", i, test_bytes[i]);
     }
 }
 END_TEST

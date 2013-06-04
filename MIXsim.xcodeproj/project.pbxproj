@@ -595,7 +595,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$BUILT_PRODUCTS_DIR/MIXas -o $BUILT_PRODUCTS_DIR/halt.out.mix $BUILT_PRODUCTS_DIR/halt.mixal\ndiff $BUILT_PRODUCTS_DIR/halt.out.mix $BUILT_PRODUCTS_DIR/halt.mix\nexit 0\n";
+			shellScript = "$BUILT_PRODUCTS_DIR/MIXas -o $BUILT_PRODUCTS_DIR/halt.out.mix $BUILT_PRODUCTS_DIR/halt.mixal\ndiff $BUILT_PRODUCTS_DIR/halt.out.mix $BUILT_PRODUCTS_DIR/halt.mix";
 		};
 		6BD1D3E211AE516600838507 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
