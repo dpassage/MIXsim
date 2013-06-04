@@ -25,6 +25,10 @@ static int mix_assemble(FILE *input, FILE *output) {
         }
         line++;
     }
+
+    if (ma_output_assembly(ma, output) == MA_OK) {
+        return 0;
+    }
     
     return -1;
 }

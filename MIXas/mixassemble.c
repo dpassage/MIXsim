@@ -211,3 +211,23 @@ int ma_process_line(ma_assembly *ma, const char *l) {
     }
     return MA_ERROR;
 }
+
+static void ma_word_to_string(mix_word *word, char *buf){
+    snprintf(buf, 100, "+ %.2d %.2d %.2d %.2d %.2d", word->bytes[1],
+                                                     word->bytes[2],
+                                                     word->bytes[3],
+                                                     word->bytes[4],
+                                                     word->bytes[5]);
+}
+
+int ma_output_assembly(ma_assembly *ma, FILE *output) {
+    char buf[100];
+    fprintf(output, "START: %d\n", ma->start);
+    for (int i = 0; i < 4000; i++) {
+        if (ma->words[i] != NULL) {
+            ma_word_to_string(ma->words[i], &buf[0]);
+            fprintf(output, "%d: %s\n", i, buf);
+        }
+    }
+    return MA_OK;
+}
