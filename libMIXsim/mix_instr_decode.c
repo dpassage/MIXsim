@@ -94,7 +94,7 @@ static char *opcode_addr_trans(char *buf, int f, int c) {
         case 4:
         case 5:
         case 6:
-            reg = '0' + (c - 48);
+            reg = '0' + ((char)c - 48);
             break;
         case 7:
             reg = 'X';
@@ -246,14 +246,14 @@ struct mix_decoding_struct {
     int printaddr;
     mix_instruction instruction;
 } mix_decoding_table[] = {
-    /*00*/  { "NOP  ", 0, field_omitted, 0 },
-    /*01*/  { 0, 0, 0, 0},
-    /*02*/  { 0, 0, 0, 0 },
-    /*03*/  { 0, 0, 0, 0 },
+    /*00*/  { "NOP  ", 0, field_omitted, 0, NULL },
+    /*01*/  { 0, 0, 0, 0, NULL },
+    /*02*/  { 0, 0, 0, 0, NULL },
+    /*03*/  { 0, 0, 0, 0, NULL },
     /*04*/  { 0, opcode_arith, field_arith, 1, mix_machine_instr_DIV },
     /*05*/  { 0, opcode_05, field_omitted, 0, mix_machine_instr_specials },
-    /*06*/  { 0, 0, 0, 0 },
-    /*07*/  { 0, 0, 0, 0 },
+    /*06*/  { 0, 0, 0, 0, NULL },
+    /*07*/  { 0, 0, 0, 0, NULL },
     /*08*/  { "LDA  ", 0, field_standard, 0, mix_machine_instr_LDi },
     /*09*/  { "LD1  ", 0, field_standard, 0, mix_machine_instr_LDi },
     /*10*/  { "LD2  ", 0, field_standard, 0, mix_machine_instr_LDi },
@@ -262,15 +262,15 @@ struct mix_decoding_struct {
     /*13*/  { "LD5  ", 0, field_standard, 0, mix_machine_instr_LDi },
     /*14*/  { "LD6  ", 0, field_standard, 0, mix_machine_instr_LDi },
     /*15*/  { "LDX  ", 0, field_standard, 0, mix_machine_instr_LDi },
-    /*16*/  { 0, 0, 0, 0 },
-    /*17*/  { 0, 0, 0, 0 },
-    /*18*/  { 0, 0, 0, 0 },
-    /*19*/  { 0, 0, 0 },
-    /*20*/  { 0, 0, 0 },
-    /*21*/  { 0, 0, 0 },
-    /*22*/  { 0, 0, 0 },
-    /*23*/  { 0, 0, 0 },
-    /*24*/  { 0, 0, 0 },
+    /*16*/  { 0, 0, 0, 0, NULL },
+    /*17*/  { 0, 0, 0, 0, NULL },
+    /*18*/  { 0, 0, 0, 0, NULL },
+    /*19*/  { 0, 0, 0, 0, NULL },
+    /*20*/  { 0, 0, 0, 0, NULL },
+    /*21*/  { 0, 0, 0, 0, NULL },
+    /*22*/  { 0, 0, 0, 0, NULL },
+    /*23*/  { 0, 0, 0, 0, NULL },
+    /*24*/  { 0, 0, 0, 0, NULL },
     /*25*/  { "ST1  ", 0, field_standard, 1, mix_machine_instr_STi },
     /*26*/  { "ST2  ", 0, field_standard, 1, mix_machine_instr_STi },
     /*27*/  { "ST3  ", 0, field_standard, 1, mix_machine_instr_STi },
@@ -278,13 +278,13 @@ struct mix_decoding_struct {
     /*29*/  { "ST5  ", 0, field_standard, 1, mix_machine_instr_STi },
     /*30*/  { "ST6  ", 0, field_standard, 1, mix_machine_instr_STi },
     /*31*/  { "STX  ", 0, field_standard, 1, mix_machine_instr_STi },
-    /*32*/  { 0, 0, 0 },
-    /*33*/  { 0, 0, 0 },
-    /*34*/  { 0, 0, 0 },
+    /*32*/  { 0, 0, 0, 0, NULL },
+    /*33*/  { 0, 0, 0, 0, NULL },
+    /*34*/  { 0, 0, 0, 0, NULL },
     /*35*/  { "IOC  ", 0, field_decimal, 0, mix_machine_instr_IOC },
-    /*36*/  { 0, 0, 0 },
+    /*36*/  { 0, 0, 0, 0, NULL },
     /*37*/  { "OUT  ", 0, field_decimal, 1, mix_machine_instr_OUT },
-    /*38*/  { 0, 0, 0 },
+    /*38*/  { 0, 0, 0, 0, NULL },
     /*39*/  { 0, opcode_jumps_trans, field_omitted, 1, mix_machine_instr_jumps },
     /*40*/  { 0, opcode_jreg_trans, field_omitted, 1, mix_machine_instr_Ji },
     /*41*/  { 0, opcode_jreg_trans, field_omitted, 1, mix_machine_instr_Ji },
@@ -303,13 +303,13 @@ struct mix_decoding_struct {
     /*54*/  { 0, opcode_addr_trans, field_omitted, 1, mix_machine_instr_addr_xfer },
     /*55*/  { 0, opcode_addr_trans, field_omitted, 1, mix_machine_instr_addr_xfer },
     /*56*/  { "CMPA ", 0, field_standard, 1, mix_machine_instr_CMPA },
-    /*57*/  { 0, 0, 0 },
-    /*58*/  { 0, 0, 0 },
-    /*59*/  { 0, 0, 0 },
-    /*60*/  { 0, 0, 0 },
-    /*61*/  { 0, 0, 0 },
-    /*62*/  { 0, 0, 0 },
-    /*63*/  { 0, 0, 0 }
+    /*57*/  { 0, 0, 0, 0, NULL },
+    /*58*/  { 0, 0, 0, 0, NULL },
+    /*59*/  { 0, 0, 0, 0, NULL },
+    /*60*/  { 0, 0, 0, 0, NULL },
+    /*61*/  { 0, 0, 0, 0, NULL },
+    /*62*/  { 0, 0, 0, 0, NULL },
+    /*63*/  { 0, 0, 0, 0, NULL }
 };
 
 #define is_valid_field(f)   (((f) / 8 <= 5) && ((f) % 8 <= 5))
